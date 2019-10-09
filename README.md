@@ -6,7 +6,6 @@ BIG DATA
 npm install
 ```
 
-Note:
 Secure your keys before connecting to EC2 instances (you only need to do this once)
 ```
 chmod 400 server.pem

@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <img src="<%= (book||{}).imUrl %>" alt="">
+        <h1><%= (book||{}).asin %></h1>
+        <p>Description: <%= ((book||{}).description|| "-") %></p>
+        <p>price: $<%= (book||{}).price %></p>
+    </div>
+    <div>
+        Related:
+            <% (((book||{}).related||{}).also_bought||[]).forEach(function(name) { %>
+                <li><a href="/book/<%= name %>"><%= name %></a></li>
+              <% }); %>
+    </div>
+    Reviews:
+    <% reviews.forEach(function(review) { %>
+        <div>
+            <p>Name: <%= review.reviewerName %></p>
+            <p>Helpful</p>
+            <p>Summary</p>
+            <p>reviewText</p>
+        </div>
+    <% }); %>
+    
+</body>
+</html>

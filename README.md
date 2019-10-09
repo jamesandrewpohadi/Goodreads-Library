@@ -12,11 +12,13 @@ Secure your keys before connecting to EC2 instances (you only need to do this on
 chmod 400 server.pem
 chmod 400 mongodb.pem
 ```
+---
 
 ### To run EC2 instance for mysql in terminal
 ```
 ssh -i "server.pem" ubuntu@18.210.39.176
 ```
+---
 
 ### To run EC2 instance for mongodb in terminal
 ```

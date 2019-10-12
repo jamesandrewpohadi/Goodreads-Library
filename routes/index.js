@@ -3,7 +3,7 @@ var mysql = require("mysql");
 var router = express.Router();
 
 var MongoClient = require("mongodb").MongoClient;
-// var url = "mongodb://35.161.233.181:27017/";
+// var url = "mongodb://35.163.65.254:27017/";
 var url = "mongodb://localhost:27017/";
 
 var ms = mysql.createConnection({

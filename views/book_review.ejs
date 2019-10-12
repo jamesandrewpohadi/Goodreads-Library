@@ -19,9 +19,9 @@
               <% }); %>
     </div>
     Reviews:
-    <% reviews.forEach(function(review) { %>
+    <% data.reviews.forEach(function(review) { %>
         <div>
-            <p>Name: <%= data.review.reviewerName %></p>
+            <p>Name: <%= review.reviewerName %></p>
             <p>Helpful</p>
             <p>Summary</p>
             <p>reviewText</p>

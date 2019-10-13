@@ -5,6 +5,7 @@ var router = express.Router();
 var MongoClient = require("mongodb").MongoClient;
 var url = "mongodb://35.163.65.254:27017/";
 // var url = "mongodb://localhost:27017/";
+// insert comment example
 
 var ms = mysql.createConnection({
   host: "18.210.39.176",

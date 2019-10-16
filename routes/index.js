@@ -27,7 +27,7 @@ router.get("/", function(req, res, next) {
       .limit(20)
       .toArray(function(err, result) {
         res.render("index", { data: { title: "goodreads", books: result } });
-        console.log(result);
+        // console.log(result);
         db.close();
       });
   });
@@ -46,6 +46,7 @@ router.get("/book/:id", function(req, res, next) {
           function(err, reviews) {
             if (err) throw err;
             // console.log("reviews", reviews);
+            // console.log("book", book[0])
             res.render("book_review", {
               data: { book: book[0], reviews: reviews }
             });
@@ -76,7 +77,6 @@ router.get("/user/:name", function(req, res, next) {
       });
     }
   )
-  
 });
 
 module.exports = router;

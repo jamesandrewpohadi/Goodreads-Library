@@ -1,8 +1,145 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: white;
+}   
+
+.header {
+  padding: 70px;
+  text-align: center;
+  background: #b3b3b3;
+  color: rgb(255, 255, 255);
 }
 
-a {
-  color: #00B7FF;
+.header h1 {
+  font-size: 60px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: rgb(150, 150, 150);
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  font-size: 18px;
+  font: bold;
+  font-family: Helvetica,
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.topnav a.right {
+  float: right;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: rgb(85, 85, 85);
+  color: white;
+}
+
+.column {
+  padding-top: 40px;
+  float: left;
+}
+
+.column.side{
+  width: 15%;
+  height: 100%;
+  background-color: #ddd;
+}
+
+.column.side a {
+  display: block;
+  color: rgb(0, 0, 0);
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.column.side a:hover {
+  background-color:  rgb(150, 150, 150);
+  color: black;
+}
+
+.column li { 
+  list-style-type: none;
+  padding: 0;
+}
+
+.column.main {
+  width: 85%;
+}
+
+.column.main a:hover {
+  background-color:  rgb(150, 150, 150);
+}
+
+/*
+#indivbook { 
+  border: 1px solid beige;
+}
+*/
+
+.indivbook li { 
+  list-style-type: none;
+}
+
+.indivbookimg {
+  width:300px;
+  height:300px;    
+  overflow:hidden;
+}
+
+.indivbookimg img{
+  min-width: 100%;
+}
+
+.booklist  {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  grid-auto-rows: row;
+}
+
+.column:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.a {
+  color: black;
+}
+
+.footer  {
+  clear: both; /*ensures that footer stays after floating elements in content*/
+  background: #b3b3b3;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
 }

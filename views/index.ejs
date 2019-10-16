@@ -5,12 +5,50 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= data.title %></h1>
-    <p>Welcome to <%= data.title %></p>
-    <h1>Book Lists:</h1>
-    <% data.books.forEach(function(book) { %>
-      <li><a href="/book/<%= book.asin %>"><%= book.asin %></a></li>
-      <img src="<%= book.imUrl %>" alt="">
-    <% }); %>
+    <div class="container">
+      <div class="header">
+        <h1><%= data.title %></h1>
+        <h4>Welcome to <%= data.title %> by BIGdata</h4>
+      </div>  
+      <div class="topnav">
+        <a href="#" class="active">Home</a>
+        <a href="#">Book Reviews</a>
+        <a href="#">Reccommendations</a>
+        <a href="#" class="right">Log In</a>
+        <a href="#" class="right">Create New Account</a>
+      </div>
+      <div class="content">
+        <div class="column side">
+          <h1>Book Categories</h1>
+            <h2>Books</h2>
+              <li><a href="">Literature & Fiction</a></li>
+              <li><a href="">Science Fiction & Fantasy</a></li>
+              <li><a href="">Science Fiction</a></li>
+              <li><a href="">High Tech</a></li>
+            <h2>Kindle Store</h2>
+              <li><a href="">Kindle eBooks</a></li>
+              <li><a href="">Science Fiction & Fantasy</a></li>
+              <li><a href="">Science Fiction</a></li>
+              <li><a href="">Hard Science Fiction</a></li>
+        </div>  
+        <div class="column main">
+          <h1>Book Section:</h1>
+            <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.</p>
+            <div class="booklist">
+              <% data.books.forEach(function(book) { %>
+              <div class="indivbook">
+                <li><a href="/book/<%= book.asin %>"><%= book.asin %></a></li>
+                <div class="indivbookimg">
+                  <a href="/book/<%= book.asin %>"><img src="<%= book.imUrl %>" alt=""></a>
+                </div>  
+              </div>  
+              <% }); %>
+            </div>
+        </div>    
+      </div>  
+      <div class="footer">
+          <h2>Footer Here</h2>
+      </div> 
+    </div>  
   </body>
 </html>

@@ -16,6 +16,27 @@ var ms = mysql.createConnection({
   database: "goodreads"
 });
 
+var log = (req, res, next) => {
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    dbo = db.db("goodreads");
+    var myobj = {
+      statusCode: res.statusCode,
+      method: req.method,
+      date: new Date(),
+      url: req.url,
+      ip: req.headers["x-forwarded-for"] || req.connection.remoteAddress
+    };
+    dbo.collection("logs").insertOne(myobj, function(err, res) {
+      if (err) throw err;
+      db.close();
+      next();
+    });
+  });
+};
+
+router.use(log);
+
 /* GET home page. */
 router.get("/", function(req, res, next) {
   MongoClient.connect(url, function(err, db) {
@@ -27,7 +48,6 @@ router.get("/", function(req, res, next) {
       .limit(20)
       .toArray(function(err, result) {
         res.render("index", { data: { title: "goodreads", books: result } });
-        console.log(result);
         db.close();
       });
   });
@@ -58,8 +78,10 @@ router.get("/book/:id", function(req, res, next) {
 
 router.get("/user/:name", function(req, res, next) {
   ms.query(
-    "select * from kindle_reviews where reviewerName = '" + req.params.name + "'",
-    function(err, user_data){
+    "select * from kindle_reviews where reviewerName = '" +
+      req.params.name +
+      "'",
+    function(err, user_data) {
       if (err) throw err;
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
@@ -67,16 +89,15 @@ router.get("/user/:name", function(req, res, next) {
         dbo
           .collection("meta_Kindle_Store")
           .find({ asin: user_data[0].asin })
-          .toArray(function(err,book_data){
+          .toArray(function(err, book_data) {
             res.render("user", {
-              data: {user_data: user_data, book_data: book_data}
+              data: { user_data: user_data, book_data: book_data }
             });
           });
-          db.close();
+        db.close();
       });
     }
-  )
-  
+  );
 });
 
 module.exports = router;

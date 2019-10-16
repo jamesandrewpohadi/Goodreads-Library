@@ -1,7 +1,179 @@
 <html lang="en">
 <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <%= data %>
+    
+
+        <div class="jumbotron jumbotron-fluid mycustom-jumbotron">
+               
+                <div class="header">
+                  <h1><%= data.title %></h1>
+                  <h4>Welcome to <%= data.title %> by BIGdata</h4>
+                </div> 
+        </div>
+                <div class="topnav">
+                  <a href="#" class="active">Home</a>
+                  <a href="#">Book Reviews</a>
+                  <a href="#">Reccommendations</a>
+                  <a href="#" class="right">Log In</a>
+                  <a href="#" class="right">Create New Account</a>
+                
+                </div>
+        
+    <div>
+
+
+
+    
+    <h1 class="text-center bg-light mb-3">Books Reviewed</h1>
+    <% data.book_data.forEach(function(book,i) { %>
+
+        
+        <div class="row mb-4">
+                <div class="col-4">
+            
+                <img src="<%= book.imUrl %>">
+                </div>
+            
+            <div class="col">
+                    <dl class="row pt-3">
+                        <dt class="col-sm-3">Book ID</dt>
+                        <dd class="col-sm-8"><a href="/book/<%= book.asin %>"><%= book.asin %></a></dd>
+                        <dt class="col-sm-3">Summary:</dt>
+                        <dd class="col-sm-8"><b><%= data.user_data[i].summary %></b></dd>
+                        <dt class="col-sm-3">Review:</dt>
+                        <dd class="col-sm-8"><%= data.user_data[i].reviewText %></dd>
+
+                        <dt class="col-sm-3">Rating:</dt>
+                        <dd class = "col-sm-8">
+
+                        <% for (j=0; j < data.user_data[i].overall; j++) { %>
+                            
+                             <i class="text-warning fa fa-star"></i>
+                                
+                        <% } %>
+                        <% for (j=0; j < 5 - data.user_data[i].overall; j++) { %>
+                                    
+                            <i class="text-dark fa fa-star"></i>
+                                    
+                        <% } %>
+
+
+                        
+
+
+                        </dd>
+                            
+                        </dl>
+                        
+                    </div>
+                </div>
+                <hr>
+            <br>
+            <br>
+           
+        
+        <!-- <li><a href="/book/<%= book.asin %>"><%= book.asin %></a></li>
+        <img src="<%= book.imUrl %>" alt="">
+        <p><%= data.user_data[i].summary %></p>
+        <p><%= data.user_data[i].reviewText %></p>
+        <p><%= data.user_data[i].reviewTime %></p>
+        <p><%= data.user_data[i].overall %></p> -->
+        
+            
+        
+      <% }); %>
+
+      
+</div>
+    <!-- <%= data %> -->
 </body>
+<style>
+
+    .selector-for-up{
+        padding-top: -176px;
+    }
+    .mycustom-jumbotron{
+        padding-top: -176px;
+        margin-top: 0 auto;
+        background: #b3b3b3;
+        padding-bottom: -176px;
+    }
+
+    
+    .header {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  text-align: center;
+  background: #b3b3b3;
+  color: rgb(255, 255, 255);
+}
+
+.header h1 {
+  font-size: 60px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: rgb(150, 150, 150);
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  font-size: 18px;
+  font: bold;
+  font-family: Helvetica,
+}
+
+.topnav a {
+    margin-top: 0px;
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.topnav a.right {
+  float: right;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: rgb(85, 85, 85);
+  color: white;
+}
+
+.column {
+  padding-top: 40px;
+  float: left;
+}
+
+.column.side{
+  width: 15%;
+  height: 100%;
+  background-color: #ddd;
+}
+
+.column.side a {
+  display: block;
+  color: rgb(0, 0, 0);
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.column.side a:hover {
+  background-color:  rgb(150, 150, 150);
+  color: black;
+}
+</style>
 </html>

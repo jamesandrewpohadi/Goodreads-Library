@@ -5,8 +5,6 @@ var router = express.Router();
 var MongoClient = require("mongodb").MongoClient;
 var url = "mongodb://35.163.65.254:27017/";
 // var url = "mongodb://localhost:27017/";
-// insert comment example
-// insert comment example 2
 
 var ms = mysql.createConnection({
   host: "18.210.39.176",
@@ -66,6 +64,7 @@ router.get("/book/:id", function(req, res, next) {
           function(err, reviews) {
             if (err) throw err;
             // console.log("reviews", reviews);
+            // console.log("book", book[0])
             res.render("book_review", {
               data: { book: book[0], reviews: reviews }
             });

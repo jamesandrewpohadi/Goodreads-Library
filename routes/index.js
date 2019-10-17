@@ -82,7 +82,7 @@ router.get("/user/:id", function(req, res, next) {
             
             res.render("user", {
               
-              data: {user_data: user_data, book_data: book_data}
+              data: {user_data: user_data, book_data: book_data,title: "goodreads"}
               
             });
             console.log(user_data);

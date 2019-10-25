@@ -1,6 +1,14 @@
 body {
   background-color: white;
+  margin: 0px;
 }   
+
+.mycustom-jumbotron{
+  padding-top: -176px;
+  margin-top: 0 auto;
+  background: #b3b3b3;
+  padding-bottom: -176px;
+}
 
 .header {
   padding: 70px;
@@ -47,73 +55,187 @@ body {
   color: white;
 }
 
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav .right, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+
 .column {
-  padding-top: 40px;
+  padding-top: 2%;
   float: left;
 }
 
-.column.side{
-  width: 15%;
-  height: 100%;
-  background-color: #ddd;
+.categories_text {
+  padding-bottom: 10%;
+  text-align: centers;
 }
 
-.column.side a {
-  display: block;
-  color: rgb(0, 0, 0);
-  padding: 14px 20px;
+.column.side{
+  background-color: #ddd;
+  width: 15%;
+  height: 100%;
+}
+
+.column.side a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
   text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
 }
 
 .column.side a:hover {
   background-color:  rgb(150, 150, 150);
-  color: black;
+  color: #f1f1f1;;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
 }
 
 .column li { 
   list-style-type: none;
-  padding: 0;
+}
+
+.column_side_div{
+  padding: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  .column.side {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .column.side a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .column.side a {
+    text-align: center;
+    float: none;
+  }
 }
 
 .column.main {
   width: 85%;
 }
 
-.column.main a:hover {
-  background-color:  rgb(150, 150, 150);
+.book_section{
+  text-align: center;
 }
 
-/*
-#indivbook { 
-  border: 1px solid beige;
+.book_section_div {
+  padding: 1.5%;
 }
-*/
+
+.booklist  {
+  padding-top:2%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: row;
+  grid-gap: 15px;
+}
+
+.indivbook {
+  border-style: solid;
+  border-color:  rgb(150, 150, 150);
+  border-width: 2px;
+}
 
 .indivbook li { 
   list-style-type: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3; 
+   overflow: hidden;
+   max-width: 100%;
+}
+
+.indivbookid{
+  padding: 5%;;
 }
 
 .indivbookimg {
-  width:300px;
-  height:300px;    
-  overflow:hidden;
+  padding-top: 20%;
+  padding-bottom: 20%;
 }
 
 .indivbookimg img{
   min-width: 100%;
 }
 
-.booklist  {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 50px;
-  grid-auto-rows: row;
+.indivbookdes {
+  padding: 5%;
 }
 
-.column:after {
-  content: "";
-  display: table;
-  clear: both;
+.indivbookprice {
+  padding: 5%;
+  font-size: 25px;
+  color: rgb(255, 94, 0);;
+}
+
+.indivbookcat {
+  padding: 5%;
 }
 
 .a {
@@ -138,7 +260,7 @@ h1, h2, h3 {
 
 /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
 @media screen and (max-width: 400px) {
-  .navbar a {
+  .topnav a {
     float: none;
     width: 100%;
   }

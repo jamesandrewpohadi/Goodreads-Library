@@ -1,49 +1,96 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= data.title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
     <div class="container">
+      <div class="jumbotron jumbotron-fluid mycustom-jumbotron">
       <div class="header">
         <h1><%= data.title %></h1>
         <h4>Welcome to <%= data.title %> by BIGdata</h4>
       </div>  
+      </div>
       <div class="topnav">
-        <a href="#" class="active">Home</a>
-        <a href="#">Book Reviews</a>
-        <a href="#">Reccommendations</a>
-        <a href="#" class="right">Log In</a>
-        <a href="#" class="right">Create New Account</a>
+        <a href="" class="active">Home</a>
+        <a href="">Book Reviews</a>
+        <a href="">Reccommendations</a>
+        <a href="" class="right">Log In</a>
+        <a href="" class="right">Create New Account</a>
+        <div class="search-container">
+            <form action="/action_page.php">
+              <input type="text" placeholder="Search.." name="search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
       </div>
       <div class="content">
         <div class="column side">
-          <h1>Book Categories</h1>
-            <h2>Books</h2>
-              <li><a href="">Literature & Fiction</a></li>
-              <li><a href="">Science Fiction & Fantasy</a></li>
-              <li><a href="">Science Fiction</a></li>
-              <li><a href="">High Tech</a></li>
-            <h2>Kindle Store</h2>
-              <li><a href="">Kindle eBooks</a></li>
-              <li><a href="">Science Fiction & Fantasy</a></li>
-              <li><a href="">Science Fiction</a></li>
-              <li><a href="">Hard Science Fiction</a></li>
+          <div class="column_side_div">
+            <div class="categories_text">
+            <h1>Categories</h1>
+            </div>
+              <h2>Books</h2>
+                <li><a href="">Literature & Fiction</a></li>
+                <li><a href="">Science Fiction & Fantasy</a></li>
+                <li><a href="">Science Fiction</a></li>
+                <li><a href="">High Tech</a></li>
+              <h2>Kindle Store</h2>
+                <li><a href="">Kindle eBooks</a></li>
+                <li><a href="">Science Fiction & Fantasy</a></li>
+                <li><a href="">Science Fiction</a></li>
+                <li><a href="">Hard Science Fiction</a></li>
+              <button class="dropdown-btn">Books<i class="fa fa-caret-down"></i></button>
+              <div class="dropdown-container">
+                <li><a href="">Literature & Fiction</a></li>
+                <li><a href="">Science Fiction & Fantasy</a></li>
+                <li><a href="">Science Fiction</a></li>
+                <li><a href="">High Tech</a></li>
+              </div>  
+              <button class="dropdown-btn">Bookss<i class="fa fa-caret-down"></i></button>
+              <div class="dropdown-container">
+                <li><a href="">Literature & Fiction</a></li>
+                <li><a href="">Science Fiction & Fantasy</a></li>
+                <li><a href="">Science Fiction</a></li>
+                <li><a href="">High Tech</a></li>
+              </div>  
+                <li><a href="">Hard Science Fiction</a></li>
+          </div>
         </div>  
         <div class="column main">
-          <h1>Book Section:</h1>
+          <div class="book_section_div">
+            <div class="book_section">  
+             <h1>Books Section</h1>
+            </div>
             <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.</p>
             <div class="booklist">
               <% data.books.forEach(function(book) { %>
               <div class="indivbook">
-                <li><a href="/book/<%= book.asin %>"><%= book.asin %></a></li>
+                <div class="indivbookid">
+                  <li><a>Book ID: </a><a href="/book/<%= book.asin %>"><%= book.asin %></a></li>
+                </div>
                 <div class="indivbookimg">
                   <a href="/book/<%= book.asin %>"><img src="<%= book.imUrl %>" alt=""></a>
                 </div>  
+                <div class="indivbookdes">
+                  <li><a><%= book.description || "No Description Provided" %></a></li>
+                  <li><a href="/book/<%= book.asin %>">View more</a><a>...</a></li>
+                </div>
+                <div class="indivbookprice">
+                  <li><a>Price: $<%= book.price || "-" %></a></li>
+                </div>
+                <div class="indivbookcat">
+                  <li><a>Categories: <%= book.categories || "NO Category" %></a></li>
+                  <li><a>Categories: <%= book.review %></a></li>
+                </div>
               </div>  
               <% }); %>
             </div>
+          </div>
         </div>    
       </div>  
       <div class="footer">
@@ -51,4 +98,27 @@
       </div> 
     </div>  
   </body>
+  <!--
+  <script type="text/javascript">
+    var data = <%- JSON.stringify(data) %>;
+    console.log(data);
+  </script>
+  -->
+  <script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+    
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+      } else {
+      dropdownContent.style.display = "block";
+      }
+      });
+    }
+    </script>
 </html>

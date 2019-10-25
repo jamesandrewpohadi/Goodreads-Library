@@ -46,11 +46,22 @@ router.get("/", function(req, res, next) {
       .find({})
       .limit(20)
       .toArray(function(err, result) {
-        console.log(result);
-        // result.forEach(books => {
-
-        // });
-        res.render("index", { data: { title: "goodreads", books: result } });
+        result.forEach((book, i) => {
+          ms.query(
+            "select overall as review,count(reviewerID) as cnt from kindle_reviews where asin='" +
+              book.asin +
+              "' group by overall",
+            function(err, ratings) {
+              if (err) throw err;
+              book.ratings = ratings;
+              if (i == result.length - 1) {
+                res.render("index", {
+                  data: { title: "goodreads", books: result }
+                });
+              }
+            }
+          );
+        });
         db.close();
       });
   });
@@ -87,8 +98,6 @@ router.get("/user/:id", function(req, res, next) {
       for (var i = 0; i < keyCount; i++) {
         book_id.push(user_data[i]["asin"]);
       }
-      console.log(keyCount);
-      console.log(book_id);
       if (err) throw err;
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;

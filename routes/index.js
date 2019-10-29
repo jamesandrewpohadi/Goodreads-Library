@@ -4,12 +4,12 @@ var router = express.Router();
 var book_id = [];
 
 var MongoClient = require("mongodb").MongoClient;
-// var url = "mongodb://35.163.65.254:27017/";
-var url = "mongodb://localhost:27017/";
+var url = "mongodb://35.163.65.254:27017/";
+// var url = "mongodb://localhost:27017/";
 
 var ms = mysql.createConnection({
-  // host: "18.210.39.176",
-  host: "localhost",
+  host: "18.210.39.176",
+  //host: "localhost",
   user: "root",
   password: "mysql",
   database: "goodreads"
@@ -44,23 +44,26 @@ router.get("/", function(req, res, next) {
     dbo
       .collection("meta_Kindle_Store")
       .find({})
-      .limit(20)
+      .limit(120)
       .toArray(function(err, result) {
-        result.forEach((book, i) => {
-          ms.query(
-            "select overall as review,count(reviewerID) as cnt from kindle_reviews where asin='" +
-              book.asin +
-              "' group by overall",
-            function(err, ratings) {
-              if (err) throw err;
-              book.ratings = ratings;
-              if (i == result.length - 1) {
-                res.render("index", {
-                  data: { title: "goodreads", books: result }
-                });
-              }
-            }
-          );
+        // result.forEach((book, i) => {
+        //   ms.query(
+        //     "select overall as review,count(reviewerID) as cnt from kindle_reviews where asin='" +
+        //       book.asin +
+        //       "' group by overall",
+        //     function(err, ratings) {
+        //       if (err) throw err;
+        //       book.ratings = ratings;
+        //       if (i == result.length - 1) {
+        //         res.render("index", {
+        //           data: { title: "goodreads", books: result }
+        //         });
+        //       }
+        //     }
+        //   );
+        // });
+        res.render("index", {
+          data: { title: "goodreads", books: result }
         });
         db.close();
       });

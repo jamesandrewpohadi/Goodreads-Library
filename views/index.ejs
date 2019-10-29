@@ -30,36 +30,25 @@
       </div>
       <div class="content">
         <div class="column side">
-          <div class="column_side_div">
             <div class="categories_text">
             <h1>Categories</h1>
             </div>
-              <h2>Books</h2>
-                <li><a href="">Literature & Fiction</a></li>
-                <li><a href="">Science Fiction & Fantasy</a></li>
-                <li><a href="">Science Fiction</a></li>
-                <li><a href="">High Tech</a></li>
-              <h2>Kindle Store</h2>
-                <li><a href="">Kindle eBooks</a></li>
-                <li><a href="">Science Fiction & Fantasy</a></li>
-                <li><a href="">Science Fiction</a></li>
-                <li><a href="">Hard Science Fiction</a></li>
               <button class="dropdown-btn">Books<i class="fa fa-caret-down"></i></button>
               <div class="dropdown-container">
+                <li><a href="">Cook Books</a></li>
+                <li><a href="">Business & Money</a></li>
                 <li><a href="">Literature & Fiction</a></li>
-                <li><a href="">Science Fiction & Fantasy</a></li>
-                <li><a href="">Science Fiction</a></li>
-                <li><a href="">High Tech</a></li>
+                <li><a href="">Medical Books</a></li>
+                <li><a href="">Reference</a></li>
+                <li><a href="">Self-Help</a></li>
+                <li><a href="">Science & Math</a></li>
               </div>  
-              <button class="dropdown-btn">Bookss<i class="fa fa-caret-down"></i></button>
+              <button class="dropdown-btn">Kindle Store<i class="fa fa-caret-down"></i></button>
               <div class="dropdown-container">
-                <li><a href="">Literature & Fiction</a></li>
-                <li><a href="">Science Fiction & Fantasy</a></li>
-                <li><a href="">Science Fiction</a></li>
-                <li><a href="">High Tech</a></li>
+                <li><a href="">Kindle Accessories</a></li>
+                <li><a href="">Kindle eBooks</a></li>
+                <li><a href="">Kindle Short Reads</a></li>
               </div>  
-                <li><a href="">Hard Science Fiction</a></li>
-          </div>
         </div>  
         <div class="column main">
           <div class="book_section_div">
@@ -84,8 +73,7 @@
                   <li><a>Price: $<%= book.price || "-" %></a></li>
                 </div>
                 <div class="indivbookcat">
-                  <li><a>Categories: <%= book.categories || "NO Category" %></a></li>
-                  <li><a>Categories: <%= book.review %></a></li>
+                  <li><a><%= book.categories || "No Category Provided" %></a></li>
                 </div>
               </div>  
               <% }); %>
@@ -98,12 +86,10 @@
       </div> 
     </div>  
   </body>
-  <!--
   <script type="text/javascript">
     var data = <%- JSON.stringify(data) %>;
     console.log(data);
   </script>
-  -->
   <script>
     /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
     var dropdown = document.getElementsByClassName("dropdown-btn");

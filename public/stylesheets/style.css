@@ -104,24 +104,24 @@ body {
 }
 
 .categories_text {
-  padding-bottom: 10%;
-  text-align: centers;
+  padding: 10%;
+  text-align: center;
 }
 
 .column.side{
   background-color: #ddd;
-  width: 15%;
+  width: 20%;
   height: 100%;
 }
 
 .column.side a, .dropdown-btn {
-  padding: 6px 8px 6px 16px;
+  padding: 5%;
   text-decoration: none;
   font-size: 20px;
-  color: #818181;
+  color: #000000;
   display: block;
   border: none;
-  background: none;
+  background: rgb(209, 209, 209);
   width: 100%;
   text-align: left;
   cursor: pointer;
@@ -133,30 +133,24 @@ body {
   color: #f1f1f1;;
 }
 
-/* Add an active class to the active dropdown button */
 .active {
-  background-color: green;
+  background-color: rgb(150, 150, 150);
   color: white;
 }
-/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+
 .dropdown-container {
   display: none;
-  background-color: #262626;
-  padding-left: 8px;
+  background-color:  #b3b3b3;
 }
 
-/* Optional: Style the caret down icon */
+.dropdown-container li{
+  list-style-type: none;
+  padding-right: 9%;
+}
+
 .fa-caret-down {
   float: right;
   padding-right: 8px;
-}
-
-.column li { 
-  list-style-type: none;
-}
-
-.column_side_div{
-  padding: 20px;
 }
 
 @media screen and (max-width: 700px) {
@@ -177,7 +171,7 @@ body {
 }
 
 .column.main {
-  width: 85%;
+  width: 80%;
 }
 
 .book_section{
@@ -193,7 +187,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: row;
-  grid-gap: 15px;
+  grid-gap: 5px;
 }
 
 .indivbook {
@@ -212,12 +206,13 @@ body {
 }
 
 .indivbookid{
-  padding: 5%;;
+  padding: 5% 3% 5% 3%;
 }
 
 .indivbookimg {
   padding-top: 20%;
   padding-bottom: 20%;
+  overflow: hidden;
 }
 
 .indivbookimg img{
@@ -225,17 +220,19 @@ body {
 }
 
 .indivbookdes {
-  padding: 5%;
+  padding: 5% 3% 5% 3%;
 }
 
 .indivbookprice {
-  padding: 5%;
+  padding: 5% 3% 5% 3%;
   font-size: 25px;
   color: rgb(255, 94, 0);;
 }
 
 .indivbookcat {
-  padding: 5%;
+  word-wrap: break-word;
+  width: 280px;
+  padding: 5% 3% 5% 3%;
 }
 
 .a {

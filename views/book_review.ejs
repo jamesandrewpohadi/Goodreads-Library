@@ -8,6 +8,9 @@
     <title>Book Review Page</title>
 </head>
 <body>
+    <% if (data.err) { %>
+        <h1>Not found</h1>
+    <% } else {%>
     <% include partials/head %>
     <h1 class="text-center bg-light mb-3">Book Review Page</h1>
     <div class="p-3">
@@ -70,6 +73,6 @@
         </div>
         <% }); %>
     </div>
-
+    <% } %>
 </body>
 </html>

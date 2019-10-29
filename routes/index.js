@@ -150,4 +150,32 @@ router.post("/logindetails", function(req, res, next) {
   console.log("Yooooooo");
 });
 
+router.post("/search",function(req,res,next){
+  var book_id = req.body.book_id;
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    dbo = db.db("goodreads");
+    dbo
+      .collection("meta_Kindle_Store")
+      .find({ asin: book_id })
+      .toArray(function(err, book) {
+        if (book.length == 0) {
+          res.render("book_review", {
+            data: {err: "Book Not found!"}
+          });
+        }
+        ms.query(
+          "select * from kindle_reviews where asin = '" + book_id + "'",
+          function(err, reviews) {
+            if (err) throw err;
+            res.render("book_review", {
+              data: { book: book[0], reviews: reviews }
+            });
+          }
+        );
+        db.close();
+      });
+  });
+})
+
 module.exports = router;

@@ -1,5 +1,6 @@
 const config = require('config');
 const jwt = require('jsonwebtoken');
+<<<<<<< HEAD
 const bcrypt = require('bcrypt');
 const mysql = require('mysql');
 const Joi = require('joi');
@@ -10,6 +11,16 @@ var ms = mysql.createConnection({
   user: "root",
   password: "mysql",
   database: "goodreads"
+=======
+const Joi = require('joi');
+
+var ms = mysql.createConnection({
+    host: "18.210.39.176",
+    //host: "localhost",
+    user: "root",
+    password: "mysql",
+    database: "goodreads"
+>>>>>>> login
 });
 
 //function to validate user 
@@ -23,6 +34,7 @@ function validateUser(user) {
   return Joi.validate(user, schema);
 }
 
+<<<<<<< HEAD
 // registerUser("aa","aa","aaa",function(x){
 //   console.log(x);
 // })
@@ -102,3 +114,9 @@ exports.login = login;
 exports.register = registerUser;
 exports.validate = validateUser;
 exports.generate = generateToken;
+=======
+console.log(validateUser({name: 'aaaa', email: 'aaaaaa', password:'bbbb'}));
+console.log('a');
+// exports.User = User; 
+exports.validate = validateUser;
+>>>>>>> login

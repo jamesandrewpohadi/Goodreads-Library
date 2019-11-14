@@ -82,6 +82,9 @@ body {
 }
 
 @media screen and (max-width: 600px) {
+  .topnav {
+    float: none;
+  }
   .topnav .search-container {
     float: none;
   }
@@ -98,7 +101,6 @@ body {
   }
 }
 
-/* Full-width input fields */
 .topnav .modal input[type=text], .topnav .modal input[type=password] {
   width: 100%;
   padding: 12px 20px;
@@ -108,7 +110,6 @@ body {
   box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
 .topnav .modal-container-top button {
   background-color: #4CAF50;
   color: white;
@@ -119,18 +120,28 @@ body {
   width: 100%;
 }
 
+.topnav .modal-container-bottom button {
+  background-color: rgb(255, 0, 0);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 15%;
+}
+
 button:hover {
   opacity: 0.8;
 }
 
-/* Extra styles for the cancel button */
 .cancelbtn {
+  border: none;
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
+  color: #ddd;
 }
 
-/* Center the image and position the close button */
 .modal-imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
@@ -138,7 +149,7 @@ button:hover {
 }
 
 img.modal-avatar {
-  width: 40%;
+  width: 20%;
   border-radius: 50%;
 }
 
@@ -147,7 +158,24 @@ img.modal-avatar {
 }
 
 .modal-container-bottom {
-  padding: 16px;
+  padding: 10px;
+}
+
+.modal .psw a {
+  float: right;
+  color: blue;
+  block-size: none;
+  text-align: center;
+  text-decoration: none;
+  padding-left: 5px;
+}
+
+.modal .psw  a:hover {
+  background: none;
+}
+
+.psw a{
+  padding-top: 0px;
 }
 
 span.psw {
@@ -155,30 +183,27 @@ span.psw {
   padding-top: 16px;
 }
 
-/* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed; 
+  z-index: 1; 
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
   padding-top: 60px;
 }
 
-/* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  margin: 5% auto 15% auto; 
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 40%; 
 }
 
-/* The Close Button (x) */
 .modal-close {
   position: absolute;
   right: 25px;
@@ -193,7 +218,6 @@ span.psw {
   cursor: pointer;
 }
 
-/* Add Zoom Animation */
 .modal-animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
@@ -209,7 +233,6 @@ span.psw {
   to {transform: scale(1)}
 }
 
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
      display: block;
@@ -362,7 +385,7 @@ span.psw {
 }
 
 .footer  {
-  clear: both; /*ensures that footer stays after floating elements in content*/
+  clear: both; 
   background: #b3b3b3;
 }
 
@@ -370,14 +393,12 @@ h1, h2, h3 {
   margin: 0;
 }
 
-/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {
   .row {   
     flex-direction: column;
   }
 }
 
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
 @media screen and (max-width: 400px) {
   .topnav a {
     float: none;

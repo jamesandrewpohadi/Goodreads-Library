@@ -8,7 +8,7 @@ var url = "mongodb://35.163.65.254:27017/";
 // var url = "mongodb://localhost:27017/";
 
 var ms = mysql.createConnection({
-  host: "18.210.39.176",
+  host: "52.220.10.107",
   //host: "localhost",
   user: "root",
   password: "mysql",
@@ -150,7 +150,7 @@ router.post("/logindetails", function(req, res, next) {
   console.log("Yooooooo");
 });
 
-router.post("/search",function(req,res,next){
+router.post("/search", function(req, res, next) {
   var book_id = req.body.book_id;
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
@@ -161,7 +161,7 @@ router.post("/search",function(req,res,next){
       .toArray(function(err, book) {
         if (book.length == 0) {
           res.render("book_review", {
-            data: {err: "Book Not found!"}
+            data: { err: "Book Not found!" }
           });
         }
         ms.query(
@@ -176,6 +176,6 @@ router.post("/search",function(req,res,next){
         db.close();
       });
   });
-})
+});
 
 module.exports = router;

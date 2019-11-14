@@ -19,7 +19,32 @@
         <a href="" class="active">Home</a>
         <a href="">Book Reviews</a>
         <a href="">Reccommendations</a>
-        <a href="" class="right">Log In</a>
+        <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="right">Login</a>
+        <div id="id01" class="modal">  
+          <form class="modal-content modal-animate" action="/action_page.php" method="post">
+            <div class="modal-imgcontainer">
+              <span onclick="document.getElementById('id01').style.display='none'" class="modal-close" title="Close Modal">&times;</span>
+              <img src="images/profilepicture.png" alt="Avatar" class="modal-avatar">
+            </div>
+            <div class="modal-container-top"> 
+              <label for="uname"><b>User ID</b></label>
+              <input type="text" placeholder="Enter User ID" name="uname" required>
+              <!--
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="psw" required>
+              --->       
+              <button type="submit">Login</button>
+              <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+              </label>
+            </div>
+            <div class="modal-container-bottom" style="background-color:#f1f1f1">
+              <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+              <span class="psw">Forgot <a href="#">User ID?</a></span>
+            </div>
+          </form>
+        </div>
+        
         <a href="" class="right">Create New Account</a>
         <div class="search-container">
             <form action="/search" method="post">
@@ -91,10 +116,20 @@
     console.log(data);
   </script>
   <script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+  </script>
+  <script>
     /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
     var dropdown = document.getElementsByClassName("dropdown-btn");
     var i;
-    
     for (i = 0; i < dropdown.length; i++) {
       dropdown[i].addEventListener("click", function() {
       this.classList.toggle("active");

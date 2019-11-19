@@ -4,7 +4,7 @@ var router = express.Router();
 var book_id = [];
 
 var MongoClient = require("mongodb").MongoClient;
-var url = "mongodb://35.163.65.254:27017/";
+var url = "mongodb://18.141.27.238:27017/";
 // var url = "mongodb://localhost:27017/";
 
 var ms = mysql.createConnection({

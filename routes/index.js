@@ -178,8 +178,8 @@ router.post("/search", function(req, res, next) {
   });
 });
 
-// router.post("/addreview", function(req, res, next) {
-//   console.log(req.body);
-// });
+router.post("/addreview", function(req, res, next) {
+  console.log(req.body);
+});
 
 module.exports = router;

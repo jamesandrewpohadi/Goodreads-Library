@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+var fs = require("fs");
+var obj = JSON.parse(fs.readFileSync("instance.json", "utf8"));
+console.log(obj);
+>>>>>>> add login middlewares
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');

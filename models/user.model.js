@@ -1,6 +1,7 @@
 const config = require('config');
 const jwt = require('jsonwebtoken');
 <<<<<<< HEAD
+<<<<<<< HEAD
 const bcrypt = require('bcrypt');
 const mysql = require('mysql');
 const Joi = require('joi');
@@ -21,6 +22,18 @@ var ms = mysql.createConnection({
     password: "mysql",
     database: "goodreads"
 >>>>>>> login
+=======
+const bcrypt = require('bcrypt');
+const mysql = require('mysql');
+const Joi = require('joi');
+
+var ms = mysql.createConnection({
+  host: "52.220.10.107",
+  //host: "localhost",
+  user: "root",
+  password: "mysql",
+  database: "goodreads"
+>>>>>>> add login middlewares
 });
 
 //function to validate user 
@@ -35,6 +48,7 @@ function validateUser(user) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // registerUser("aa","aa","aaa",function(x){
 //   console.log(x);
 // })
@@ -44,12 +58,19 @@ function registerUser(email, name, password, callback){
   x = {error: "", suc: ""};
   if (!error){
     bcrypt.hash(password,10, function(err,hash){
+=======
+function registerUser(email, name, password){
+  const {error} = validateUser({ name: name, email: email, password: password })
+  if (!error){
+    bcrypt.hash('aa',10, function(err,hash){
+>>>>>>> add login middlewares
       ms.query(
         "INSERT INTO user_data VALUES (?,?,?)",
         [email, name, hash],
         function (err, aaa) {
           // console.log(aaa);
           if (err){
+<<<<<<< HEAD
             x.error = err.sqlMessage;
             callback(x);
           }
@@ -57,6 +78,12 @@ function registerUser(email, name, password, callback){
             console.log("Successfully register new user!");
             x.suc = true;
             callback(x);
+=======
+            console.log(err.sqlMessage);
+          }
+          else{
+            console.log("Successfully register new user!");
+>>>>>>> add login middlewares
           }
           ms.destroy();
         }
@@ -64,6 +91,7 @@ function registerUser(email, name, password, callback){
     });
   }
   else{
+<<<<<<< HEAD
     x.error = error.details[0].message;
     callback(x);
   }
@@ -101,6 +129,37 @@ function login(email, password, callback){
         }
       }
       // return 'aa';
+=======
+    console.log(error.details[0].message);
+  }
+}
+
+function login(email, password){
+  ms.query(
+    "SELECT password FROM user_data WHERE email = ?",
+    [email],
+    function (err, res){
+      if (err){
+        console.log(1);
+      }
+      else {
+        if (!res){
+          console.log("User not found!");
+        }
+        else{
+          bcrypt.compare(password, res[0].password,
+            function(err,res){
+              if (res){
+                console.log("Successfully login!");
+              }
+              else {
+                console.log("Incorrect password!");
+              }
+            })
+          ms.destroy();
+        }
+      }
+>>>>>>> add login middlewares
     }
   )
 } 
@@ -113,6 +172,7 @@ function generateToken(email){
 exports.login = login;
 exports.register = registerUser;
 exports.validate = validateUser;
+<<<<<<< HEAD
 exports.generate = generateToken;
 =======
 console.log(validateUser({name: 'aaaa', email: 'aaaaaa', password:'bbbb'}));
@@ -120,3 +180,6 @@ console.log('a');
 // exports.User = User; 
 exports.validate = validateUser;
 >>>>>>> login
+=======
+exports.generate = generateToken;
+>>>>>>> add login middlewares

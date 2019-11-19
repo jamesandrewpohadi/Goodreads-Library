@@ -123,11 +123,21 @@ body {
 .topnav .modal-container-bottom button {
   background-color: rgb(255, 0, 0);
   color: white;
-  padding: 14px 20px;
+  padding: 14px 14px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 15%;
+}
+
+.topnav .modal-container-bottom-signup button {
+  background-color: rgb(255, 0, 0);
+  color: white;
+  padding: 14px 14px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
 }
 
 button:hover {
@@ -137,10 +147,10 @@ button:hover {
 .cancelbtn {
   border: none;
   width: auto;
-  padding: 10px 18px;
   background-color: #f44336;
   color: #ddd;
 }
+
 
 .modal-imgcontainer {
   text-align: center;
@@ -159,6 +169,8 @@ img.modal-avatar {
 
 .modal-container-bottom {
   padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .modal .psw a {
@@ -181,6 +193,24 @@ img.modal-avatar {
 span.psw {
   float: right;
   padding-top: 16px;
+}
+
+.modal .terms a {
+  float: right;
+  color: blue;
+  block-size: none;
+  text-align: center;
+  text-decoration: none;
+  padding-left: none;
+  margin-left: none;
+}
+
+.modal .terms  a:hover {
+  background: none;
+}
+
+.terms a{
+  padding-top: 0px;
 }
 
 .modal {

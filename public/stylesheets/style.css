@@ -154,17 +154,17 @@ button:hover {
 
 .modal-imgcontainer {
   text-align: center;
-  margin: 24px 0 12px 0;
+  margin: 15px 0 0px 0;
   position: relative;
 }
 
 img.modal-avatar {
-  width: 20%;
-  border-radius: 50%;
+  width: 30%;
+  border-radius: 30%;
 }
 
 .modal-container-top {
-  padding: 16px;
+  padding: 5px 16px 16px 16px;
 }
 
 .modal-container-bottom {

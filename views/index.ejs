@@ -23,12 +23,12 @@
         <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="right">Login</a>
         <div id="id01" class="modal">  
           <form class="modal-content modal-animate" action="/action_page.php" method="post">
-            <!--
+            
             <div class="modal-imgcontainer">
               <span onclick="document.getElementById('id01').style.display='none'" class="modal-close" title="Close Modal">&times;</span>
               <img src="images/profilepicture.png" alt="Avatar" class="modal-avatar">
             </div>
-             -->
+             
             <div class="modal-container-top"> 
               <h1>Login</h1>
               <p>Please fill in your account details.</p>
@@ -56,15 +56,21 @@
         <a onclick="document.getElementById('id02').style.display='block'" style="width:auto;" class="right">Create New Account</a>
         <div id="id02" class="modal">  
           <form class="modal-content modal-animate" action="/action_page.php" method="post">
-            <!--
+            
             <div class="modal-imgcontainer">
               <span onclick="document.getElementById('id02').style.display='none'" class="modal-close" title="Close Modal">&times;</span>
-              <img src="images/profilepicture.png" alt="Avatar" class="modal-avatar">
+              <img src="images/addprofilepicture.jpg" alt="Avatar" class="modal-avatar">
             </div>
-            -->
+            
             <div class="modal-container-top"> 
               <h1>Sign Up</h1>
               <p>Please fill in this form to create an account.</p>
+
+              <label for="name"><b>Family Name</b></label>
+              <input type="text" placeholder="Enter Family Name" name="uname" required>
+
+              <label for="name"><b>Given Name</b></label>
+              <input type="text" placeholder="Enter Given Name" name="uname" required>
 
               <label for="uname"><b>Email Address</b></label>
               <input type="text" placeholder="Enter Email Address" name="uname" required>

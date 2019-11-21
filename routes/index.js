@@ -3,12 +3,15 @@ var mysql = require("mysql");
 var router = express.Router();
 var book_id = [];
 
+var fs = require("fs");
+var instance = JSON.parse(fs.readFileSync("instance.json", "utf8"));
+
 var MongoClient = require("mongodb").MongoClient;
-var url = "mongodb://18.141.27.238:27017/";
+var url = "mongodb://" + instance["mongodb-server"] + ":27017/";
 // var url = "mongodb://localhost:27017/";
 
 var ms = mysql.createConnection({
-  host: "52.220.10.107",
+  host: instance["mysql-server"],
   //host: "localhost",
   user: "root",
   password: "mysql",
@@ -79,7 +82,8 @@ router.get("/book/:id", function(req, res, next) {
       .find({ asin: req.params.id })
       .toArray(function(err, book) {
         ms.query(
-          "select * from kindle_reviews where asin = '" + req.params.id + "'",
+          "select * from kindle_reviews where asin = ?",
+          [req.params.id],
           function(err, reviews) {
             if (err) throw err;
             res.render("book_review", {
@@ -94,7 +98,8 @@ router.get("/book/:id", function(req, res, next) {
 
 router.get("/user/:id", function(req, res, next) {
   ms.query(
-    "select * from kindle_reviews where reviewerID = '" + req.params.id + "'",
+    "select * from kindle_reviews where reviewerID = ?",
+    [req.params.id],
     function(err, user_data) {
       var keyCount = Object.keys(user_data).length;
 
@@ -165,7 +170,8 @@ router.post("/search", function(req, res, next) {
           });
         }
         ms.query(
-          "select * from kindle_reviews where asin = '" + book_id + "'",
+          "select * from kindle_reviews where asin = ?",
+          [book_id],
           function(err, reviews) {
             if (err) throw err;
             res.render("book_review", {

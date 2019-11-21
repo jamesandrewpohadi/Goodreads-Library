@@ -5,6 +5,8 @@ var book_id = [];
 
 var fs = require("fs");
 var instance = JSON.parse(fs.readFileSync("instance.json", "utf8"));
+const {login, register, validate, generate} = require('../models/user.model');
+const config = require('config');
 
 var MongoClient = require("mongodb").MongoClient;
 var url = "mongodb://" + instance["mongodb-server"] + ":27017/";
@@ -124,7 +126,7 @@ router.get("/user/:id", function(req, res, next) {
                 title: "goodreads"
               }
             });
-            console.log(user_data);
+            // console.log(user_data);
           });
 
         db.close();
@@ -133,9 +135,11 @@ router.get("/user/:id", function(req, res, next) {
   );
 });
 
-router.get("/loginpage", function(req, res, next) {
-  res.render("login");
-});
+// router.post("/login", function(req, res, next) {
+//   res.render("index");
+//   // login(req.body.email)
+//   console.log(req.body.email);
+// });
 
 router.get("/logs", function(req, res, next) {
   MongoClient.connect(url, function(err, db) {
@@ -157,21 +161,66 @@ router.get("/logs", function(req, res, next) {
 
 router.post("/logindetails", function(req, res, next) {
   uname = req.body["uname"];
-  console.log(uname);
-
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    dbo = db.db("goodreads");
-    dbo
-      .collection("meta_Kindle_Store")
-      .find({})
-      .limit(20)
-      .toArray(function(err, result) {
-        res.render("index", { data: { title: "goodreads", books: result } });
-        console.log(result);
-        db.close();
+  console.log(uname);});
+router.post("/signup", function(req, res, next) {
+  email = req.body["email"];
+  name = req.body["name1"] + req.body["name2"];
+  password = req.body["psw-final"];
+  register(email, name, password, function({error,suc}){
+    console.log(name);
+    if (error){
+      // res.status(400).send(error);
+      console.log(error);
+    }
+    else{
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        dbo = db.db("goodreads");
+        dbo
+          .collection("meta_Kindle_Store")
+          .find({})
+          .limit(20)
+          .toArray(function(err, result) {
+            res.render("index", { data: { title: "goodreads", books: result } });
+            // console.log(result);
+            db.close();
+          });
       });
+    }
   });
+  // console.log(email);
+
+  
+  console.log("Yooooooo");
+});
+
+router.post("/login", function(req, res, next) {
+  email = req.body["email"];
+  password = req.body["psw"];
+  login(email,password, function({error,suc}){
+    if (error){
+      // res.status(400).send(error);
+      console.log(error);
+    }
+    else{
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        dbo = db.db("goodreads");
+        dbo
+          .collection("meta_Kindle_Store")
+          .find({})
+          .limit(20)
+          .toArray(function(err, result) {
+            res.render("index", { data: { title: "goodreads", books: result } });
+            // console.log(result);
+            db.close();
+          });
+      });
+    }
+  });
+  // console.log(email);
+
+  
   console.log("Yooooooo");
 });
 
@@ -205,7 +254,7 @@ router.post("/search", function(req, res, next) {
 });
 
 router.post("/addreview", function(req, res, next) {
-  console.log(req.body);
+  // console.log(req.body);
 });
 
 module.exports = router;

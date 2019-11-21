@@ -22,7 +22,7 @@
 
         <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="right">Login</a>
         <div id="id01" class="modal">  
-          <form class="modal-content modal-animate" action="/action_page.php" method="post">
+          <form class="modal-content modal-animate" action="/login" method="post">
             
             <div class="modal-imgcontainer">
               <span onclick="document.getElementById('id01').style.display='none'" class="modal-close" title="Close Modal">&times;</span>
@@ -34,7 +34,7 @@
               <p>Please fill in your account details.</p>
 
               <label for="uname"><b>Email Address</b></label>
-              <input type="text" placeholder="Enter Email Address" name="uname" required>
+              <input type="text" placeholder="Enter Email Address" name="email" required>
           
               <label for="psw"><b>Password</b></label>
               <input type="password" placeholder="Enter Password" name="psw" required>
@@ -55,7 +55,7 @@
 
         <a onclick="document.getElementById('id02').style.display='block'" style="width:auto;" class="right">Create New Account</a>
         <div id="id02" class="modal">  
-          <form class="modal-content modal-animate" action="/action_page.php" method="post">
+          <form class="modal-content modal-animate" action="/signup" method="post">
             
             <div class="modal-imgcontainer">
               <span onclick="document.getElementById('id02').style.display='none'" class="modal-close" title="Close Modal">&times;</span>
@@ -67,19 +67,19 @@
               <p>Please fill in this form to create an account.</p>
 
               <label for="name"><b>Family Name</b></label>
-              <input type="text" placeholder="Enter Family Name" name="uname" required>
+              <input type="text" placeholder="Enter Family Name" name="name1" required>
 
               <label for="name"><b>Given Name</b></label>
-              <input type="text" placeholder="Enter Given Name" name="uname" required>
+              <input type="text" placeholder="Enter Given Name" name="name2" required>
 
               <label for="uname"><b>Email Address</b></label>
-              <input type="text" placeholder="Enter Email Address" name="uname" required>
+              <input type="text" placeholder="Enter Email Address" name="email" required>
               
               <label for="psw"><b>Create New Password</b></label>
               <input type="password" placeholder="Enter Password" name="psw" required>
                  
               <label for="psw-reenter"><b>Re-Enter Password</b></label>
-              <input type="password" placeholder="Re-Enter Password" name="psw-reenter" required>
+              <input type="password" placeholder="Re-Enter Password" name="psw-final" required>
 
               <button type="submit">Sign Up</button>
 

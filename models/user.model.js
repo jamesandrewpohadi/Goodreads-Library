@@ -49,27 +49,39 @@ function validateUser(user) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> add login and signup routes
 // registerUser("aa","aa","aaa",function(x){
 //   console.log(x);
 // })
 
 function registerUser(email, name, password, callback){
+<<<<<<< HEAD
   const {error} = validateUser({ name: name, email: email, password: password })
   x = {error: "", suc: ""};
   if (!error){
     bcrypt.hash(password,10, function(err,hash){
 =======
 function registerUser(email, name, password){
+=======
+>>>>>>> add login and signup routes
   const {error} = validateUser({ name: name, email: email, password: password })
+  x = {error: "", suc: ""};
   if (!error){
+<<<<<<< HEAD
     bcrypt.hash('aa',10, function(err,hash){
 >>>>>>> add login middlewares
+=======
+    bcrypt.hash(password,10, function(err,hash){
+>>>>>>> add login and signup routes
       ms.query(
         "INSERT INTO user_data VALUES (?,?,?)",
         [email, name, hash],
         function (err, aaa) {
           // console.log(aaa);
           if (err){
+<<<<<<< HEAD
 <<<<<<< HEAD
             x.error = err.sqlMessage;
             callback(x);
@@ -84,6 +96,15 @@ function registerUser(email, name, password){
           else{
             console.log("Successfully register new user!");
 >>>>>>> add login middlewares
+=======
+            x.error = err.sqlMessage;
+            callback(x);
+          }
+          else{
+            console.log("Successfully register new user!");
+            x.suc = true;
+            callback(x);
+>>>>>>> add login and signup routes
           }
           ms.destroy();
         }
@@ -91,6 +112,7 @@ function registerUser(email, name, password){
     });
   }
   else{
+<<<<<<< HEAD
 <<<<<<< HEAD
     x.error = error.details[0].message;
     callback(x);
@@ -131,35 +153,49 @@ function login(email, password, callback){
       // return 'aa';
 =======
     console.log(error.details[0].message);
+=======
+    x.error = error.details[0].message;
+    callback(x);
+>>>>>>> add login and signup routes
   }
 }
 
-function login(email, password){
+function login(email, password, callback){
+  x = {error:"",suc:""};
   ms.query(
     "SELECT password FROM user_data WHERE email = ?",
     [email],
-    function (err, res){
+    function (err, data){
       if (err){
-        console.log(1);
+        x.error = err;
+        callback(x);
       }
       else {
-        if (!res){
-          console.log("User not found!");
+        if (!data){
+          x.error = "User not found!"
+          // console.log(error);
+          callback(x);
         }
         else{
-          bcrypt.compare(password, res[0].password,
-            function(err,res){
-              if (res){
-                console.log("Successfully login!");
+          bcrypt.compare(password, data[0].password,
+            function(err,result){
+              if (result){
+                x.suc = result;
+                callback(x);
               }
               else {
-                console.log("Incorrect password!");
+                x.error = "Incorrect password!"
+                callback(x);
               }
             })
-          ms.destroy();
+          ms.destroy();        
         }
       }
+<<<<<<< HEAD
 >>>>>>> add login middlewares
+=======
+      // return 'aa';
+>>>>>>> add login and signup routes
     }
   )
 } 

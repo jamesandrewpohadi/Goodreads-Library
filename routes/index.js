@@ -82,7 +82,7 @@ router.get("/book/:id", function(req, res, next) {
       .find({ asin: req.params.id })
       .toArray(function(err, book) {
         ms.query(
-          "select * from kindle_reviews where asin = ?",
+          "select * from kindle_reviews where asin = ? order by unixReviewTime desc",
           [req.params.id],
           function(err, reviews) {
             if (err) throw err;

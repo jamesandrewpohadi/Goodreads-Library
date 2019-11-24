@@ -1,0 +1,69 @@
+<!-- This page is only accessible by the website's admin -->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Web Logs</title>
+    </head>
+    <style>
+        .component-center {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+    <body>
+        <% include partials/head %>
+        <main class="component-center">
+            <div style="max-width:800px">
+                <br/>
+                <p class="text-center my-3">
+                    This page displays the <b>100</b> most recent logs of the web application.
+                    To view older logs, please proceed towards the database directly.
+                </p>
+                <br/>
+                <div>
+                    <h5 class="font-weight-normal text-center">Request Logs</h5>
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="font-weight-normal text-center">Request Time</th>
+                                <th scope="col" class="font-weight-normal text-center">Status</th>
+                                <th scope="col" class="font-weight-normal text-center">Request Data</th>
+                                <th scope="col" class="font-weight-normal text-center">Requested By</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-borderless">
+                            <% data.logs.forEach(function(log) { %>
+                                <tr>
+                                    <td class="small"><%= log.date %></td>
+                                    <%
+                                    getBadgeColor = function(value) {
+                                        ind = Math.floor(value/100);
+                                        return ind == 1 ? "badge-info" : ind == 2 ? "badge-success" : ind == 3 ? "badge-warning" : "badge-danger"
+                                    }
+                                    %>
+                                    <td class="text-center"><span class="badge <%= getBadgeColor(log.statusCode) %>"><%= log.statusCode %></span></td>
+                                    <td><var><%= log.method + " " + log.url %></var></td>
+                                    <%
+                                    getReadableIP = function(value) {
+                                        val_len = value.length;
+                                        return val_len == 3 ? "localhost" : value.slice(7, )
+                                    }
+                                    %>
+                                    <td class="text-center text-monospace"><%= getReadableIP(log.ip) %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>       
+        </main>
+        <% include partials/footer %>
+    </body>
+    <% include partials/bootstrap-script %>
+</html>

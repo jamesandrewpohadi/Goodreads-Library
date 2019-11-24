@@ -7,8 +7,8 @@ var fs = require("fs");
 var instance = JSON.parse(fs.readFileSync("instance.json", "utf8"));
 
 var MongoClient = require("mongodb").MongoClient;
-var url = "mongodb://" + instance["mongodb-server"] + ":27017/";
-// var url = "mongodb://localhost:27017/";
+// var url = "mongodb://" + instance["mongodb-server"] + ":27017/";
+var url = "mongodb://localhost:27017/";
 
 var ms = mysql.createConnection({
   host: instance["mysql-server"],
@@ -22,22 +22,22 @@ var log = (req, res, next) => {
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     dbo = db.db("goodreads");
-    var myobj = {
-      statusCode: res.statusCode,
-      method: req.method,
-      date: new Date(),
-      url: req.url,
-      ip: req.headers["x-forwarded-for"] || req.connection.remoteAddress
-    };
-    dbo.collection("logs").insertOne(myobj, function(err, res) {
-      if (err) throw err;
-      db.close();
-      next();
+    res.on("finish", function() {
+      var myobj = {
+        statusCode: res.statusCode,
+        method: req.method,
+        date: new Date(),
+        url: req.url,
+        ip: req.headers["x-forwarded-for"] || req.connection.remoteAddress
+      };
+      dbo.collection("logs").insertOne(myobj, function(err, res) {
+        if (err) throw err;
+        db.close();
+      });
     });
+    next();
   });
 };
-
-router.use(log);
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -187,5 +187,7 @@ router.post("/search", function(req, res, next) {
 router.post("/addreview", function(req, res, next) {
   console.log(req.body);
 });
+
+router.use(log);
 
 module.exports = router;

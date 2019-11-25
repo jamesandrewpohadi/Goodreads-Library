@@ -137,6 +137,24 @@ router.get("/loginpage", function(req, res, next) {
   res.render("login");
 });
 
+router.get("/logs", function(req, res, next) {
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    dbo = db.db("goodreads");
+    dbo
+      .collection("logs")
+      .find()
+      .sort({date: -1})
+      .limit(100)
+      .toArray(function(err, result) {
+        res.render("logs", {
+          data: {logs: result }
+        });
+        db.close();
+      });
+  });
+});
+
 router.post("/logindetails", function(req, res, next) {
   uname = req.body["uname"];
   console.log(uname);

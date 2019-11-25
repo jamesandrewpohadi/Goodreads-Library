@@ -19,9 +19,9 @@
       </div>  
       </div>
       <div class="topnav">
-        <a href="" class="active">Home</a>
-        <a href="">Book Reviews</a>
-        <a href="">Reccommendations</a>
+        <a href="/" class="active">Home</a>
+        <a href="">Logs</a>
+        <a href="">Reccommendations/ Analytics</a>
 
         <% if (typeof cookie.login !== 'undefined' && cookie.login) {%>
           <label>Logout</label>
@@ -113,10 +113,10 @@
       </div>
       <div class="content">
         <div class="column side">
-            <div class="categories_text">
-            <h1>Categories</h1>
+            <div class="sortby_text">
+            <h1>Sort By</h1>
             </div>
-              <button class="dropdown-btn">Books<i class="fa fa-caret-down"></i></button>
+              <button class="dropdown-btn">Categories<i class="fa fa-caret-down"></i></button>
               <div class="dropdown-container">
                 <li><a href="">Cook Books</a></li>
                 <li><a href="">Business & Money</a></li>
@@ -125,12 +125,22 @@
                 <li><a href="">Reference</a></li>
                 <li><a href="">Self-Help</a></li>
                 <li><a href="">Science & Math</a></li>
-              </div>  
-              <button class="dropdown-btn">Kindle Store<i class="fa fa-caret-down"></i></button>
-              <div class="dropdown-container">
                 <li><a href="">Kindle Accessories</a></li>
                 <li><a href="">Kindle eBooks</a></li>
                 <li><a href="">Kindle Short Reads</a></li>
+              </div>  
+              <button class="dropdown-btn">Price<i class="fa fa-caret-down"></i></button>
+              <div class="dropdown-container">
+                <li><a href="">Increasing Order</a></li>
+                <li><a href="">Decreasing Order</a></li>
+              </div>  
+              <button class="dropdown-btn">Ratings<i class="fa fa-caret-down"></i></button>
+              <div class="dropdown-container">
+                <li><a href="">0-1 Star</a></li>
+                <li><a href="">1-2 Stars</a></li>
+                <li><a href="">2-3 Stars</a></li>
+                <li><a href="">3-4 Stars</a></li>
+                <li><a href="">4-5 Stars</a></li>
               </div>  
         </div>  
         <div class="column main">
@@ -144,20 +154,20 @@
               <div class="indivbook">
                 <div class="indivbookid">
                   <li><a>Book ID: </a><a href="/book/<%= book.asin %>"><%= book.asin %></a></li>
-                </div>
+                </div> 
                 <div class="indivbookimg">
                   <a href="/book/<%= book.asin %>"><img src="<%= book.imUrl %>" alt=""></a>
-                </div>  
+                </div>            
                 <div class="indivbookdes">
                   <li><a><%= book.description || "No Description Provided" %></a></li>
                   <li><a href="/book/<%= book.asin %>">View more</a><a>...</a></li>
                 </div>
                 <div class="indivbookprice">
                   <li><a>Price: $<%= book.price || "-" %></a></li>
-                </div>
+                </div>                
                 <div class="indivbookcat">
                   <li><a><%= book.categories || "No Category Provided" %></a></li>
-                </div>
+                </div>                             
               </div>  
               <% }); %>
             </div>

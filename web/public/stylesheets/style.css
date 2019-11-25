@@ -8,13 +8,18 @@ body {
   margin-top: 0 auto;
   background: #b3b3b3;
   padding-bottom: -176px;
+
 }
 
 .header {
-  padding: 70px;
+  padding-top: 170px;
+  padding-bottom: 170px;
   text-align: center;
   background: #b3b3b3;
   color: rgb(255, 255, 255);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("book2.jpg");
+  background-size: cover;
+  background-position-y: -140px;
 }
 
 .header h1 {
@@ -278,7 +283,7 @@ span.psw {
   float: left;
 }
 
-.categories_text {
+.sortby_text {
   padding: 10%;
   text-align: center;
 }
@@ -360,15 +365,19 @@ span.psw {
 .booklist  {
   padding-top:2%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: row;
-  grid-gap: 5px;
+  grid-template-columns: auto auto auto;
+  grid-row-gap: 6px;
+  grid-column-gap: 0.5%;
+  max-width: 100%;
 }
+
 
 .indivbook {
   border-style: solid;
+  border-radius: 30px;
   border-color:  rgb(150, 150, 150);
-  border-width: 2px;
+  border-width: 1px;
+  background: #fcfcfc;
 }
 
 .indivbook li { 
@@ -377,17 +386,17 @@ span.psw {
   -webkit-box-orient: vertical;
   -webkit-line-clamp:3; 
    overflow: hidden;
-   max-width: 100%;
+   max-width: auto;
 }
 
 .indivbookid{
+  max-width: 100%;
   padding: 5% 3% 5% 3%;
 }
 
 .indivbookimg {
-  padding-top: 20%;
-  padding-bottom: 20%;
-  overflow: hidden;
+  max-width: 100%;
+  min-width: 0%;
 }
 
 .indivbookimg img{
@@ -396,6 +405,7 @@ span.psw {
 
 .indivbookdes {
   padding: 5% 3% 5% 3%;
+  max-width: 100%;
 }
 
 .indivbookprice {

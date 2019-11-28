@@ -130,6 +130,7 @@ function login(email, password, callback){
         callback(x);
       }
       else {
+        // console.log(data);
         if (!data){
           x.error = "User not found!"
           // console.log(error);
@@ -200,10 +201,12 @@ function login(email, password, callback){
   )
 } 
 
-function generateToken(email){
-  const token = jwt.sign({email: email}, config.get("myprivatekey"));
-  return token;
+function generateToken(email, callback){
+  jwt.sign({email: email}, "myprivatekey", function(err,token){
+    callback(token);
+  });
 }
+
 
 exports.login = login;
 exports.register = registerUser;

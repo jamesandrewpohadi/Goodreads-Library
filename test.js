@@ -1,9 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 var fs = require("fs");
 var obj = JSON.parse(fs.readFileSync("instance.json", "utf8"));
 console.log(obj);
 >>>>>>> add login middlewares
+=======
+>>>>>>> 8fc1b4c4e27cdaccaeddfb10dc348c290ea3da84
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -92,4 +95,8 @@ login("aaa","aaa");
 // console.log(error);
 // console.log('a');
 // exports.User = User; 
+<<<<<<< HEAD
 // exports.validate = validateUser;
+=======
+// exports.validate = validateUser;
+>>>>>>> 8fc1b4c4e27cdaccaeddfb10dc348c290ea3da84

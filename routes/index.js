@@ -6,6 +6,9 @@ var book_id = [];
 var fs = require("fs");
 var instance = JSON.parse(fs.readFileSync("instance.json", "utf8"));
 
+const {login, register, validate, generate} = require('../models/user.model');
+const config = require('config');
+
 var MongoClient = require("mongodb").MongoClient;
 var url = "mongodb://" + instance["mongodb-server"] + ":27017/";
 // var url = "mongodb://localhost:27017/";
@@ -43,6 +46,8 @@ router.use(log);
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
+  console.log(1);
+  console.log(req.cookies);
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     dbo = db.db("goodreads");
@@ -67,12 +72,73 @@ router.get("/", function(req, res, next) {
         //     }
         //   );
         // });
+        res.cookie('login', false);
+        res.cookie('error', "");
         res.render("index", {
-          data: { title: "goodreads", books: result }
+          data: { title: "goodreads", books: result},
+          login: false
         });
         db.close();
       });
   });
+});
+
+//Login
+router.post("/login1", function(req, res, next) {
+  // res.redirect('/');
+  email = req.body["email"];
+  password = req.body["psw"];
+  // console.log(password);
+  login(email,password, function({error,suc}){
+    if (error){
+      // res.status(400).send(error);
+      // res.render("index", {data: {error: error}})
+      res.cookie('login', false);
+      res.cookie('error', error);
+      res.cookie('token', "");
+      res.redirect('/');
+    }
+    else{
+      res.cookie('login', true);
+      res.cookie('error', "");
+      generate(email, function(token){
+        res.cookie('token', token);
+        res.redirect('/');
+      });
+      
+      // res.end();
+    }
+  });
+});
+
+//Signup
+router.post("/signup", function(req, res, next) {
+  email = req.body["email"];
+  name = req.body["name1"] + req.body["name2"];
+  password = req.body["psw-final"];
+  register(email, name, password, function({error,suc}){
+    console.log(name);
+    if (error){
+      // res.status(400).send(error);
+      console.log(error);
+      res.cookie('login', false);
+      res.cookie('error', error);
+      res.cookie('token', "");
+      res.redirect('/');
+    }
+    else{
+      res.cookie('login', true);
+      res.cookie('error', "");
+      generate(email, function(token){
+        res.cookie('token', token);
+        res.redirect('/');
+      });
+    }
+  });
+  // console.log(email);
+
+  
+  console.log("Yooooooo");
 });
 
 router.get("/book/:id", function(req, res, next) {
@@ -124,7 +190,7 @@ router.get("/user/:id", function(req, res, next) {
                 title: "goodreads"
               }
             });
-            console.log(user_data);
+            // console.log(user_data);
           });
 
         db.close();
@@ -133,9 +199,6 @@ router.get("/user/:id", function(req, res, next) {
   );
 });
 
-router.get("/loginpage", function(req, res, next) {
-  res.render("login");
-});
 
 router.get("/logs", function(req, res, next) {
   MongoClient.connect(url, function(err, db) {
@@ -152,28 +215,12 @@ router.get("/logs", function(req, res, next) {
         });
         db.close();
       });
+    });
   });
-});
 
 router.post("/logindetails", function(req, res, next) {
   uname = req.body["uname"];
-  console.log(uname);
-
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    dbo = db.db("goodreads");
-    dbo
-      .collection("meta_Kindle_Store")
-      .find({})
-      .limit(20)
-      .toArray(function(err, result) {
-        res.render("index", { data: { title: "goodreads", books: result } });
-        console.log(result);
-        db.close();
-      });
-  });
-  console.log("Yooooooo");
-});
+  console.log(uname);});
 
 router.post("/search", function(req, res, next) {
   var book_id = req.body.book_id;
@@ -205,7 +252,7 @@ router.post("/search", function(req, res, next) {
 });
 
 router.post("/addreview", function(req, res, next) {
-  console.log(req.body);
+  // console.log(req.body);
 });
 
 module.exports = router;

@@ -93,6 +93,7 @@ router.post("/login1", function(req, res, next) {
     if (error){
       // res.status(400).send(error);
       // res.render("index", {data: {error: error}})
+      console.log(error);
       res.cookie('login', false);
       res.cookie('error', error);
       res.cookie('token', "");
@@ -142,6 +143,7 @@ router.post("/signup", function(req, res, next) {
 });
 
 router.get("/book/:id", function(req, res, next) {
+  console.log(req.cookies);
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     dbo = db.db("goodreads");

@@ -4,6 +4,11 @@ const bcrypt = require('bcrypt');
 const mysql = require('mysql');
 const Joi = require('joi');
 
+var fs = require("fs");
+var instance = JSON.parse(fs.readFileSync("instance.json", "utf8"));
+
+
+
 var ms = mysql.createConnection({
   host: "52.220.10.107",
   //host: "localhost",
@@ -57,6 +62,24 @@ function registerUser(email, name, password, callback){
   }
 }
 
+// registerUser("james@gmail.com",'aaaa','aaaaa', function(error,suc){
+//   console.log(error);
+// });
+
+// login("james@gmail.com",'1', function({error,x}){
+//   console.log(error);
+// })
+
+// ms.query(
+//   "SELECT * FROM user_data",
+//   function(err,x){
+//     console.log(1);
+//     console.log(x);
+
+//     ms.destroy();
+//   });
+
+
 function login(email, password, callback){
   x = {error:"",suc:""};
   ms.query(
@@ -69,9 +92,8 @@ function login(email, password, callback){
       }
       else {
         // console.log(data);
-        if (!data){
+        if (data.length == 0){
           x.error = "User not found!"
-          // console.log(error);
           callback(x);
         }
         else{
@@ -86,10 +108,10 @@ function login(email, password, callback){
                 callback(x);
               }
             })
-          ms.destroy();        
         }
       }
       // return 'aa';
+         
     }
   )
 } 

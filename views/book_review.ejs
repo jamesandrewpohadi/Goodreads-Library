@@ -86,13 +86,13 @@
                                             <div class="form-group row">
                                                 <label for="asin" class="col-sm-3 col-form-label"><strong>Product ID</strong></strong></label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" readonly class="form-control-plaintext" name="asin" value="same productID as rendered page">
+                                                    <input type="text" readonly class="form-control-plaintext" name="asin" value=<%= data.book.asin %>>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="reviewerName" class="col-sm-3 col-form-label"><strong>Reviewer</strong></label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" readonly class="form-control-plaintext" name="reviewerName" value="whoever logged in user">
+                                                    <input type="text" readonly class="form-control-plaintext" name="reviewerName" value=<%= cookie.user_info.name %>>
                                                 </div>
                                             </div>
                                             <div class="form-group row">

@@ -32,11 +32,11 @@ function validateUser(user) {
 
 function registerUser(email, name, password, callback){
   const {error} = validateUser({ name: name, email: email, password: password })
-  x = {error: "", suc: ""};
+  x = {error: "", suc: "", user_info: ""};
   if (!error){
     bcrypt.hash(password,10, function(err,hash){
       ms.query(
-        "INSERT INTO user_data VALUES (?,?,?)",
+        "INSERT INTO user_data VALUES (null,?,?,?)",
         [email, name, hash],
         function (err, aaa) {
           // console.log(aaa);
@@ -46,10 +46,15 @@ function registerUser(email, name, password, callback){
           }
           else{
             console.log("Successfully register new user!");
-            x.suc = true;
-            callback(x);
+            login(email,password,function(error,suc,user_info){
+              x.suc = suc;
+              x.error = error;
+              x.user_info = user_info;
+              callback(x);
+            })
+            
           }
-          ms.destroy();
+          // ms.destroy();
         }
       );
     });
@@ -60,12 +65,15 @@ function registerUser(email, name, password, callback){
   }
 }
 
+// login("james@gmail.com", "james", function({error,suc,user_info}){
+//   console.log(user_info);
+// })
 
 
 function login(email, password, callback){
-  x = {error:"",suc:""};
+  x = {error:"",suc:"",user_info:""};
   ms.query(
-    "SELECT password FROM user_data WHERE email = ?",
+    "SELECT * FROM user_data WHERE email = ?",
     [email],
     function (err, data){
       if (err){
@@ -77,20 +85,28 @@ function login(email, password, callback){
           x.error = "User not found!"
           // console.log(error);
           callback(x);
-          ms.destroy(); 
+          // ms.destroy(); 
         }
         else{
           bcrypt.compare(password, data[0].password,
             function(err,result){
               if (result){
                 x.suc = result;
-                callback(x);
+                generateToken(email, function(err,token){
+                  if (err) x.error = err;
+                  else{
+                    x.user_info = {user_id: data[0].user_id,
+                       name: data[0].name, email: email,
+                       token: token};
+                    callback(x);
+                  }
+                });
               }
               else {
                 x.error = "Incorrect password!"
                 callback(x);
               }
-              ms.destroy(); 
+              // ms.destroy(); 
             })
                  
         }
@@ -100,15 +116,15 @@ function login(email, password, callback){
   )
 } 
 
-generateToken("aaa",function(err,token){
-  if (err){
-    console.log(1)
-  }
-  else{
-    console.log(2)
-  }
-  console.log(token);
-})
+// generateToken("aaa",function(err,token){
+//   if (err){
+//     console.log(1)
+//   }
+//   else{
+//     console.log(2)
+//   }
+//   console.log(token);
+// })
 
 function generateToken(email, callback){
   jwt.sign({email: email}, config.get("myprivatekey"), function(err, token){

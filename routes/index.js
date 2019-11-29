@@ -84,13 +84,16 @@ router.get("/", function(req, res, next) {
 });
 
 //Login
-router.post("/login1", function(req, res, next) {
-  // res.redirect('/');
+router.post("/login", function(req, res, next) {
   email = req.body["email"];
   password = req.body["psw"];
-  // console.log(password);
+  // res.redirect('/');
+  // // res.redirect('/');
+  // // console.log(password);
   login(email,password, function({error,suc}){
+    console.log(1);
     if (error){
+      console.log(2);
       // res.status(400).send(error);
       // res.render("index", {data: {error: error}})
       res.cookie('login', false);
@@ -99,11 +102,15 @@ router.post("/login1", function(req, res, next) {
       res.redirect('/');
     }
     else{
+      console.log(3)
       res.cookie('login', true);
       res.cookie('error', "");
-      generate(email, function(token){
-        res.cookie('token', token);
-        res.redirect('/');
+      generate(email, function(err,token){
+        if (err) res.cookie('error', err);
+        else{
+          res.cookie('token', token);
+          res.redirect('/');
+        }
       });
       
       // res.end();

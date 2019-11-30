@@ -196,7 +196,7 @@ router.get("/user/:id", function(req, res, next) {
       }
       if (err) throw err;
         if (err) throw err;
-        dbo = db.db("goodreads");
+        
       dbo
         .collection("meta_Kindle_Store")
         .find({ asin: { $in: book_id } })

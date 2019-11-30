@@ -20,7 +20,7 @@
         </div>
         <hr>
         <div class="modal fade" id="addbookModal" tabindex="-1" role="dialog" aria-labelledby="addbookModalLabel"
-            aria-hidden="true">
+            aria-hidden="true" style="z-index: 100000000000">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -30,20 +30,117 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="/addbook" method="POST">
                             <div class="form-group">
-                                <label for="description" class="col-form-label">Description:</label>
-                                <input type="text" class="form-control" id="description">
+                                <label for="description" class="col-form-label"><strong>Description:</strong></label>
+                                <input type="text" class="form-control" id="description" name="description">
                             </div>
                             <div class="form-group">
-                                <label for="price" class="col-form-label">Price:</label>
-                                <input type="text" class="form-control" id="price">
+                                <label for="price" class="col-form-label"><strong>Price:</strong></label>
+                                <input type="text" class="form-control" id="price" name="price">
                             </div>
+                            <div class="form-group">
+                                <label class="file-upload-container" for="file-upload"><strong>Select an Image:</strong></label><br>
+                                <input id="file-upload" type="file"><br><br>
+                                <input id="bookimage" type="hidden" name="bookimage" value="Waiting..." />
+                               <img src="" id="img-preview" />
+                            
+                                
+                                    
+                                    
+                                    
+                                
+
+                                <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+                                <script>
+
+                                    var CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/kundandalmia/upload";
+                                    var CLOUDINARY_UPLOAD_PRESET = "w9kd5wxa";
+
+                                    var imgPreview = document.getElementById('img-preview');
+                                    var fileUpload = document.getElementById('file-upload');
+                                    var image_url;
+
+                                    fileUpload.addEventListener('change', function (event) {
+                                        var file = event.target.files[0];
+                                        var formData = new FormData();
+                                        formData.append('file', file);
+                                        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+
+
+                                        axios({
+                                            url: CLOUDINARY_URL,
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/x-www-form-urlencoded'
+                                            },
+                                            data: formData
+                                        }).then(function (res) {
+                                            console.log(res);
+                                            imgPreview.src = res.data.secure_url;
+                                            image_url = res.data.secure_url;
+                                            document.getElementById("bookimage").value = image_url;
+                                            console.log("Image uploaded",image_url);
+
+
+                                        }).catch(function (err) {
+                                            console.error(err);
+
+                                        });
+                                    });
+
+                                </script>
+
+                            </div>
+                            
+                            <div class = "form-group">
+
+                            
+                                    <label for="categories" class="col-form-label"><strong>Categories:</strong></label>
+                                    <div class="checkbox">
+                                            <label><input name="book" type="checkbox" value="CookBooks"> Cook Books</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input name="book" type="checkbox" value="Business&Money"> Business & Money</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input name="book" type="checkbox" value="Literature&Fiction"> Literature & Fiction</label>
+                                        </div>
+                                        <div class="checkbox">
+                                                <label><input name="book" type="checkbox" value="MedicalBooks">Medical Books</label>
+                                        </div>
+                                        <div class="checkbox">
+                                                <label><input name="book" type="checkbox" value="Reference"> Reference</label>
+                                        </div>
+                                        <div class="checkbox">
+                                                <label><input name="book" type="checkbox" value="Self-Help"> Self-Help</label>
+                                        </div>
+                                        <div class="checkbox">
+                                                <label><input name="book" type="checkbox" value="Science&Math"> Science & Math</label>
+                                        </div>
+                                        <div class="checkbox">
+                                                <label><input name="book" type="checkbox" value="KindleAccessories"> Kindle Accessories</label>
+                                        </div>
+                                        <div class="checkbox">
+                                                <label><input name="book" type="checkbox" value="KindleeBooks"> Kindle eBooks</label>
+                                        </div>
+                                        <div class="checkbox">
+                                                <label><input name="book" type="checkbox" value="KindleShortReads"> Kindle Short Reads</label>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+
+
+                                
+                           
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send message</button>
+                        
                     </div>
                 </div>
             </div>

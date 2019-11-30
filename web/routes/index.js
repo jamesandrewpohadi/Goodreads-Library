@@ -260,4 +260,10 @@ router.post("/search", function(req, res, next) {
 
 router.post("/addreview", addreview);
 
+router.post("/addbook", function(req, res, next) {
+  console.log(req.body);
+  res.redirect("/");
+  
+});
+
 module.exports = router;

@@ -1,4 +1,5 @@
 body {
+  /* font-family: 'times new roman', sans-serif !important; */
   background-color: white;
   margin: 0px;
 }   
@@ -10,29 +11,34 @@ body {
   padding-bottom: -176px;
 }
 
-.header {
-  padding: 70px;
+.mycustom-header {
+  padding-top: 170px;
+  padding-bottom: 170px;
   text-align: center;
   background: #b3b3b3;
   color: rgb(255, 255, 255);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/book2.jpg");
+  background-size: cover;
+  background-position-y: -80px;
 }
 
-.header h1 {
+.mycustom-header h1 {
   font-size: 60px;
 }
 
-.topnav {
+.mycustom-topnav {
   overflow: hidden;
   background-color: rgb(150, 150, 150);
   position: sticky;
   position: -webkit-sticky;
   top: 0;
   font-size: 18px;
+  z-index: 2; 
   font: bold;
   font-family: Helvetica,
 }
 
-.topnav a {
+.mycustom-topnav a {
   float: left;
   display: block;
   color: white;
@@ -41,32 +47,33 @@ body {
   text-decoration: none;
 }
 
-.topnav a.right {
+.mycustom-topnav a.mycustom-right {
   float: right;
+  color: white;
 }
 
-.topnav a:hover {
+.mycustom-topnav a:hover {
   background-color: #ddd;
   color: black;
 }
 
-.topnav a.active {
+.mycustom-topnav a.mycustom-active {
   background-color: rgb(85, 85, 85);
   color: white;
 }
 
-.topnav .search-container {
+.mycustom-topnav .mycustom-search-container {
   float: right;
 }
 
-.topnav .search-container input[type=text] {
+.mycustom-topnav .mycustom-search-container input[type=text] {
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
   border: none;
 }
 
-.topnav .search-container button {
+.mycustom-topnav .mycustom-search-container button {
   float: right;
   padding: 6px 10px;
   margin-top: 8px;
@@ -77,18 +84,18 @@ body {
   cursor: pointer;
 }
 
-.topnav .search-container button:hover {
+.mycustom-topnav .mycustom-search-container button:hover {
   background: #ccc;
 }
 
 @media screen and (max-width: 600px) {
-  .topnav {
+  .mycustom-topnav {
     float: none;
   }
-  .topnav .search-container {
+  .mycustom-topnav .mycustom-search-container {
     float: none;
   }
-  .topnav a, .topnav .right, .topnav input[type=text], .topnav .search-container button {
+  .mycustom-topnav a, .mycustom-topnav .mycustom-right, .mycustom-topnav input[type=text], .mycustom-topnav .mycustom-search-container button {
     float: none;
     display: block;
     text-align: left;
@@ -96,12 +103,12 @@ body {
     margin: 0;
     padding: 14px;
   }
-  .topnav input[type=text] {
+  .mycustom-topnav input[type=text] {
     border: 1px solid #ccc;  
   }
 }
 
-.topnav .modal input[type=text], .topnav .modal input[type=password] {
+.mycustom-topnav .mycustom-modal input[type=text], .mycustom-topnav .mycustom-modal input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -110,7 +117,7 @@ body {
   box-sizing: border-box;
 }
 
-.topnav .modal-container-top button {
+.mycustom-topnav .mycustom-modal-container-top button {
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
@@ -120,7 +127,7 @@ body {
   width: 100%;
 }
 
-.topnav .modal-container-bottom button {
+.mycustom-topnav .mycustom-modal-container-bottom button {
   background-color: rgb(255, 0, 0);
   color: white;
   padding: 14px 14px;
@@ -130,7 +137,7 @@ body {
   width: 15%;
 }
 
-.topnav .modal-container-bottom-signup button {
+.mycustom-topnav .mycustom-modal-container-bottom-signup button {
   background-color: rgb(255, 0, 0);
   color: white;
   padding: 14px 14px;
@@ -142,9 +149,10 @@ body {
 
 button:hover {
   opacity: 0.8;
+  background-color: #5bbdffa4;
 }
 
-.cancelbtn {
+.mycustom-cancelbtn {
   border: none;
   width: auto;
   background-color: #f44336;
@@ -152,28 +160,28 @@ button:hover {
 }
 
 
-.modal-imgcontainer {
+.mycustom-modal-imgcontainer {
   text-align: center;
   margin: 15px 0 0px 0;
   position: relative;
 }
 
-img.modal-avatar {
+img.mycustom-modal-avatar {
   width: 30%;
   border-radius: 30%;
 }
 
-.modal-container-top {
+.mycustom-modal-container-top {
   padding: 5px 16px 16px 16px;
 }
 
-.modal-container-bottom {
+.mycustom-modal-container-bottom {
   padding: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
-.modal .psw a {
+.mycustom-modal .mycustom-psw a {
   float: right;
   color: blue;
   block-size: none;
@@ -182,20 +190,20 @@ img.modal-avatar {
   padding-left: 5px;
 }
 
-.modal .psw  a:hover {
+.mycustom-modal .mycustom-psw  a:hover {
   background: none;
 }
 
-.psw a{
+.mycustom-psw a{
   padding-top: 0px;
 }
 
-span.psw {
+span.mycustom-psw {
   float: right;
   padding-top: 16px;
 }
 
-.modal .terms a {
+.mycustom-modal .mycustom-terms a {
   float: right;
   color: blue;
   block-size: none;
@@ -205,15 +213,15 @@ span.psw {
   margin-left: none;
 }
 
-.modal .terms  a:hover {
+.mycustom-modal .mycustom-terms  a:hover {
   background: none;
 }
 
-.terms a{
+.mycustom-terms a{
   padding-top: 0px;
 }
 
-.modal {
+.mycustom-modal {
   display: none;
   position: fixed; 
   z-index: 1; 
@@ -227,14 +235,14 @@ span.psw {
   padding-top: 60px;
 }
 
-.modal-content {
+.mycustom-modal-content {
   background-color: #fefefe;
   margin: 5% auto 15% auto; 
   border: 1px solid #888;
   width: 40%; 
 }
 
-.modal-close {
+.mycustom-modal-close {
   position: absolute;
   right: 25px;
   top: 0;
@@ -243,12 +251,12 @@ span.psw {
   font-weight: bold;
 }
 
-.modal-close:hover, .modal-close:focus {
+.mycustom-modal-close:hover, .mycustom-modal-close:focus {
   color: red;
   cursor: pointer;
 }
 
-.modal-animate {
+.mycustom-modal-animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
 }
@@ -264,32 +272,32 @@ span.psw {
 }
 
 @media screen and (max-width: 300px) {
-  span.psw {
+  span.mycustom-psw {
      display: block;
      float: none;
   }
-  .cancelbtn {
+  .mycustom-cancelbtn {
      width: 100%;
   }
 }
 
-.column {
+.mycustom-column {
   padding-top: 2%;
   float: left;
 }
 
-.categories_text {
+.mycustom-sortby_text {
   padding: 10%;
   text-align: center;
 }
 
-.column.side{
+.mycustom-column.mycustom-side{
   background-color: #ddd;
   width: 20%;
   height: 100%;
 }
 
-.column.side a, .dropdown-btn {
+.mycustom-column.mycustom-side a, .mycustom-dropdown-btn {
   padding: 5%;
   text-decoration: none;
   font-size: 20px;
@@ -303,24 +311,111 @@ span.psw {
   outline: none;
 }
 
-.column.side a:hover {
-  background-color:  rgb(150, 150, 150);
-  color: #f1f1f1;;
+.mycustom-column.mycustom-side a:hover {
+  background-color: none;
+  color: none;
 }
 
-.active {
-  background-color: rgb(150, 150, 150);
+.mycustom-active {
+  background-color: #089bfda4;
   color: white;
 }
 
-.dropdown-container {
+.mycustom-dropdown-container {
   display: none;
-  background-color:  #b3b3b3;
+  background-color:  #e9e9e9;
 }
 
-.dropdown-container li{
+
+.mycustom-dropdown-container li{
   list-style-type: none;
-  padding-right: 9%;
+  margin-right: 9%;
+  padding-top: 10%;
+  padding-left: 5%;
+}
+
+.mycustom-checkbox {
+  display: block;
+  position: relative;
+  padding-left: 40px;
+  padding-bottom: 20px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-bottom: 0px;
+}
+
+/* Hide the browser's default checkbox */
+.mycustom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.mycustom-checkmark {
+  position: absolute;
+  border-style: solid;
+  border-width: 2px;;
+  border-radius: 7px;
+  border-color: #919191;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.mycustom-checkbox:hover input ~ .mycustom-checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.mycustom-checkbox input:checked ~ .mycustom-checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.mycustom-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.mycustom-checkbox input:checked ~ .mycustom-checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.mycustom-checkbox .mycustom-checkmark:after {
+  top: 6px;
+	left: 6px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: rgb(252, 252, 252);
+}
+
+.mycustom-dropdown-btn-sort {
+  padding: 5%;
+  text-decoration: none;
+  font-size: 20px;
+  color: #000000;
+  display: block;
+  border: none;
+  background:  rgb(13, 151, 0);
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
 }
 
 .fa-caret-down {
@@ -329,108 +424,109 @@ span.psw {
 }
 
 @media screen and (max-width: 700px) {
-  .column.side {
+  .mycustom-column.mycustom-side {
     width: 100%;
     height: auto;
     position: relative;
   }
-  .column.side a {float: left;}
-  div.content {margin-left: 0;}
+  .mycustom-column.mycustom-side a {float: left;}
+  div.mycustom-content {margin-left: 0;}
 }
 
 @media screen and (max-width: 400px) {
-  .column.side a {
+  .mycustom-column.mycustom-side a {
     text-align: center;
     float: none;
   }
 }
 
-.column.main {
+.mycustom-column.mycustom-main {
   width: 80%;
 }
 
-.book_section{
+.mycustom-book_section{
   text-align: center;
 }
 
-.book_section_div {
+.mycustom-book_section_div {
   padding: 1.5%;
 }
 
-.booklist  {
+.mycustom-booklist  {
   padding-top:2%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: row;
-  grid-gap: 5px;
+  grid-template-columns: auto auto auto;
+  grid-row-gap: 6px;
+  grid-column-gap: 0.5%;
+  max-width: 100%;
 }
 
-.indivbook {
+
+.mycustom-indivbook {
   border-style: solid;
-  border-color:  rgb(150, 150, 150);
-  border-width: 2px;
+  border-radius: 30px;
+  border-color:  rgba(150, 150, 150, 0.150);
+  border-width: 5px;
+  background: #fcfcfc;
 }
 
-.indivbook li { 
+.mycustom-indivbook li { 
   list-style-type: none;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp:3; 
    overflow: hidden;
-   max-width: 100%;
+   max-width: auto;
 }
 
-.indivbookid{
+.mycustom-indivbookid{
+  max-width: 100%;
   padding: 5% 3% 5% 3%;
 }
 
-.indivbookimg {
-  padding-top: 20%;
-  padding-bottom: 20%;
-  overflow: hidden;
+.mycustom-indivbookimg {
+  max-width: 100%;
+  min-width: 0%;
 }
 
-.indivbookimg img{
+.mycustom-indivbookimg img{
   min-width: 100%;
 }
 
-.indivbookdes {
+.mycustom-indivbookdes {
   padding: 5% 3% 5% 3%;
+  max-width: 100%;
 }
 
-.indivbookprice {
+.mycustom-indivbookprice {
   padding: 5% 3% 5% 3%;
   font-size: 25px;
   color: rgb(255, 94, 0);;
 }
 
-.indivbookcat {
+.mycustom-indivbookcat {
   word-wrap: break-word;
   width: 280px;
   padding: 5% 3% 5% 3%;
 }
 
-.a {
+.mycustom-a {
   color: black;
 }
 
-.footer  {
+.mycustom-footer  {
   clear: both; 
   background: #b3b3b3;
 }
 
-h1, h2, h3 {
-  margin: 0;
-}
-
 @media screen and (max-width: 700px) {
-  .row {   
+  .mycustom-row {   
     flex-direction: column;
   }
 }
 
 @media screen and (max-width: 400px) {
-  .topnav a {
+  .mycustom-topnav a {
     float: none;
     width: 100%;
   }

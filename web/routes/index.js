@@ -196,7 +196,7 @@ router.get("/user/:id", function(req, res, next) {
       }
       if (err) throw err;
         if (err) throw err;
-        dbo = db.db("goodreads");
+        
       dbo
         .collection("meta_Kindle_Store")
         .find({ asin: { $in: book_id } })
@@ -259,5 +259,11 @@ router.post("/search", function(req, res, next) {
 });
 
 router.post("/addreview", addreview);
+
+router.post("/addbook", function(req, res, next) {
+  console.log(req.body);
+  res.redirect("/");
+  
+});
 
 module.exports = router;

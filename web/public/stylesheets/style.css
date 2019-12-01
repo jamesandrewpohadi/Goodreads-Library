@@ -330,7 +330,7 @@ span.mycustom-psw {
 .mycustom-dropdown-container li{
   list-style-type: none;
   margin-right: 9%;
-  padding-top: 8%;
+  padding-top: 10%;
   padding-left: 5%;
 }
 
@@ -345,6 +345,7 @@ span.mycustom-psw {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  margin-bottom: 0px;
 }
 
 /* Hide the browser's default checkbox */
@@ -368,6 +369,7 @@ span.mycustom-psw {
   height: 25px;
   width: 25px;
   background-color: #eee;
+  border-radius: 50%;
 }
 
 /* On mouse-over, add a grey background color */
@@ -394,15 +396,12 @@ span.mycustom-psw {
 
 /* Style the checkmark/indicator */
 .mycustom-checkbox .mycustom-checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+  top: 6px;
+	left: 6px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: rgb(252, 252, 252);
 }
 
 .mycustom-dropdown-btn-sort {

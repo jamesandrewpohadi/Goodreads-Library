@@ -23,122 +23,123 @@
             <div class="mycustom-sortby_text">
               <h1>Sort By</h1>
             </div>
-
-            <button class="mycustom-dropdown-btn">Categories<i class="fa fa-caret-down"></i></button>
+            <form class="mycustom-sortingform" action="/sort" method="post">
+            <a class="mycustom-dropdown-btn">Categories<i class="fa fa-caret-down"></i></a>
             <div class="mycustom-dropdown-container">
               <li>
                 <label class="mycustom-checkbox">Cook Books
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="category" id="cookbooks" value="cookbooks">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
               <li>
                 <label class="mycustom-checkbox">Business & Money
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="category" id="businessandmoney" value="businessandmoney">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
               <li>
                 <label class="mycustom-checkbox">Literature & Fiction
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="category" id="literatureandfiction" value="literatureandfiction">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
               <li>
                 <label class="mycustom-checkbox">Medical Books
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="category" id="medicalbooks" value="medicalbooks">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
               <li>
                 <label class="mycustom-checkbox">Reference
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="category" id="reference" value="reference">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
               <li>
                 <label class="mycustom-checkbox">Self-Help
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="category" id="selfhelp" value="selfhelp">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
               <li>
                 <label class="mycustom-checkbox">Science & Math
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="category" id="scienceandmath" value="scienceandmath">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
               <li>
                 <label class="mycustom-checkbox">Kindle Accessories
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="category" id="kindleaccessories" value="kindleaccessories">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
               <li>
                 <label class="mycustom-checkbox">Kindle eBooks
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="category" id="kindleebooks" value="kindleebooks">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
               <li>
                 <label class="mycustom-checkbox">Kindle Short Reads
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="category" id="kindleshortreads" value="kindleshortreads">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
             </div>
 
-            <button class="mycustom-dropdown-btn">Price<i class="fa fa-caret-down"></i></button>
+            <a class="mycustom-dropdown-btn">Price<i class="fa fa-caret-down"></i></a>
             <div class="mycustom-dropdown-container">
               <li>
                 <label class="mycustom-checkbox">Increasing Order
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="price" id="increasing" value="increasing">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
               <li>
                 <label class="mycustom-checkbox">Decreasing Order
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="price" id="decreasing" value="decreasing">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
             </div>  
 
-            <button class="mycustom-dropdown-btn">Ratings<i class="fa fa-caret-down"></i></button>
+            <a class="mycustom-dropdown-btn">Ratings<i class="fa fa-caret-down"></i></a>
             <div class="mycustom-dropdown-container">
               <li>
                 <label class="mycustom-checkbox">0-1 Star
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="ratings" id="01star" value="01star">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
               <li>
                 <label class="mycustom-checkbox">1-2 Stars
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="ratings" id="12stars" value="12stars">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
               <li>
                 <label class="mycustom-checkbox">2-3 Stars
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="ratings" id="23stars" value="23stars">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
               <li>
                 <label class="mycustom-checkbox">3-4 Stars
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="ratings" id="34stars" value="34stars">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
               <li>
                 <label class="mycustom-checkbox">4-5 Stars
-                    <input type="checkbox">
-                    <span class="mycustom-checkmark"></span>
+                  <input type="radio" name="ratings" id="45stars" value="45stars">
+                  <span class="mycustom-checkmark"></span>
                 </label>
               </li>
             </div>  
 
-            <button class="mycustom-dropdown-btn-sort">Sort</button>
+            <button class="mycustom-dropdown-btn-sort" type="submit" id="sortsubmit" value="sortsubmit">Sort</button>
+            </form> 
         </div>
 
         <div class="mycustom-column mycustom-main">

@@ -1,275 +1,189 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= data.title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome to GoodReads by Big Data</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
+  <style>
+    body {
+      background-color: white;
+      margin: 0px;
+    }    
+  </style>
+  <% include partials/head %>
   <body>
-    <div class="container">
-      <div class="jumbotron jumbotron-fluid mycustom-jumbotron">
-      <div class="header">
-        <h1><%= data.title %></h1>
-        <% if (typeof cookie.user_info !== "undefined"){ %>
-          <h2>Hi, <%= cookie.user_info.name %></h2>
+      <main>
+      <div class="">
+        <div class="mycustom-column mycustom-side">
+            <div class="mycustom-sortby_text">
+              <h1>Sort By</h1>
+            </div>
+
+            <button class="mycustom-dropdown-btn">Categories<i class="fa fa-caret-down"></i></button>
+            <div class="mycustom-dropdown-container">
+              <li>
+                <label class="mycustom-checkbox">Cook Books
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+              <li>
+                <label class="mycustom-checkbox">Business & Money
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+              <li>
+                <label class="mycustom-checkbox">Literature & Fiction
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+              <li>
+                <label class="mycustom-checkbox">Medical Books
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+              <li>
+                <label class="mycustom-checkbox">Reference
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+              <li>
+                <label class="mycustom-checkbox">Self-Help
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+              <li>
+                <label class="mycustom-checkbox">Science & Math
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+              <li>
+                <label class="mycustom-checkbox">Kindle Accessories
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+              <li>
+                <label class="mycustom-checkbox">Kindle eBooks
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+              <li>
+                <label class="mycustom-checkbox">Kindle Short Reads
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+            </div>
+
+            <button class="mycustom-dropdown-btn">Price<i class="fa fa-caret-down"></i></button>
+            <div class="mycustom-dropdown-container">
+              <li>
+                <label class="mycustom-checkbox">Increasing Order
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+              <li>
+                <label class="mycustom-checkbox">Decreasing Order
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+            </div>  
+
+            <button class="mycustom-dropdown-btn">Ratings<i class="fa fa-caret-down"></i></button>
+            <div class="mycustom-dropdown-container">
+              <li>
+                <label class="mycustom-checkbox">0-1 Star
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+              <li>
+                <label class="mycustom-checkbox">1-2 Stars
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+              <li>
+                <label class="mycustom-checkbox">2-3 Stars
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+              <li>
+                <label class="mycustom-checkbox">3-4 Stars
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+              <li>
+                <label class="mycustom-checkbox">4-5 Stars
+                    <input type="checkbox">
+                    <span class="mycustom-checkmark"></span>
+                </label>
+              </li>
+            </div>  
+
+            <button class="mycustom-dropdown-btn-sort">Sort</button>
+        </div>
         <% } %>
-        <h4>Welcome to <%= data.title %> by BIGdata</h4>
-      </div>  
-      </div>
-      <div class="topnav">
-        <a href="/" class="active">Home</a>
-        <a href="">Logs</a>
-        <a href="">Reccommendations/ Analytics</a>
 
-        <% if (typeof cookie.login !== 'undefined' && cookie.login) {%>
-          <label>Logout</label>
-        <% } else{ %>
-        <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="right">Login</a>
-        <div id="id01" class="modal">  
-          <form class="modal-content modal-animate" action="/login" method="post">
-            
-            <div class="modal-imgcontainer">
-              <span onclick="document.getElementById('id01').style.display='none'" class="modal-close" title="Close Modal">&times;</span>
-              <img src="images/profilepicture.png" alt="Avatar" class="modal-avatar">
-            </div>
-             
-            <div class="modal-container-top"> 
-              <h1>Login</h1>
-              <p>Please fill in your account details.</p>
+        <div class="mycustom-column mycustom-main">
+          <div class="mycustom-book_section_div">
 
-              <label for="uname"><b>Email Address</b></label>
-              <input type="text" placeholder="Enter Email Address" name="email" required>
-          
-              <label for="psw"><b>Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" required>
-                
-              <button type="submit">Login</button>
-
-              <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-              </label>
-
-            </div>
-            <div class="modal-container-bottom" style="background-color:#f1f1f1">
-              <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-              <span class="psw">Forgot <a href="">password?</a></span>
-            </div>
-          </form>
-        </div>
-
-        
-        <a onclick="document.getElementById('id02').style.display='block'" style="width:auto;" class="right">Create New Account</a>
-        <div id="id02" class="modal">  
-          <form class="modal-content modal-animate" action="/signup" method="post">
-            
-            <div class="modal-imgcontainer">
-              <span onclick="document.getElementById('id02').style.display='none'" class="modal-close" title="Close Modal">&times;</span>
-              <img src="images/addprofilepicture.jpg" alt="Avatar" class="modal-avatar">
-            </div>
-            
-            <div class="modal-container-top"> 
-              <h1>Sign Up</h1>
-              <p>Please fill in this form to create an account.</p>
-
-              <label for="name"><b>Family Name</b></label>
-              <input type="text" placeholder="Enter Family Name" name="name1" required>
-
-              <label for="name"><b>Given Name</b></label>
-              <input type="text" placeholder="Enter Given Name" name="name2" required>
-
-              <label for="uname"><b>Email Address</b></label>
-              <input type="text" placeholder="Enter Email Address" name="email" required>
-              
-              <label for="psw"><b>Create New Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" required>
-                 
-              <label for="psw-reenter"><b>Re-Enter Password</b></label>
-              <input type="password" placeholder="Re-Enter Password" name="psw-final" required>
-
-              <button type="submit">Sign Up</button>
-
-              <!--
-              <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-              </label>
-              -->
-        
-              <div class="modal-container-bottom-signup">
-                <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-              </div>
-            </div> 
-          </form>
-        </div>
-        <% } %>
-
-        <div class="search-container">
-            <form action="/search" method="post">
-              <input type="text" placeholder="Search.." name="book_id">
-              <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-      </div>
-      <div class="content">
-        <div class="column side">
-            <div class="sortby_text">
-            <h1>Sort By</h1>
-            </div>
-              <button class="dropdown-btn">Categories<i class="fa fa-caret-down"></i></button>
-              <div class="dropdown-container">
-                <li>
-                  <label class="checkbox">Cook Books
-                      <input type="checkbox">
-                      <span class="checkmark"></span>
-                  </label>
-                </li>
-                <li>
-                    <label class="checkbox">Business & Money
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">Literature & Fiction
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">Medical Books
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">Reference
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">Self-Help
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">Science & Math
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">Kindle Accessories
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">Kindle eBooks
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">Kindle Short Reads
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-              </div>  
-              <button class="dropdown-btn">Price<i class="fa fa-caret-down"></i></button>
-              <div class="dropdown-container">
-                <li>
-                    <label class="checkbox">Increasing Order
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">Decreasing Order
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-              </div>  
-              <button class="dropdown-btn">Ratings<i class="fa fa-caret-down"></i></button>
-              <div class="dropdown-container">
-                <li>
-                    <label class="checkbox">0-1 Star
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">1-2 Stars
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">2-3 Stars
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">3-4 Stars
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">4-5 Stars
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-              </div>  
-              <button class="dropdown-btn-sort">Sort</button>
-        </div>  
-        <div class="column main">
-          <div class="book_section_div">
-            <div class="book_section">  
-             <h1>Books Section</h1>
+            <div class="mycustom-book_section">  
+              <h1>Books Section</h1>
             </div>
             <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.</p>
-            <div class="booklist">
+            
+            <div class="mycustom-booklist">
               <% data.books.forEach(function(book) { %>
-              <div class="indivbook">
-                <div class="indivbookid">
+              <div class="mycustom-indivbook">
+                <div class="mycustom-indivbookid">
                   <li><a>Book ID: </a><a href="/book/<%= book.asin %>"><%= book.asin %></a></li>
-                </div> 
-                <div class="indivbookimg">
+                </div>
+
+                <div class="mycustom-indivbookimg">
                   <a href="/book/<%= book.asin %>"><img src="<%= book.imUrl %>" alt=""></a>
-                </div>            
-                <div class="indivbookdes">
+                </div>
+
+                <div class="mycustom-indivbookdes">
                   <li><a><%= book.description || "No Description Provided" %></a></li>
                   <li><a href="/book/<%= book.asin %>">View more</a><a>...</a></li>
                 </div>
-                <div class="indivbookprice">
+
+                <div class="mycustom-indivbookprice">
                   <li><a>Price: $<%= book.price || "-" %></a></li>
-                </div>                
-                <div class="indivbookcat">
+                </div>
+
+                <div class="mycustom-indivbookcat">
                   <li><a><%= book.categories || "No Category Provided" %></a></li>
-                </div>                             
+                </div>
+
               </div>  
               <% }); %>
             </div>
           </div>
-        </div>    
-      </div>  
-      <div class="footer">
-          <h2>Footer Here</h2>
-      </div> 
-    
-    </div>  
+        </div>
+      </div>
+      </main>
+      <% include partials/footer %>   
   </body>
-  <script type="text/javascript">
-    var data = <%- JSON.stringify(data) %>;
-    console.log(data);
-  </script>
+
   <script>
     // Get the modal
     var modal = document.getElementById('id01');
@@ -281,6 +195,7 @@
         }
     }
   </script>
+
   <script>
     // Get the modal
     var modal = document.getElementById('id02');
@@ -292,13 +207,14 @@
         }
     }
   </script>
+
   <script>
     /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var dropdown = document.getElementsByClassName("mycustom-dropdown-btn");
     var i;
     for (i = 0; i < dropdown.length; i++) {
       dropdown[i].addEventListener("click", function() {
-      this.classList.toggle("active");
+      this.classList.toggle("mycustom-active");
       var dropdownContent = this.nextElementSibling;
       if (dropdownContent.style.display === "block") {
       dropdownContent.style.display = "none";
@@ -308,4 +224,5 @@
       });
     }
     </script>
+
 </html>

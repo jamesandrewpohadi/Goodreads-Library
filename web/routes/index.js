@@ -74,7 +74,7 @@ router.get("/", function(req, res, next) {
       // res.cookie('error', "");
       res.render("index", {
         data: { title: "goodreads", books: result},
-        login: false
+        cookie: req.cookies
       });
     });
 });

@@ -10,9 +10,13 @@
     <style>
         .component-center {
             display: flex;
-            justify-content: space-between;
             align-items: center;
             flex-direction: column;
+        }
+
+        button:disabled {
+            cursor: not-allowed;
+            pointer-events: all !important;
         }
     </style>
     <body>
@@ -66,11 +70,10 @@
                 <hr/>
                 <div class="p-3">
                     <div>
+                    <% if (typeof cookie.user_info !== 'undefined') { %>
                         <span class="float-right">
                             <button type="button" class="btn btn-light" data-toggle="modal" data-target="#addReviewModal">Add Review</button>
                         </span>
-                        <h3 class="mb-4">Ratings & Reviews:</h3>
-
                         <!-- Modal -->
                         <div class="modal fade" id="addReviewModal" tabindex="-1" role="dialog" aria-labelledby="addReviewModalTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -92,8 +95,7 @@
                                             <div class="form-group row">
                                                 <label for="reviewerName" class="col-sm-3 col-form-label"><strong>Reviewer</strong></label>
                                                 <div class="col-sm-9">
-                                                    
-                                                    <input type="text" readonly class="form-control-plaintext" name="reviewerName" value=<% if (typeof cookie.user_name !== 'undefined'){cookie.user_info.name} %>>
+                                                    <input type="text" readonly class="form-control-plaintext" name="reviewerName" value=<%= cookie.user_info.name %>>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -130,31 +132,47 @@
                                 </div>
                             </div>
                         </div>
+                    <% } else {%>
+                        <span class="float-right">
+                            <button type="button" class="btn btn-light" disabled>Add Review</button>
+                        </span>
+                    <% } %>
+                        <h3 class="mb-4">Ratings & Reviews:</h3>
                     </div> 
                     <% if (data.reviews.length === 0) { %>
                         <p>There are no reviews for this product yet. Be the first one to add them!</>
                     <% } else {%>
                         <% data.reviews.forEach(function(review) { %>
                         <div class="border border-dark rounded mb-3 p-3">
-                            <p class="pb-2">
-                                <a href="/user/<%= review.reviewerID %>" class="float-left text-primary"><strong><%= review.reviewerName %></strong></a>
-                                <% for (i=0; i < 5 - review.overall; i++) { %>
-                                    <span class="float-right">
-                                        <i class="text-dark fa fa-star"></i>
-                                    </span>
-                                <% } %>
-                                <% for (i=0; i < review.overall; i++) { %>
-                                    <span class="float-right">
-                                        <i class="text-warning fa fa-star"></i>
-                                    </span>
-                                <% } %>
-                            </p>
-                            <p class="pb-4">
-                                <span class="float-left h4"><%= review.summary %></span>
-                                <span class="float-right text-muted"><%= review.reviewTime %></span>
-                            </p>
-                            <p><%= review.reviewText %></p>
-                            <p class="mb-0" title="ratio of people who found this review helpful">Helpful: <%= review.helpful %></p>
+                        <div class="row">
+                            <div class="col-1 mx-0 pr-0 pt-2 component-center">
+                                <p title="# of people who find this review helpful"><span class="badge badge-success"><%= JSON.parse(review.helpful)[0] %></span></p>
+                                <p title="# of people who find this review not helpful"><span class="badge badge-danger"><%= JSON.parse(review.helpful)[1] - JSON.parse(review.helpful)[0] %></span></p>
+                            </div>
+                            <div class="col">
+                                <!-- <div class="border border-dark rounded mb-3 p-3"> -->
+                                    <p class="pb-2">
+                                        <a href="/user/<%= review.reviewerID %>" class="float-left text-primary"><strong><%= review.reviewerName %></strong></a>
+                                        <% for (i=0; i < 5 - review.overall; i++) { %>
+                                            <span class="float-right">
+                                                <i class="text-dark fa fa-star"></i>
+                                            </span>
+                                        <% } %>
+                                        <% for (i=0; i < review.overall; i++) { %>
+                                            <span class="float-right">
+                                                <i class="text-warning fa fa-star"></i>
+                                            </span>
+                                        <% } %>
+                                    </p>
+                                    <p class="pb-4">
+                                        <span class="float-left h4"><%= review.summary %></span>
+                                        <span class="float-right text-muted"><%= review.reviewTime %></span>
+                                    </p>
+                                    <p class="mb-0"><%= review.reviewText %></p>
+                                    <!-- <p class="mb-0" title="ratio of people who found this review helpful">Helpful: <%= review.helpful %></p> -->
+                                <!-- </div> -->
+                            </div>
+                        </div>
                         </div>
                         <% }); %>
                     <% } %>

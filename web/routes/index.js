@@ -200,6 +200,7 @@ router.get("/user/:id", function(req, res, next) {
             }
           });
           // console.log(user_data);
+          book_id = [];
         });
 
     }

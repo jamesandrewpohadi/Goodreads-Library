@@ -36,6 +36,7 @@ module.exports = function(req,res,next){
             else{
                 console.log("Successfully added review");
             }
+            res.cookie('page',req.originaUrl);
             res.redirect('/book/' + asin);
         });
 };

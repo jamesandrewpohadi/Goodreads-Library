@@ -48,30 +48,13 @@ router.use(log);
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  console.log(req.cookies);
+  // console.log(req.cookies);
   dbo
     .collection("meta_Kindle_Store")
     .find({})
     .limit(120)
     .toArray(function(err, result) {
-      // result.forEach((book, i) => {
-      //   ms.query(
-      //     "select overall as review,count(reviewerID) as cnt from kindle_reviews where asin='" +
-      //       book.asin +
-      //       "' group by overall",
-      //     function(err, ratings) {
-      //       if (err) throw err;
-      //       book.ratings = ratings;
-      //       if (i == result.length - 1) {
-      //         res.render("index", {
-      //           data: { title: "goodreads", books: result }
-      //         });
-      //       }
-      //     }
-      //   );
-      // });
-      // res.cookie('login', false);
-      // res.cookie('error', "");
+      res.cookie('page',req.originalUrl);
       res.render("index", {
         data: { title: "goodreads", books: result},
         cookie: req.cookies
@@ -81,9 +64,9 @@ router.get("/", function(req, res, next) {
 
 //Login
 router.post("/login", function(req, res, next) {
-  console.log(req)
   email = req.body["email"];
   password = req.body["psw"];
+  page = req.cookies['page']
   // res.redirect('/');
   // // res.redirect('/');
   // // console.log(password);
@@ -96,14 +79,14 @@ router.post("/login", function(req, res, next) {
       res.cookie('login', false);
       res.cookie('error', error);
       res.cookie('user_info', {});
-      res.redirect('/');
+      res.redirect(page);
     }
     else{
       // console.log(3)
       res.cookie('login', true);
       res.cookie('error', "");
       res.cookie('user_info', user_info);
-      res.redirect('/');
+      res.redirect(page);
       // generate(email, function(err,token){
       //   if (err) res.cookie('error', err);
       //   else{
@@ -119,7 +102,7 @@ router.post("/login", function(req, res, next) {
 
 //Signup
 router.post("/signup", function(req, res, next) {
-  console.log(1)
+  page = req.cookies['page']
   email = req.body["email"];
   name = req.body["name1"] + " " + req.body["name2"];
   temp_password = req.body["psw"];
@@ -130,7 +113,7 @@ router.post("/signup", function(req, res, next) {
     res.cookie('login', false);
     res.cookie('error', error);
     res.cookie('user_info', {});
-    res.redirect('/');
+    res.redirect(page);
   }
   else{
     register(email, name, password, function({error,suc,user_info}){
@@ -141,13 +124,13 @@ router.post("/signup", function(req, res, next) {
         res.cookie('login', false);
         res.cookie('error', error);
         res.cookie('user_info', {});
-        res.redirect('/');
+        res.redirect(page);
       }
       else{
         res.cookie('login', true);
         res.cookie('error', "");
         res.cookie('user_info', user_info);
-        res.redirect('/');
+        res.redirect(page);
         // generate(email, function(err,token){
         //   if (err) res.cookie('error', err);
         //   else{
@@ -178,7 +161,8 @@ router.get("/book/:id", function(req, res, next) {
         [req.params.id],
         function(err, reviews) {
           if (err) throw err;
-          res.cookie('book', req.params.id)
+          res.cookie('book', req.params.id);
+          res.cookie('page',req.originalUrl);
           res.render("book_review", {
             data: { book: book[0], reviews: reviews },
             cookie: req.cookies
@@ -206,7 +190,9 @@ router.get("/user/:id", function(req, res, next) {
         .find({ asin: { $in: book_id } })
         .limit(20)
         .toArray(function(err, book_data) {
+          res.cookie('page',req.originalUrl);
           res.render("user", {
+            cookie: req.cookies,
             data: {
               user_data: user_data,
               book_data: book_data,
@@ -228,15 +214,14 @@ router.get("/logs", function(req, res, next) {
     .sort({date: -1})
     .limit(100)
     .toArray(function(err, result) {
+      res.cookie('page',req.originalUrl);
       res.render("logs", {
+        cookie: req.cookies,
         data: {logs: result }
       });
     });
   });
 
-router.post("/logindetails", function(req, res, next) {
-  uname = req.body["uname"];
-  console.log(uname);});
 
 router.post("/search", function(req, res, next) {
   var book_id = req.body.book_id;
@@ -244,8 +229,10 @@ router.post("/search", function(req, res, next) {
     .collection("meta_Kindle_Store")
     .find({ asin: book_id })
     .toArray(function(err, book) {
+      res.cookie('page',req.originalUrl);
       if (book.length == 0) {
         res.render("book_review", {
+          cookie: req.cookies,
           data: { err: "Book Not found!" }
         });
       }
@@ -254,7 +241,9 @@ router.post("/search", function(req, res, next) {
         [book_id],
         function(err, reviews) {
           if (err) throw err;
+          res.cookie('page',req.originalUrl);
           res.render("book_review", {
+            cookie: req.cookies,
             data: { book: book[0], reviews: reviews }
           });
         }

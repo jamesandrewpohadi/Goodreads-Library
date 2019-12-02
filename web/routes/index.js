@@ -81,6 +81,7 @@ router.get("/", function(req, res, next) {
 
 //Login
 router.post("/login", function(req, res, next) {
+  console.log(req)
   email = req.body["email"];
   password = req.body["psw"];
   // res.redirect('/');
@@ -118,10 +119,11 @@ router.post("/login", function(req, res, next) {
 
 //Signup
 router.post("/signup", function(req, res, next) {
+  console.log(1)
   email = req.body["email"];
-  name = req.body["name1"] + req.body["name2"];
+  name = req.body["name1"] + " " + req.body["name2"];
   temp_password = req.body["psw"];
-  password = req.body["psw-final"];
+  password = req.body["psw-reenter"];
   if (temp_password != password){
     error = "Passwords do not match!";
     console.log(error);
@@ -131,7 +133,7 @@ router.post("/signup", function(req, res, next) {
     res.redirect('/');
   }
   else{
-    register(email, name, password, function({error,suc}){
+    register(email, name, password, function({error,suc,user_info}){
       console.log(name);
       if (error){
         // res.status(400).send(error);
@@ -157,11 +159,13 @@ router.post("/signup", function(req, res, next) {
     });
   }
   // console.log(email);
-
-  
-  console.log("Yooooooo");
 });
 
+router.get('/logout', function(req,res){
+  res.cookie('login',false);
+  res.clearCookie('user_info');
+  res.redirect('/');
+});
 
 
 router.get("/book/:id", function(req, res, next) {

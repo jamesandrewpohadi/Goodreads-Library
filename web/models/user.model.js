@@ -26,7 +26,7 @@ function validateUser(user) {
   return Joi.validate(user, schema);
 }
 
-// registerUser("aa","aa","aaa",function(x){
+// registerUser("vieri7@gmail.com","vieri lala","vieri",function(x){
 //   console.log(x);
 // })
 
@@ -46,7 +46,7 @@ function registerUser(email, name, password, callback){
           }
           else{
             console.log("Successfully register new user!");
-            login(email,password,function(error,suc,user_info){
+            login(email,password,function({error,suc,user_info}){
               x.suc = suc;
               x.error = error;
               x.user_info = user_info;
@@ -60,7 +60,7 @@ function registerUser(email, name, password, callback){
     });
   }
   else{
-    x.errgitor = error.details[0].message;
+    x.error = error.details[0].message;
     callback(x);
   }
 }

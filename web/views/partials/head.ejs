@@ -2,7 +2,7 @@
   <div class="mycustom-jumbotron">
     <div class="mycustom-header">
       <h1>goodreads</h1>
-      <% if (typeof cookie.user_info !== "undefined") { %>
+      <% if (typeof cookie.login !== "undefined" && cookie.login == 'true') { %>
         <h2> Hi!, <%= cookie.user_info.name %></h2>
       <% } %> 
       <h4>Welcome to goodreads by BIGdata</h4>
@@ -13,8 +13,8 @@
     <a href="/logs">Logs</a>
     <a href="">Reccommendations / Analytics</a>
 
-    <% if (typeof cookie.login !== "undefined" && cookie.login) { %>
-      <a class="mycustom-right">Logout</a>
+    <% if (typeof cookie.login !== "undefined" && cookie.login == 'true') { %>
+      <a href="/logout" class="mycustom-right">Logout</a>
     <% } else { %>
       <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="mycustom-right">Login</a>
       <div id="id01" class="mycustom-modal">  
@@ -27,8 +27,8 @@
             <h1>Login</h1>
             <p>Please fill in your account details.</p>
     
-            <label for="uname"><b>Email Address</b></label>
-            <input type="text" placeholder="Enter Email Address" name="uname" required>
+            <label for="email"><b>Email Address</b></label>
+            <input type="text" placeholder="Enter Email Address" name="email" required>
         
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
@@ -57,13 +57,13 @@
             <p>Please fill in this form to create an account.</p>
     
             <label for="name"><b>Family Name</b></label>
-            <input type="text" placeholder="Enter Family Name" name="uname" required>
+            <input type="text" placeholder="Enter Family Name" name="name1" required>
     
             <label for="name"><b>Given Name</b></label>
-            <input type="text" placeholder="Enter Given Name" name="uname" required>
+            <input type="text" placeholder="Enter Given Name" name="name2" required>
     
             <label for="uname"><b>Email Address</b></label>
-            <input type="text" placeholder="Enter Email Address" name="uname" required>
+            <input type="text" placeholder="Enter Email Address" name="email" required>
             
             <label for="psw"><b>Create New Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>

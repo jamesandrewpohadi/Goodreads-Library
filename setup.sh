@@ -1,10 +1,22 @@
-# python3 create_instances.py
+echo creating instances
+
+python3 create_instances.py
 
 mysql=$(grep  -oP '"mysql-server": \"\K(.*?)"' web/instance.json | tr -d \")
 mongodb=$(grep  -oP '"mongodb-server": \"\K(.*?)"' web/instance.json | tr -d \")
 web=$(grep  -oP '"web-server": \"\K(.*?)"' web/instance.json | tr -d \")
 
-echo mysql
-# bash setup-mysql.sh $mysql
-# bash setup-mongodb.sh $mongodb
-bash setup-web.sh $web
+exec_inst () {
+    echo $3
+    ssh -o "StrictHostKeyChecking no" -i $1 $2 $3 -
+}
+
+chmod 400 testKey.pem
+key="testKey.pem"
+instance=ubuntu@$web
+
+sleep 5
+
+exec_inst $key $instance "echo connected to web-server"
+scp -i $key -r web $instance:~/
+exec_inst $key $instance "bash web/setup.sh"

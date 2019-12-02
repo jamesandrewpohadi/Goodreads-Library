@@ -7,7 +7,7 @@ ec2_resource = boto3.resource('ec2')
 def credel_instances_test(n):
     response = ec2_client.describe_vpcs()
     vpc_id = response.get('Vpcs', [{}])[0].get('VpcId', '')
-    sgs = ec2_client.create_security_group(GroupName='SECURITY_GROUP',Description='DESCRIPTION',VpcId=vpc_id)
+    sgs = ec2_client.create_security_group(GroupName='SECURITY_GROUP3',Description='DESCRIPTION',VpcId=vpc_id)
     security_group_id = sgs['GroupId']
     data = ec2_client.authorize_security_group_ingress(
         GroupId=security_group_id,
@@ -30,29 +30,32 @@ def credel_instances_test(n):
             'IpRanges': [{'CidrIp': '0.0.0.0/0'}]}
             ]
             )
-    instances = ec2_resource.create_instances(ImageId='ami-061eb2b23f9f8839c', InstanceType='t2.micro',MinCount=n,MaxCount=n,KeyName='testKey',SecurityGroupIds=[security_group_id])
-    instancesIds = [inst.id for inst in instances]
-    instances[0].wait_until_running()
-    instances[1].wait_until_running()
-    instances[2].wait_until_running()
-    instances[0].reload()
-    instances[1].reload()
-    instances[2].reload()
+    mongodb = ec2_resource.create_instances(ImageId='ami-0a092d402bc88d017', InstanceType='t2.micro',MinCount=1,MaxCount=1,KeyName='testKey',SecurityGroupIds=[security_group_id])
+    mysql = ec2_resource.create_instances(ImageId='ami-083fb6a9e21c34688', InstanceType='t2.micro',MinCount=1,MaxCount=1,KeyName='testKey',SecurityGroupIds=[security_group_id])
+    web = ec2_resource.create_instances(ImageId='ami-06861bded36d551dd', InstanceType='t2.micro',MinCount=1,MaxCount=1,KeyName='testKey',SecurityGroupIds=[security_group_id])
+    # instancesIds = [inst.id for inst in instances]
+    mongodb[0].wait_until_running()
+    mysql[0].wait_until_running()
+    web[0].wait_until_running()
+    mongodb[0].reload()
+    mysql[0].reload()
+    web[0].reload()
     insts = {
-        "mysql-server":instances[0].public_ip_address,
-        "mongodb-server":instances[1].public_ip_address,
-        "web-server":instances[2].public_ip_address
+        "mysql-server":mysql[0].public_ip_address,
+        "mongodb-server":mongodb[0].public_ip_address,
+        "web-server":web[0].public_ip_address
     }
     insts_file = open('web/instance.json','w')
     json.dump(insts,insts_file)
     insts_file.close()
-    print([instances[i].public_ip_address for i in range(3)])
-	
-	# xxx = input()
+    print('mongodb',mongodb[0].public_ip_address)
+    print('mysql',mysql[0].public_ip_address)
+    print('web',web[0].public_ip_address)
+    instancesIds = [mongodb[0].id,mysql[0].id,web[0].id]
+    # xxx = input()
+    # # responses = [ec2_client.release_address(AllocationId=allocations[i]['AllocationId']) for i in range(n)]
+    # ec2_resource.instances.filter(InstanceIds=instancesIds).terminate()
+    # web[0].wait_until_terminated()
+    # ec2_client.delete_security_group(GroupId=security_group_id)
 
-	# # responses = [ec2_client.release_address(AllocationId=allocations[i]['AllocationId']) for i in range(n)]
-	# ec2_resource.instances.filter(InstanceIds=instancesIds).terminate()
-	# instances[0].wait_until_terminated()
-	# ec2_client.delete_security_group(GroupId=security_group_id)
-
-credel_instances_test(3)
+credel_instances_test(1)

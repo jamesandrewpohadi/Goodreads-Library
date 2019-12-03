@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
+<style>
+    button:disabled {
+        cursor: not-allowed;
+        pointer-events: all !important;
+    }
+</style>
+
 <body>
     <% include partials/head %>
     <div>
-        <hr>
+        <br>
         <div class="col text-center">
+            <% if (typeof cookie.login !== "undefined" && cookie.login == 'true' && data.user_data[0]["reviewerID"] == cookie.user_info.user_id  ) { %>
+
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addbookModal">Add
                 Book</button>
+
+            <% } else {%>
+            <button type="button" class="btn btn-light" disabled>Add
+                Book</button>
+            <% } %>
+
         </div>
         <hr>
         <div class="modal fade" id="addbookModal" tabindex="-1" role="dialog" aria-labelledby="addbookModalLabel"
@@ -32,17 +49,18 @@
                         <form action="/addbook" method="POST">
                             <div class="form-group">
                                 <label for="description" class="col-form-label"><strong>Description:</strong></label>
-                                <input type="text" class="form-control" id="description" name="description">
+                                <input type="text" class="form-control" id="description" name="description" required>
                             </div>
                             <div class="form-group">
                                 <label for="price" class="col-form-label"><strong>Price:</strong></label>
-                                <input type="text" class="form-control" id="price" name="price">
+                                <input type="number" step="0.01" class="form-control" id="price" name="price" required>
                             </div>
                             <div class="form-group">
                                 <label class="file-upload-container" for="file-upload"><strong>Select an
                                         Image:</strong></label><br>
                                 <input id="file-upload" type="file"><br><br>
-                                <input id="bookimage" type="hidden" name="imageURL" value="Waiting..." />
+                                <input id="bookimage" type="hidden" name="imageURL"
+                                    value="http://g-ecx.images-amazon.com/images/G/01/x-site/icons/no-img-sm._V192198896_.gif" />
                                 <img src="" id="img-preview" />
 
                                 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -84,43 +102,83 @@
                             <div class="form-group">
 
                                 <label for="categories" class="col-form-label"><strong>Categories:</strong></label>
-                                <div class="checkbox">
-                                    <label><input name="bookCategory" type="checkbox" value="CookBooks"> Cook Books</label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input name="bookCategory" type="checkbox" value="Business&Money"> Business &
-                                        Money</label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input name="bookCategory" type="checkbox" value="Literature&Fiction"> Literature &
+                                <div class = "checkbox">
+                                    <label><input class="checkbox-required" name="bookCategory" type="checkbox"
+                                            value="Cookbooks" onclick='deRequire("checkbox-required")' required> Cook
+                                        Books</label>
+
+
+                                    <label><input class="checkbox-required" name="bookCategory" type="checkbox"
+                                            value="Business & Money" onclick='deRequire("checkbox-required")' required>
+                                        Business & Money</label>
+
+
+                                    <label><input class="checkbox-required" name="bookCategory" type="checkbox"
+                                            value="Literature & Fiction" onclick='deRequire("checkbox-required")'
+                                            required> Literature &
                                         Fiction</label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input name="bookCategory" type="checkbox" value="MedicalBooks"> Medical Books</label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input name="bookCategory" type="checkbox" value="Reference"> Reference</label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input name="bookCategory" type="checkbox" value="Self-Help"> Self-Help</label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input name="bookCategory" type="checkbox" value="Science&Math"> Science &
-                                        Math</label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input name="kindleCategory" type="checkbox" value="KindleAccessories"> Kindle
-                                        Accessories</label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input name="kindleCategory" type="checkbox" value="KindleeBooks"> Kindle
-                                        eBooks</label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input name="kindleCategory" type="checkbox" value="KindleShortReads"> Kindle Short
-                                        Reads</label>
+
+
+                                    <label><input class="checkbox-required" name="bookCategory" type="checkbox"
+                                            value="Medical Books" onclick='deRequire("checkbox-required")' required>
+                                        Medical Books</label>
+
+
+                                    <label><input class="checkbox-required" name="bookCategory" type="checkbox"
+                                            value="Reference" onclick='deRequire("checkbox-required")' required>
+                                        Reference</label>
+
+
+                                    <label><input class="checkbox-required" name="bookCategory" type="checkbox"
+                                            value="Self-Help" onclick='deRequire("checkbox-required")' required>
+                                        Self-Help</label>
+
+
+                                    <label><input class="checkbox-required" name="bookCategory" type="checkbox"
+                                            value="Science & Math" onclick='deRequire("checkbox-required")' required>
+                                        Science & Math</label>
+
+
+                                    <label><input class="checkbox-required" name="kindleCategory" type="checkbox"
+                                            value="Kindle Accessories" onclick='deRequire("checkbox-required")'
+                                            required> Kindle Accessories</label>
+
+
+                                    <label><input class="checkbox-required" name="kindleCategory" type="checkbox"
+                                            value="Kindle eBooks" onclick='deRequire("checkbox-required")' required>
+                                        Kindle eBooks</label>
+
+                                    <label><input class="checkbox-required" name="kindleCategory" type="checkbox"
+                                            value="Kindle Short Reads" onclick='deRequire("checkbox-required")'
+                                            required> Kindle Short Reads</label>
+                                    <script>
+
+                                        function deRequire(elClass) {
+                                            el = document.getElementsByClassName(elClass);
+
+                                            var atLeastOneChecked = false;//at least one cb is checked
+                                            for (i = 0; i < el.length; i++) {
+                                                if (el[i].checked === true) {
+                                                    atLeastOneChecked = true;
+                                                }
+                                            }
+
+                                            if (atLeastOneChecked === true) {
+                                                for (i = 0; i < el.length; i++) {
+                                                    el[i].required = false;
+                                                }
+                                            } else {
+                                                for (i = 0; i < el.length; i++) {
+                                                    el[i].required = true;
+                                                }
+                                            }
+                                        }
+
+                                    </script>
                                 </div>
                             </div>
+
+
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
@@ -130,7 +188,8 @@
                 </div>
             </div>
         </div>
-        <h1 class="text-center bg-light mb-3">Books Reviewed</h1>
+        <h1 class="text-center mb-3">Books Reviewed by <%= data.user_data[0]["reviewerName"] %> </h1>
+        <hr>
         <% data.book_data.forEach(function(book,i) { %>
         <div class="p-3">
             <div class="row mb-4">
@@ -161,6 +220,7 @@
         <hr>
         <% }); %>
     </div>
+
     <% include partials/footer %>
 </body>
 <% include partials/bootstrap-script %>

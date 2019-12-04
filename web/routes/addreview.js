@@ -23,16 +23,16 @@ module.exports = function(req,res,next){
 
     var datetime = new Date();
 
-    var date1 = datetime.toLocaleDateString();
-    var date2 = datetime.valueOf();
+    var reviewTime = datetime.getMonth() + " " + datetime.getDate() + ", " + datetime.getFullYear();
+    var unixReviewTime = (datetime.valueOf()/1000) >> 0;
 
-    var reviewTime = date1.slice(0,2) + " " + date1.slice(3,5) + ", " + date1.slice(6,10);
-    var unixReviewTime = (datetime/1000) >> 0;
-
+    console.log(1)
     ms.query("insert into kindle_reviews values (?,?,?,?,?,?,?,?,?)",
         [asin, helpful, overall, reviewText, reviewTime, reviewerID, reviewerName, summary, unixReviewTime],
         function(err,suc){
-            if (err) res.cookie('error', err);
+            if (err) {
+                res.cookie('error', err);
+            }
             else{
                 console.log("Successfully added review");
             }

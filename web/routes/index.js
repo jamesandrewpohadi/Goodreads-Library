@@ -26,7 +26,18 @@ var ms = mysql.createConnection({
 var dbo;
 MongoClient.connect(url, function(err, db) {
     dbo = db.db('goodreads');
+    // dbo
+    // .collection("meta_Kindle_Store")
+    // .find({})
+    // .limit(1)
+    // .toArray(function(err, result) {
+    //   console.log(result)
+    //   console.log(result[0].categories);
+    //   });
 });
+
+
+
 
 var log = (req, res, next) => {
   res.on("finish", function() {
@@ -156,6 +167,12 @@ router.get("/book/:id", function(req, res, next) {
     .collection("meta_Kindle_Store")
     .find({ asin: req.params.id })
     .toArray(function(err, book) {
+      if (book.length == 0) {
+        res.render("book_review", {
+          cookie: req.cookies,
+          data: { err: "Book Not found!" }
+        });
+      }
       ms.query(
         "select * from kindle_reviews where asin = ? order by unixReviewTime desc",
         [req.params.id],
@@ -200,7 +217,6 @@ router.get("/user/:id", function(req, res, next) {
             }
           });
           // console.log(user_data);
-          book_id = [];
         });
 
     }
@@ -225,38 +241,51 @@ router.get("/logs", function(req, res, next) {
 
 
 router.post("/search", function(req, res, next) {
-  var book_id = req.body.book_id;
-  dbo
-    .collection("meta_Kindle_Store")
-    .find({ asin: book_id })
-    .toArray(function(err, book) {
-      res.cookie('page',req.originalUrl);
-      if (book.length == 0) {
-        res.render("book_review", {
-          cookie: req.cookies,
-          data: { err: "Book Not found!" }
-        });
-      }
-      ms.query(
-        "select * from kindle_reviews where asin = ?",
-        [book_id],
-        function(err, reviews) {
-          if (err) throw err;
-          res.cookie('page',req.originalUrl);
-          res.render("book_review", {
-            cookie: req.cookies,
-            data: { book: book[0], reviews: reviews }
-          });
-        }
-      );
-    });
+  res.redirect("/book/" + req.body.book_id)
 });
 
 router.post("/addreview", addreview);
 
+// MongoClient.connect(url, function(err, db) {
+//   dbo = db.db('goodreads');
+//   dbo
+//   .collection("meta_Kindle_Store")
+//   .find({})
+//   .limit(1)
+//   .toArray(function(err, result) {
+//     console.log(result)
+//     console.log(result[0].categories);
+//     });
+// });
+
+// res.on("finish", function() {
+//   var myobj = {
+//     statusCode: res.statusCode,
+//     method: req.method,
+//     date: new Date(),
+//     url: req.url,
+//     ip: req.headers["x-forwarded-for"] || req.connection.remoteAddress
+//   };
+//   dbo.collection("logs").insertOne(myobj, function(err, res) {
+//     if (err) throw err;
+//   });
+// });
+
 router.post("/addbook", function(req, res, next) {
-  console.log(req.body);
-  res.redirect("/");
+  var book = {
+    asin: new Date().valueOf()/1000 >> 0,
+    description: req.body.description,
+    price: parseInt(req.body.price),
+    imUrl: req.body.imageURL,
+    related: {also_viewed: [], buy_after_viewing: []},
+    categories: []
+  };
+  for (category in req.body.bookCategory){
+    book.categories[book.categories.length] = ['Books', category];
+  }
+  console.log(req.body)
+  console.log(book);
+  res.redirect(req.cookies['page']);
   
 });
 

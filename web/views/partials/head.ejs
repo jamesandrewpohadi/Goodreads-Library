@@ -13,6 +13,11 @@
     <a href="/logs">Logs</a>
     <a href="">Reccommendations / Analytics</a>
 
+    <% if (typeof cookie.error !== "undefined" && cookie.error != '') { %>
+        <%= cookie.error %>
+        
+    <% } %>
+
     <% if (typeof cookie.login !== "undefined" && cookie.login == 'true') { %>
       <a href="/logout" class="mycustom-right">Logout</a>
     <% } else { %>

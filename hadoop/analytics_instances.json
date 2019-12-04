@@ -1,0 +1,1 @@
+{"worker_node1": {"publicdns": "ec2-18-141-58-254.ap-southeast-1.compute.amazonaws.com", "privateip": "172.31.16.146"}, "node_master": {"publicdns": "ec2-52-221-184-5.ap-southeast-1.compute.amazonaws.com", "privateip": "172.31.24.53"}, "worker_node0": {"publicdns": "ec2-54-254-192-254.ap-southeast-1.compute.amazonaws.com", "privateip": "172.31.23.162"}}

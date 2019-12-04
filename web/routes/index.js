@@ -255,7 +255,21 @@ router.post("/search", function(req, res, next) {
 router.post("/addreview", addreview);
 
 router.post("/addbook", function(req, res, next) {
+  var arr = [];
   console.log(req.body);
+  
+  if(typeof req.body["bookCategory"] == "string"){
+    var mystring = req.body["bookCategory"];
+
+    arr.push(mystring);
+    
+  }
+
+  else {
+
+    arr = req.body["bookCategory"];
+  }
+  console.log(arr);
   res.redirect("/");
   
 });

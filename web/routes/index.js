@@ -266,26 +266,34 @@ router.post("/addreview", addreview);
 //     url: req.url,
 //     ip: req.headers["x-forwarded-for"] || req.connection.remoteAddress
 //   };
-//   dbo.collection("logs").insertOne(myobj, function(err, res) {
-//     if (err) throw err;
-//   });
+  // dbo.collection("logs").insertOne(myobj, function(err, res) {
+  //   if (err) throw err;
+  // });
 // });
 
 router.post("/addbook", function(req, res, next) {
   var book = {
-    asin: new Date().valueOf()/1000 >> 0,
+    asin: new Date().valueOf().toString(),
     description: req.body.description,
     price: parseInt(req.body.price),
     imUrl: req.body.imageURL,
     related: {also_viewed: [], buy_after_viewing: []},
     categories: []
   };
-  for (category in req.body.bookCategory){
-    book.categories[book.categories.length] = ['Books', category];
+  for (i in req.body.bookCategory){
+    book.categories[book.categories.length] = ['Books', req.body.bookCategory[i]];
   }
-  console.log(req.body)
-  console.log(book);
-  res.redirect(req.cookies['page']);
+  for (i in req.body.kindleCategory){
+    book.categories[book.categories.length] = ['Kindle Store', req.body.kindleCategory[i]];
+  }
+  dbo.collection("meta_Kindle_Store").insertOne(book, function(err, suc) {
+    // if (err) throw err;
+    
+    console.log(book);
+    console.log(err,suc);
+    res.redirect(req.cookies['page']);
+  });
+  
   
 });
 

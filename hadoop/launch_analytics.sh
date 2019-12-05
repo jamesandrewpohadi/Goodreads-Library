@@ -16,7 +16,7 @@ printf "\nlaunching servers\n"
 python launch_analytics.py $key_name $no_of_nodes
 node_m_addr=$(cat analytics_instances.json | jq '.node_master.publicdns')
 node_m_addr=$(echo "${node_m_addr//\"}")
-sleep 300
+sleep 360
 printf "\nmaking and sharing keys from ${node_m_addr}\n"
 scp -o "StrictHostKeyChecking=no" -i "${key_name}.pem" "ubuntu@${node_m_addr}:/home/ubuntu/.ssh/id_rsa.pub" master.pub
 worker_addr=($(cat analytics_instances.json | jq 'to_entries[] | select(.key|test("worker_node.")) | .value.publicdns'))
@@ -32,3 +32,7 @@ scp -o "StrictHostKeyChecking=no" -i "${key_name}.pem" conf_node_master.sh "ubun
 scp -o "StrictHostKeyChecking=no" -i "${key_name}.pem" analytics_instances.json "ubuntu@${node_m_addr}:/home/ubuntu"
 exec_inst "${key_name}.pem" "ubuntu@${node_m_addr}" "sudo chmod 777 conf_node_master.sh && sudo ./conf_node_master.sh"
 
+for i in {1..5}
+do
+echo -en "\007"
+done

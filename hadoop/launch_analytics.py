@@ -25,14 +25,17 @@ def create_analytics(key_name,inst_name='worker_node',n=1,instance_id='ami-061eb
             ec2_client.delete_security_group(GroupName='SECURITY_GROUP3')
     sgs = ec2_client.create_security_group(GroupName='SECURITY_GROUP3',Description='DESCRIPTION',VpcId=vpc_id)
     security_group_id = sgs['GroupId']
+    ip_p = []
+    ip_ports = [22,9000,9870,9871,9864,9865,9866,9867,9868,9869,8485,8480,8481,50200,10020,19888,10890,10033,8032,8030,8088,8090,8031,8033,0,8040,8048,8042,8044,10200,8188,8190,8047,8788,8046,8045,8049,8089,8091]
+    for port in ip_ports:
+        ip_p.append(
+            {'IpProtocol': 'tcp',
+            'FromPort': port,
+            'ToPort': port,
+            'IpRanges': [{'CidrIp': '0.0.0.0/0'}]})
     data = ec2_client.authorize_security_group_ingress(
         GroupId=security_group_id,
-        IpPermissions=[
-            {'IpProtocol': 'tcp',
-            'FromPort': 22,
-            'ToPort': 22,
-            'IpRanges': [{'CidrIp': '0.0.0.0/0'}]}
-            ]
+        IpPermissions=ip_p
             )
     master = ec2_resource.create_instances(ImageId=instance_id, InstanceType=instance_type,MinCount=1,MaxCount=1,KeyName=key_name,SecurityGroupIds=[security_group_id],UserData=userdata)
     userdata = userdata.replace("node_master",inst_name,1)

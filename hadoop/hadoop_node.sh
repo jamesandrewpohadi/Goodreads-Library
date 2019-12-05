@@ -1,6 +1,7 @@
 #!/bin/bash
 cd /home/ubuntu
 runuser -l ubuntu -c 'ssh-keygen -b 4096 -f "/home/ubuntu/.ssh/id_rsa" -N ""'
+cat /home/ubuntu/.ssh/id_rsa.pub >> /home/ubuntu/.ssh/authorized_keys
 apt-get update
 apt-get -y upgrade
 apt-get -y install jq

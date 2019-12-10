@@ -4,7 +4,7 @@ import boto3
 ec2_client = boto3.client('ec2')
 ec2_resource = boto3.resource('ec2')
 
-def credel_instances_test(n):
+def credel_web_instances():
     response = ec2_client.describe_vpcs()
     vpc_id = response.get('Vpcs', [{}])[0].get('VpcId', '')
     sgs = ec2_client.create_security_group(GroupName='SECURITY_GROUP3',Description='DESCRIPTION',VpcId=vpc_id)
@@ -58,4 +58,4 @@ def credel_instances_test(n):
     # web[0].wait_until_terminated()
     # ec2_client.delete_security_group(GroupId=security_group_id)
 
-credel_instances_test(1)
+credel_web_instances()

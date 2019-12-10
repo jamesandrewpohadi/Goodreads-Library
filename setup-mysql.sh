@@ -25,7 +25,7 @@ install_docker () {
 
 exec_inst $key1 $instance1 "echo connected"
 
-scp -i $key1 mysql/kindle_reviews.csv $instance1:~/.
+# scp -i $key1 mysql/kindle_reviews.csv $instance1:~/.
 scp -i $key1 mysql/setup.sql $instance1:~/.
 scp -i $key1 mysql/Dockerfile $instance1:~/.
 scp -i $key1 mysql/.env $instance1:~/.

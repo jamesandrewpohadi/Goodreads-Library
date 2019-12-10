@@ -12,4 +12,16 @@ create table kindle_reviews (
     unixReviewTime int(15) 
 );
 
-load data local infile "kindle_reviews.csv" into table kindle_reviews fields terminated by ',' enclosed by '"' escaped by '"' lines terminated by '\n' IGNORE 1 LINES;
+load data local infile "kindle_reviews.csv" 
+into table kindle_reviews fields terminated by ',' enclosed by '"' 
+escaped by '"' lines terminated by '\n' IGNORE 1 LINES
+(@dummy,asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime);
+alter table kindle_reviews add index rID (reviewerID);
+alter table kindle_reviews add index bid (asin);
+
+create table user_data (
+    user_id int primary key auto_increment,
+    email varchar(255) not null unique,
+    name varchar(255) not null,
+    password varchar(255) not null
+);

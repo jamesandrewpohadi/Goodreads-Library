@@ -9,7 +9,7 @@ exec_inst () {
 
 exec_inst $key2 $instance2 "echo connected"
 
-scp -i $key2 mongodb/meta_Kindle_Store.json $instance2:~/.
+# scp -i $key2 mongodb/meta_Kindle_Store.json $instance2:~/.
 scp -i $key2 mongodb/Dockerfile $instance2:~/.
 scp -i $key2 mongodb/setup.sh $instance2:~/.
 

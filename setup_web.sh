@@ -1,6 +1,6 @@
 echo creating instances
 
-python3 create_instances.py
+python3 create_web_instances.py
 
 mysql=$(grep  -oP '"mysql-server": \"\K(.*?)"' web/instance.json | tr -d \")
 mongodb=$(grep  -oP '"mongodb-server": \"\K(.*?)"' web/instance.json | tr -d \")
@@ -13,10 +13,9 @@ exec_inst () {
 
 chmod 400 testKey.pem
 key="testKey.pem"
-instance=ubuntu@$web
 
 sleep 5
 
-exec_inst $key $instance "echo connected to web-server"
-scp -i $key -r web $instance:~/
-exec_inst $key $instance "bash web/setup.sh"
+bash setup-mysql.sh $mysql
+bash setup-mongodb.sh $mongodb
+bash setup-web.sh $web

@@ -8,12 +8,7 @@ exec_inst () {
 }
 
 exec_inst $key2 $instance2 "echo connected"
-exec_inst $key2 $instance2 "mkdir bin public routes views"
-
-scp -i $key2 web/* $instance2:~/.
-scp -rp $key2 web/bin $instance2:~/bin
-scp -rp $key2 web/public $instance2:~/public
-scp -rp $key2 web/routes $instance2:~/routes
-scp -rp $key2 web/views $instance2:~/views
-
-exec_inst $key2 $instance2 "bash setup.sh"
+# exec_inst $key2 $instance2 "mkdir bin public routes views"
+scp -i $key2 -r web $instance2:~/
+scp -i $key2 ETL.sh $instance2:~/
+exec_inst $key2 $instance2 "bash web/setup.sh"

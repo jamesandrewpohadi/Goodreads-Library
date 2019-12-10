@@ -49,7 +49,7 @@
                                 <dd class="col-sm-8 text-danger">$ <%= (data.book.price || " - ") %></dd>
                                 <dt class="col-sm-4">Related Items:</dt>
                                 <dd class="col-sm-8">
-                                    <% if (data.book.related.length === 0) { %>
+                                    <% if (typeof data.book.related === 'undefined' || data.book.related.length == 0) { %>
                                         <p>There are no related items for this product.
                                     <% } else {%>
                                         <div>

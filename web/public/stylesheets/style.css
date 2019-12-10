@@ -28,7 +28,7 @@ body {
 
 .mycustom-topnav {
   overflow: hidden;
-  background-color: rgb(150, 150, 150);
+  background-color: rgb(0, 14, 34);
   position: sticky;
   position: -webkit-sticky;
   top: 0;
@@ -41,7 +41,7 @@ body {
 .mycustom-topnav a {
   float: left;
   display: block;
-  color: white;
+  color: rgb(255, 255, 255);
   text-align: center;
   padding: 14px 20px;
   text-decoration: none;
@@ -57,6 +57,10 @@ body {
   color: black;
 }
 
+.mycustom-topnav a.mycustom-right a :hover {
+  float: right;
+  color: white;
+}
 .mycustom-topnav a.mycustom-active {
   background-color: rgb(85, 85, 85);
   color: white;
@@ -148,8 +152,7 @@ body {
 }
 
 button:hover {
-  opacity: 0.8;
-  background-color: #5bbdffa4;
+  opacity: 0.9;
 }
 
 .mycustom-cancelbtn {
@@ -289,6 +292,7 @@ span.mycustom-psw {
 .mycustom-sortby_text {
   padding: 10%;
   text-align: center;
+  color: rgb(10, 10, 10);
 }
 
 .mycustom-column.mycustom-side{
@@ -379,7 +383,7 @@ span.mycustom-psw {
 
 /* When the checkbox is checked, add a blue background */
 .mycustom-checkbox input:checked ~ .mycustom-checkmark {
-  background-color: #2196F3;
+  background-color: rgb(0, 14, 34);
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -401,21 +405,54 @@ span.mycustom-psw {
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
-	background: rgb(252, 252, 252);
+	background: rgb(219, 219, 219);
 }
 
 .mycustom-dropdown-btn-sort {
   padding: 5%;
   text-decoration: none;
   font-size: 20px;
-  color: #000000;
+  color: #ffffff;
   display: block;
   border: none;
-  background:  rgb(13, 151, 0);
+  background: rgb(0, 14, 34);
   width: 100%;
   text-align: center;
   cursor: pointer;
   outline: none;
+}
+
+.mycustom-dropdown-btn-sort{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.mycustom-dropdown-btn-sort span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.mycustom-dropdown-btn-sort span:after {
+  content: '\00bb';
+  position: relative;
+  opacity: 0;
+  top: 0px;
+  right: -10px;
+  transition: 0.5s;
+  padding-left: 10px;
+}
+
+.mycustom-dropdown-btn-sort:hover span {
+  padding-right: 25px;
+}
+
+.mycustom-dropdown-btn-sort:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 .fa-caret-down {
@@ -446,10 +483,11 @@ span.mycustom-psw {
 
 .mycustom-book_section{
   text-align: center;
+  padding: 0% 0% 1% 0%;
 }
 
 .mycustom-book_section_div {
-  padding: 1.5%;
+  padding: 2% 1.5% 3% 1.5%;
 }
 
 .mycustom-booklist  {
@@ -466,8 +504,7 @@ span.mycustom-psw {
   border-style: solid;
   border-radius: 30px;
   border-color:  rgba(150, 150, 150, 0.150);
-  border-width: 5px;
-  background: #fcfcfc;
+  border-width: 5px;;
 }
 
 .mycustom-indivbook li { 

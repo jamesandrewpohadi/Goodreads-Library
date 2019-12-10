@@ -26,7 +26,18 @@ var ms = mysql.createConnection({
 var dbo;
 MongoClient.connect(url, function(err, db) {
     dbo = db.db('goodreads');
+    // dbo
+    // .collection("meta_Kindle_Store")
+    // .find({})
+    // .limit(1)
+    // .toArray(function(err, result) {
+    //   console.log(result)
+    //   console.log(result[0].categories);
+    //   });
 });
+
+
+
 
 var log = (req, res, next) => {
   res.on("finish", function() {
@@ -156,19 +167,27 @@ router.get("/book/:id", function(req, res, next) {
     .collection("meta_Kindle_Store")
     .find({ asin: req.params.id })
     .toArray(function(err, book) {
-      ms.query(
-        "select * from kindle_reviews where asin = ? order by unixReviewTime desc",
-        [req.params.id],
-        function(err, reviews) {
-          if (err) throw err;
-          res.cookie('book', req.params.id);
-          res.cookie('page',req.originalUrl);
-          res.render("book_review", {
-            data: { book: book[0], reviews: reviews },
-            cookie: req.cookies
-          });
-        }
-      );
+      if (book.length == 0) {
+        res.render("book_review", {
+          cookie: req.cookies,
+          data: { err: "Book Not found!" }
+        });
+      }
+      else{
+        ms.query(
+          "select * from kindle_reviews where asin = ? order by unixReviewTime desc",
+          [req.params.id],
+          function(err, reviews) {
+            if (err) throw err;
+            res.cookie('book', req.params.id);
+            res.cookie('page',req.originalUrl);
+            res.render("book_review", {
+              data: { book: book[0], reviews: reviews },
+              cookie: req.cookies
+            });
+          }
+        );
+      }
     });
 });
 
@@ -200,7 +219,6 @@ router.get("/user/:id", function(req, res, next) {
             }
           });
           // console.log(user_data);
-          book_id = [];
         });
 
     }
@@ -225,44 +243,136 @@ router.get("/logs", function(req, res, next) {
 
 
 router.post("/search", function(req, res, next) {
-  var book_id = req.body.book_id;
-  dbo
-    .collection("meta_Kindle_Store")
-    .find({ asin: book_id })
-    .toArray(function(err, book) {
-      res.cookie('page',req.originalUrl);
-      if (book.length == 0) {
-        res.render("book_review", {
-          cookie: req.cookies,
-          data: { err: "Book Not found!" }
-        });
-      }
-      ms.query(
-        "select * from kindle_reviews where asin = ?",
-        [book_id],
-        function(err, reviews) {
-          if (err) throw err;
-          res.cookie('page',req.originalUrl);
-          res.render("book_review", {
-            cookie: req.cookies,
-            data: { book: book[0], reviews: reviews }
-          });
-        }
-      );
-    });
+  res.redirect("/book/" + req.body.book_id)
 });
 
 router.post("/addreview", addreview);
 
 router.post("/addbook", function(req, res, next) {
-  console.log(req.body);
-  res.redirect("/");
-  
+  var book = {
+    asin: new Date().valueOf().toString(),
+    description: req.body.description,
+    price: parseInt(req.body.price),
+    imUrl: req.body.imageURL,
+    related: {also_viewed: [], buy_after_viewing: []},
+    categories: []
+  };
+  if (typeof req.body.bookCategory == 'string') var bookCategory = [req.body.bookCategory];
+  else var bookCategory = req.body.bookCategory;
+
+  if (typeof req.body.kindleCategory == 'string') var kindleCategory = [req.body.kindleCategory];
+  else var kindleCategory = req.body.kindleCategory;
+
+  for (i in bookCategory){
+    book.categories[book.categories.length] = ['Books', bookCategory[i]];
+  }
+  for (i in kindleCategory){
+    book.categories[book.categories.length] = ['Kindle Store', kindleCategory[i]];
+  }
+
+  // console.log(book);
+  dbo.collection("meta_Kindle_Store").insertOne(book, function(err, suc) {
+    // if (err) throw err;
+    
+    console.log(book);
+    console.log(err,suc);
+    res.redirect(req.cookies['page']);
+  });
 });
 
+function categoryfilter(category,callback){
+  dbo
+    .collection("meta_Kindle_Store")
+    .find({"categories":{$elemMatch:{$elemMatch:{$in:[category]}}}})
+    .limit(120)
+    .toArray(function(err,result)
+      {
+        callback(err,result);
+      }
+    );
+}
+
+function pricesort(price_order,callback){
+  if (price_order == 'increasing') order = 1;
+  else order = -1;
+  dbo
+  .collection("meta_Kindle_Store")
+  .find({'price':{$exists:true, $ne:0}})
+  .sort({price:order})
+  .limit(120)
+  .toArray(function(err,result)
+    {
+      callback(err,result);
+    }
+  );
+}
+
+function category_sort(category,price_order,callback){
+  if (price_order == 'increasing') order = 1;
+  else order = -1;
+  dbo
+  .collection("meta_Kindle_Store")
+  .find({"categories":{$elemMatch:{$elemMatch:{$in:[category]}}},'price':{$exists:true, $ne:0}})
+  .sort({price:order})
+  .limit(120)
+  .toArray(function(err,result)
+    {
+      callback(err,result);
+    }
+  );
+}
+
 router.post("/filter", function(req, res, next){
-  console.log(req.body);
-  res.redirect("/")
+  console.log(req.body.category);
+  if (typeof req.body.category !== 'undefined' && typeof req.body.price === 'undefined'){
+    categoryfilter(req.body.category, function(err,result){
+      if (err){
+        res.cookie('error',err);
+        res.redirect('/');
+      }
+      else{
+        res.cookie('page',req.originalUrl);
+        res.render("index", {
+          data: { title: "goodreads", books: result},
+          cookie: req.cookies
+        });
+      }
+    });
+  }
+  else if (typeof req.body.category === 'undefined' && typeof req.body.price !== 'undefined'){
+    pricesort(req.body.price, function(err,result){
+      if (err){
+        res.cookie('error',err);
+        res.redirect('/');
+      }
+      else{
+        res.cookie('page',req.originalUrl);
+        res.render("index", {
+          data: { title: "goodreads", books: result},
+          cookie: req.cookies
+        });
+      }
+    });
+  }
+
+  else if (typeof req.body.category !== 'undefined' && typeof req.body.price !== 'undefined'){
+    category_sort(req.body.category, req.body.price, function(err,result){
+      if (err){
+        res.cookie('error',err);
+        res.redirect('/');
+      }
+      else{
+        res.cookie('page',req.originalUrl);
+        res.render("index", {
+          data: { title: "goodreads", books: result},
+          cookie: req.cookies
+        });
+      }
+    });
+  }
+
+  else res.redirect('/');
+  
 });
 
 module.exports = router;

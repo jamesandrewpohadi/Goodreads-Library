@@ -1,13 +1,11 @@
-
 import json
 import boto3
 import sys
-import subprocess
 
 ec2_client = boto3.client('ec2')
 ec2_resource = boto3.resource('ec2')
 
-def create_analytics(key_name,inst_name='worker_node',n=1,instance_id='ami-061eb2b23f9f8839c',instance_type='t2.micro',userdata_file=None):
+def create_analytics(key_name,inst_name='worker_node',n=1,instance_id='ami-061eb2b23f9f8839c',instance_type='t2.medium',userdata_file=None):
 # create n number of worker nodes + 1 node master
     userdata=""
 #    print(userdata_file)
@@ -23,14 +21,14 @@ def create_analytics(key_name,inst_name='worker_node',n=1,instance_id='ami-061eb
     sgs = ec2_client.describe_security_groups()
     for sg in sgs['SecurityGroups']:
         if sg["GroupName"] == 'SECURITY_GROUP3':
-	    print(sg)
+	    #print(sg)
             ec2_client.delete_security_group(GroupName='SECURITY_GROUP3')
     sgs = ec2_client.create_security_group(GroupName='SECURITY_GROUP3',Description='DESCRIPTION',VpcId=vpc_id)
     security_group_id = sgs['GroupId']
     ip_p = []
-    ip_ports = [8080,8081,7077,6066,4040,18080,7337,8025,8030,8040,8141,8042,8050,8188,13562,50070,50470,8020,50075,50475,50010,50020,50090,8010,58042,22,9000,9870,9871,9864,9865,9866,9867,9868,9869,8485,8480,8481,50200,10020,19888,19890,10033,8032,8030,8088,8090,8031,8033,0,8040,8048,8042,8044,10200,8188,8190,8047,8788,8046]
+    ip_ports = [8080,8081,7077,6066,4040,18080,7337,8025,8030,8040,8141,8042,8050,8188,13562,50070,50470,8020,50075,50475,50010,50020,50090,8010,58042,22,9000,9870,9871,9864,9865,9866,9867,9868,9869,8485,8480,8481,50200,10020,19888,19890,10033,8032,8030,8088,8090,8031,8033,0,8040,8048,8042,8044,10200,8188,8190,27017,3306,3000]
     ip_ports = list(set(ip_ports))
-    print(len(ip_ports))
+    #print(len(ip_ports))
     #for i in range(46100,46601,1):
     #    ip_ports.append(i)
     #for i in range(47100,47601,1):
@@ -70,10 +68,19 @@ def create_analytics(key_name,inst_name='worker_node',n=1,instance_id='ami-061eb
     master = ec2_resource.create_instances(ImageId=instance_id, InstanceType=instance_type,MinCount=1,MaxCount=1,KeyName=key_name,SecurityGroupIds=[security_group_id],UserData=userdata)
     userdata = userdata.replace("node_master",inst_name,1)
     workers = ec2_resource.create_instances(ImageId=instance_id, InstanceType=instance_type,MinCount=1,MaxCount=n,KeyName=key_name,SecurityGroupIds=[security_group_id],UserData=userdata)
+    print(master[0].id)
     # instancesIds = [inst.id for inst in instances]
-    for worker in workers:
-        worker.wait_until_running()
-    master[0].wait_until_running()
+    instance_ids = []
+    for instance in workers:
+        instance_ids.append(instance.id)
+    instance_ids.append(master[0].id)
+    print(instance_ids)
+    print("wait until running")
+    waiter = ec2_resource.meta.client.get_waiter('instance_running')
+    waiter.wait(InstanceIds=instance_ids)
+    #for worker in workers:
+    #    worker.wait_until_running()
+    #master[0].wait_until_running()
     for worker in workers:
         worker.reload()
     master[0].reload()
@@ -86,6 +93,13 @@ def create_analytics(key_name,inst_name='worker_node',n=1,instance_id='ami-061eb
     insts_file.close()
     for key,value in insts.items():
        print(key,value)
+    print('Waiting for status ok')
+    waiter = ec2_resource.meta.client.get_waiter('instance_status_ok')
+    waiter.wait(InstanceIds=instance_ids)
+    print('Waiting for completion')
+    for worker in workers:
+        worker.reload()
+    master[0].reload()
     # xxx = input()
     # # responses = [ec2_client.release_address(AllocationId=allocations[i]['AllocationId']) for i in range(n)]
     # ec2_resource.instances.filter(InstanceIds=instancesIds).terminate()

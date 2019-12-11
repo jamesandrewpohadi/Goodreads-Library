@@ -1,10 +1,11 @@
 import json
 import boto3
+import sys
 
 ec2_client = boto3.client('ec2')
 ec2_resource = boto3.resource('ec2')
 
-def credel_web_instances():
+def credel_web_instances(key):
     response = ec2_client.describe_vpcs()
     vpc_id = response.get('Vpcs', [{}])[0].get('VpcId', '')
     sgs = ec2_client.create_security_group(GroupName='SECURITY_GROUP2',Description='DESCRIPTION',VpcId=vpc_id)
@@ -30,9 +31,9 @@ def credel_web_instances():
             'IpRanges': [{'CidrIp': '0.0.0.0/0'}]}
             ]
             )
-    mongodb = ec2_resource.create_instances(ImageId='ami-0a092d402bc88d017', InstanceType='t2.micro',MinCount=1,MaxCount=1,KeyName='sing_net_test',SecurityGroupIds=[security_group_id])
-    mysql = ec2_resource.create_instances(ImageId='ami-083fb6a9e21c34688', InstanceType='t2.micro',MinCount=1,MaxCount=1,KeyName='sing_net_test',SecurityGroupIds=[security_group_id])
-    web = ec2_resource.create_instances(ImageId='ami-06861bded36d551dd', InstanceType='t2.micro',MinCount=1,MaxCount=1,KeyName='sing_net_test',SecurityGroupIds=[security_group_id])
+    mongodb = ec2_resource.create_instances(ImageId='ami-0a092d402bc88d017', InstanceType='t2.medium',MinCount=1,MaxCount=1,KeyName=key,SecurityGroupIds=[security_group_id])
+    mysql = ec2_resource.create_instances(ImageId='ami-083fb6a9e21c34688', InstanceType='t2.medium',MinCount=1,MaxCount=1,KeyName=key,SecurityGroupIds=[security_group_id])
+    web = ec2_resource.create_instances(ImageId='ami-06861bded36d551dd', InstanceType='t2.medium',MinCount=1,MaxCount=1,KeyName=key,SecurityGroupIds=[security_group_id])
     # instancesIds = [inst.id for inst in instances]
     mongodb[0].wait_until_running()
     mysql[0].wait_until_running()
@@ -58,4 +59,4 @@ def credel_web_instances():
     # web[0].wait_until_terminated()
     # ec2_client.delete_security_group(GroupId=security_group_id)
 
-credel_web_instances()
+credel_web_instances(sys.argv[1])

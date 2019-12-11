@@ -1,6 +1,6 @@
 echo creating instances
 
-python3 create_web_instances.py
+python3 create_web_instances.py $1
 
 mysql=$(grep  -oP '"mysql-server": \"\K(.*?)"' web/instance.json | tr -d \")
 mongodb=$(grep  -oP '"mongodb-server": \"\K(.*?)"' web/instance.json | tr -d \")

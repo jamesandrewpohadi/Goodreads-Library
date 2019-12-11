@@ -38,10 +38,10 @@ done
 #sleep 120
 scp -o "StrictHostKeyChecking=no" -i "${key_name}.pem" conf_node_master.sh "ubuntu@${node_m_addr}:/home/ubuntu"
 scp -o "StrictHostKeyChecking=no" -i "${key_name}.pem" analytics_instances.json "ubuntu@${node_m_addr}:/home/ubuntu"
-scp -o "StrictHostKeyChecking=no" -i "${key_name}.pem" ../dbms-project-goodreads/web/instance.json "ubuntu@${node_m_addr}:/home/ubuntu"
+scp -o "StrictHostKeyChecking=no" -i "${key_name}.pem" ../web/instance.json "ubuntu@${node_m_addr}:/home/ubuntu"
 scp -o "StrictHostKeyChecking=no" -i "${key_name}.pem" good_test.py "ubuntu@${node_m_addr}:/home/ubuntu"
 scp -o "StrictHostKeyChecking=no" -i "${key_name}.pem" pc_for_hdfs.py "ubuntu@${node_m_addr}:/home/ubuntu"
 exec_inst "${key_name}.pem" "ubuntu@${node_m_addr}" "sudo chmod 777 conf_node_master.sh && sudo ./conf_node_master.sh"
 #exec_inst "${key_name}.pem" "ubuntu@${node_m_addr}" ""
-scp -o "StrictHostKeyChecking=no" -i "${key_name}.pem" "ubuntu@{node_m_addr}:/home/ubuntu/result.txt" result.txt
-scp -o "StrictHostKeyChecking=no" -i "${key_name}.pem" "ubuntu@{node_m_addr}:/home/ubuntu/result2.txt" result2.txt
+scp -o "StrictHostKeyChecking=no" -i "${key_name}.pem" "ubuntu@${node_m_addr}:/home/ubuntu/result.txt" result.txt
+scp -o "StrictHostKeyChecking=no" -i "${key_name}.pem" "ubuntu@${node_m_addr}:/home/ubuntu/result2.txt" result2.txt

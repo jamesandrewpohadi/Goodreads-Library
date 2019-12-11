@@ -209,6 +209,20 @@ router.get("/user/:id", function(req, res, next) {
         .find({ asin: { $in: book_id } })
         .limit(20)
         .toArray(function(err, book_data) {
+
+          if(Object.keys(book_data).length == 0){
+            res.render("user",{
+              
+                cookie: req.cookies,
+                data : {
+                err: "User not found"
+              }
+            });
+
+          }
+
+          else{
+          
           res.cookie('page',req.originalUrl);
           res.render("user", {
             cookie: req.cookies,
@@ -219,7 +233,10 @@ router.get("/user/:id", function(req, res, next) {
             }
           });
           // console.log(user_data);
+          book_id = [];
+        }
         });
+      
 
     }
   );

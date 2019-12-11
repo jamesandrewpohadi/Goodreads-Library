@@ -15,5 +15,5 @@ sudo apt install mysql-server -y
 # sudo mysql -e "ALTER USER '%'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql';"
 # sudo mysql -e "GRANT ALL ON goodreads.kindle_reviews TO '%'@'%';"
 
-sudo mysql --password=mysql goodreads -h mysql -e 'select * from kindle_reviews;' > kindle_reviews.tsv
+mysql --password=mysql goodreads -h $mysql -e 'select * from kindle_reviews;' > kindle_reviews.tsv
 mongoexport -h $mongodb --collection=meta_Kindle_Store --db=goodreads --out=meta_kindle.json

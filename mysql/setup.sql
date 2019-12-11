@@ -12,10 +12,11 @@ create table kindle_reviews (
     unixReviewTime int(15) 
 );
 
+-- @dummy
 load data local infile "kindle_reviews.csv" 
 into table kindle_reviews fields terminated by ',' enclosed by '"' 
 escaped by '"' lines terminated by '\n' IGNORE 1 LINES
-(@dummy,asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime);
+(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime);
 alter table kindle_reviews add index rID (reviewerID);
 alter table kindle_reviews add index bid (asin);
 

@@ -12,6 +12,13 @@
 </head>
 
 <style>
+
+.component-center {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
     button:disabled {
         cursor: not-allowed;
         pointer-events: all !important;
@@ -22,6 +29,13 @@
     <% include partials/head %>
     <div>
         <br>
+        <main class="component-center">
+        <% if (data.err) { %>
+            <div>
+                <h1 class="my-4">Sorry...</h1>
+                <p class="mb-1">The user does not exist in our database!!</p><br>
+            </div>
+        <% } else {%>
         <div class="col text-center">
             <% if (typeof cookie.login !== "undefined" && cookie.login == 'true' && data.user_data[0]["reviewerID"] == cookie.user_info.user_id  ) { %>
 
@@ -223,6 +237,7 @@
         </div>
         <hr>
         <% }); %>
+        <% } %>
     </div>
 
     <% include partials/footer %>

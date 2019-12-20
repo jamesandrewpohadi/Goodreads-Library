@@ -5,7 +5,7 @@ import sys
 ec2_client = boto3.client('ec2')
 ec2_resource = boto3.resource('ec2')
 
-def create_analytics(key_name,inst_name='worker_node',n=1,instance_id='ami-061eb2b23f9f8839c',instance_type='t2.medium',userdata_file=None):
+def create_analytics(key_name,inst_name='worker_node',n=1,instance_id='ami-061eb2b23f9f8839c',instance_type='t2.large',userdata_file=None):
 # create n number of worker nodes + 1 node master
     userdata=""
 #    print(userdata_file)

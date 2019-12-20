@@ -1,0 +1,203 @@
+2019-12-20 03:22:21,907 INFO spark.SparkContext: Running Spark version 2.4.4
+2019-12-20 03:22:21,944 INFO spark.SparkContext: Submitted application: Goodreads-tf-idf
+2019-12-20 03:22:22,029 INFO spark.SecurityManager: Changing view acls to: root
+2019-12-20 03:22:22,030 INFO spark.SecurityManager: Changing modify acls to: root
+2019-12-20 03:22:22,030 INFO spark.SecurityManager: Changing view acls groups to: 
+2019-12-20 03:22:22,030 INFO spark.SecurityManager: Changing modify acls groups to: 
+2019-12-20 03:22:22,030 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+2019-12-20 03:22:22,299 INFO util.Utils: Successfully started service 'sparkDriver' on port 37573.
+2019-12-20 03:22:22,353 INFO spark.SparkEnv: Registering MapOutputTracker
+2019-12-20 03:22:22,387 INFO spark.SparkEnv: Registering BlockManagerMaster
+2019-12-20 03:22:22,393 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2019-12-20 03:22:22,393 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+2019-12-20 03:22:22,408 INFO storage.DiskBlockManager: Created local directory at /tmp/blockmgr-11e19edc-dc40-4e91-92fe-ee89dba870ea
+2019-12-20 03:22:22,428 INFO memory.MemoryStore: MemoryStore started with capacity 366.3 MB
+2019-12-20 03:22:22,445 INFO spark.SparkEnv: Registering OutputCommitCoordinator
+2019-12-20 03:22:22,531 INFO util.log: Logging initialized @2484ms
+2019-12-20 03:22:22,603 INFO server.Server: jetty-9.3.z-SNAPSHOT, build timestamp: unknown, git hash: unknown
+2019-12-20 03:22:22,617 INFO server.Server: Started @2572ms
+2019-12-20 03:22:22,637 INFO server.AbstractConnector: Started ServerConnector@51e02171{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2019-12-20 03:22:22,637 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+2019-12-20 03:22:22,663 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5ab235ba{/jobs,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,664 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@34f135bd{/jobs/json,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,665 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@55da5a67{/jobs/job,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,670 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1a0e7f70{/jobs/job/json,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,671 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@27effd51{/stages,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,673 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@20e182a9{/stages/json,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,674 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@14f8e3d2{/stages/stage,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,675 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@9e1be9e{/stages/stage/json,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,675 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5ad42a03{/stages/pool,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,675 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@b4f060{/stages/pool/json,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,676 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@69c63ff8{/storage,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,680 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6dd77910{/storage/json,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,680 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1628d29b{/storage/rdd,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,681 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@313807ce{/storage/rdd/json,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,681 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@69d9d7ee{/environment,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,682 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3f903c3c{/environment/json,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,684 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6ffc8d5f{/executors,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,685 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1e8be119{/executors/json,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,687 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@394a3381{/executors/threadDump,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,688 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7859948{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,694 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@c186a92{/static,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,695 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@71c96d1d{/,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,698 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@66796654{/api,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,699 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2de01760{/jobs/job/kill,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,699 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2fde625a{/stages/stage/kill,null,AVAILABLE,@Spark}
+2019-12-20 03:22:22,702 INFO ui.SparkUI: Bound SparkUI to 0.0.0.0, and started at http://ip-172-31-23-117.ap-southeast-1.compute.internal:4040
+2019-12-20 03:22:22,886 INFO client.StandaloneAppClient$ClientEndpoint: Connecting to master spark://ec2-18-141-25-51.ap-southeast-1.compute.amazonaws.com:7077...
+2019-12-20 03:22:22,939 INFO client.TransportClientFactory: Successfully created connection to ec2-18-141-25-51.ap-southeast-1.compute.amazonaws.com/172.31.23.117:7077 after 31 ms (0 ms spent in bootstraps)
+2019-12-20 03:22:23,098 INFO cluster.StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20191220032223-0000
+2019-12-20 03:22:23,105 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 36565.
+2019-12-20 03:22:23,106 INFO netty.NettyBlockTransferService: Server created on ip-172-31-23-117.ap-southeast-1.compute.internal:36565
+2019-12-20 03:22:23,108 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2019-12-20 03:22:23,135 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, ip-172-31-23-117.ap-southeast-1.compute.internal, 36565, None)
+2019-12-20 03:22:23,142 INFO storage.BlockManagerMasterEndpoint: Registering block manager ip-172-31-23-117.ap-southeast-1.compute.internal:36565 with 366.3 MB RAM, BlockManagerId(driver, ip-172-31-23-117.ap-southeast-1.compute.internal, 36565, None)
+2019-12-20 03:22:23,150 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, ip-172-31-23-117.ap-southeast-1.compute.internal, 36565, None)
+2019-12-20 03:22:23,151 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, ip-172-31-23-117.ap-southeast-1.compute.internal, 36565, None)
+2019-12-20 03:22:23,152 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220032223-0000/0 on worker-20191220032217-172.31.23.117-35901 (172.31.23.117:35901) with 2 core(s)
+2019-12-20 03:22:23,153 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220032223-0000/0 on hostPort 172.31.23.117:35901 with 2 core(s), 1024.0 MB RAM
+2019-12-20 03:22:23,166 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220032223-0000/1 on worker-20191220032217-172.31.24.58-40615 (172.31.24.58:40615) with 2 core(s)
+2019-12-20 03:22:23,166 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220032223-0000/1 on hostPort 172.31.24.58:40615 with 2 core(s), 1024.0 MB RAM
+2019-12-20 03:22:23,169 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220032223-0000/2 on worker-20191220032217-172.31.26.38-39037 (172.31.26.38:39037) with 2 core(s)
+2019-12-20 03:22:23,170 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220032223-0000/2 on hostPort 172.31.26.38:39037 with 2 core(s), 1024.0 MB RAM
+2019-12-20 03:22:23,277 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220032223-0000/1 is now RUNNING
+2019-12-20 03:22:23,289 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220032223-0000/2 is now RUNNING
+2019-12-20 03:22:23,364 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220032223-0000/0 is now RUNNING
+2019-12-20 03:22:23,394 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@647be08b{/metrics/json,null,AVAILABLE,@Spark}
+2019-12-20 03:22:23,459 INFO cluster.StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+
+Computing he TF-IDF of the word ' the  ':
+
+Calculating the TF first...
+The TF is:
+Calculating IDF...
+The IDF is:  0.10673860658719833
+
+The TF-IDF is:
+2019-12-20 03:24:50,887 ERROR scheduler.TaskSetManager: Task 0 in stage 11.0 failed 4 times; aborting job
+Traceback (most recent call last):
+  File "/home/ubuntu/good_test.py", line 92, in <module>
+    calc_tfidf(word)
+  File "/home/ubuntu/good_test.py", line 87, in calc_tfidf
+    df2.show()
+  File "/home/ubuntu/spark/python/lib/pyspark.zip/pyspark/sql/dataframe.py", line 380, in show
+  File "/home/ubuntu/spark/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/home/ubuntu/spark/python/lib/pyspark.zip/pyspark/sql/utils.py", line 63, in deco
+  File "/home/ubuntu/spark/python/lib/py4j-0.10.7-src.zip/py4j/protocol.py", line 328, in get_return_value
+py4j.protocol.Py4JJavaError: An error occurred while calling o103.showString.
+: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 11.0 failed 4 times, most recent failure: Lost task 0.3 in stage 11.0 (TID 465, 172.31.23.117, executor 0): java.io.IOException: No space left on device
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(FileOutputStream.java:326)
+	at org.apache.spark.storage.TimeTrackingOutputStream.write(TimeTrackingOutputStream.java:58)
+	at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)
+	at java.io.BufferedOutputStream.write(BufferedOutputStream.java:126)
+	at net.jpountz.lz4.LZ4BlockOutputStream.flushBufferedData(LZ4BlockOutputStream.java:220)
+	at net.jpountz.lz4.LZ4BlockOutputStream.write(LZ4BlockOutputStream.java:173)
+	at org.apache.spark.storage.DiskBlockObjectWriter.write(DiskBlockObjectWriter.scala:252)
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeSorterSpillWriter.write(UnsafeSorterSpillWriter.java:133)
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter.spillIterator(UnsafeExternalSorter.java:498)
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter.spill(UnsafeExternalSorter.java:222)
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter.createWithExistingInMemorySorter(UnsafeExternalSorter.java:111)
+	at org.apache.spark.sql.execution.UnsafeKVExternalSorter.<init>(UnsafeKVExternalSorter.java:156)
+	at org.apache.spark.sql.execution.UnsafeFixedWidthAggregationMap.destructAndCreateExternalSorter(UnsafeFixedWidthAggregationMap.java:248)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.agg_doConsume_0$(Unknown Source)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.agg_doAggregateWithKeys_0$(Unknown Source)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.processNext(Unknown Source)
+	at org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:43)
+	at org.apache.spark.sql.execution.WholeStageCodegenExec$$anonfun$13$$anon$1.hasNext(WholeStageCodegenExec.scala:636)
+	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:409)
+	at org.apache.spark.shuffle.sort.BypassMergeSortShuffleWriter.write(BypassMergeSortShuffleWriter.java:125)
+	at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:99)
+	at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:55)
+	at org.apache.spark.scheduler.Task.run(Task.scala:123)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:408)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:414)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+Driver stacktrace:
+	at org.apache.spark.scheduler.DAGScheduler.org$apache$spark$scheduler$DAGScheduler$$failJobAndIndependentStages(DAGScheduler.scala:1889)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:1877)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:1876)
+	at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)
+	at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:1876)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$handleTaskSetFailed$1.apply(DAGScheduler.scala:926)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$handleTaskSetFailed$1.apply(DAGScheduler.scala:926)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:926)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:2110)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2059)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2048)
+	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:737)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2061)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2158)
+	at org.apache.spark.rdd.RDD$$anonfun$reduce$1.apply(RDD.scala:1035)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:363)
+	at org.apache.spark.rdd.RDD.reduce(RDD.scala:1017)
+	at org.apache.spark.rdd.RDD$$anonfun$takeOrdered$1.apply(RDD.scala:1439)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:363)
+	at org.apache.spark.rdd.RDD.takeOrdered(RDD.scala:1426)
+	at org.apache.spark.sql.execution.TakeOrderedAndProjectExec.executeCollect(limit.scala:136)
+	at org.apache.spark.sql.Dataset.org$apache$spark$sql$Dataset$$collectFromPlan(Dataset.scala:3389)
+	at org.apache.spark.sql.Dataset$$anonfun$head$1.apply(Dataset.scala:2550)
+	at org.apache.spark.sql.Dataset$$anonfun$head$1.apply(Dataset.scala:2550)
+	at org.apache.spark.sql.Dataset$$anonfun$52.apply(Dataset.scala:3370)
+	at org.apache.spark.sql.execution.SQLExecution$$anonfun$withNewExecutionId$1.apply(SQLExecution.scala:78)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:125)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:73)
+	at org.apache.spark.sql.Dataset.withAction(Dataset.scala:3369)
+	at org.apache.spark.sql.Dataset.head(Dataset.scala:2550)
+	at org.apache.spark.sql.Dataset.take(Dataset.scala:2764)
+	at org.apache.spark.sql.Dataset.getRows(Dataset.scala:254)
+	at org.apache.spark.sql.Dataset.showString(Dataset.scala:291)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: No space left on device
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(FileOutputStream.java:326)
+	at org.apache.spark.storage.TimeTrackingOutputStream.write(TimeTrackingOutputStream.java:58)
+	at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)
+	at java.io.BufferedOutputStream.write(BufferedOutputStream.java:126)
+	at net.jpountz.lz4.LZ4BlockOutputStream.flushBufferedData(LZ4BlockOutputStream.java:220)
+	at net.jpountz.lz4.LZ4BlockOutputStream.write(LZ4BlockOutputStream.java:173)
+	at org.apache.spark.storage.DiskBlockObjectWriter.write(DiskBlockObjectWriter.scala:252)
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeSorterSpillWriter.write(UnsafeSorterSpillWriter.java:133)
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter.spillIterator(UnsafeExternalSorter.java:498)
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter.spill(UnsafeExternalSorter.java:222)
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter.createWithExistingInMemorySorter(UnsafeExternalSorter.java:111)
+	at org.apache.spark.sql.execution.UnsafeKVExternalSorter.<init>(UnsafeKVExternalSorter.java:156)
+	at org.apache.spark.sql.execution.UnsafeFixedWidthAggregationMap.destructAndCreateExternalSorter(UnsafeFixedWidthAggregationMap.java:248)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.agg_doConsume_0$(Unknown Source)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.agg_doAggregateWithKeys_0$(Unknown Source)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.processNext(Unknown Source)
+	at org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:43)
+	at org.apache.spark.sql.execution.WholeStageCodegenExec$$anonfun$13$$anon$1.hasNext(WholeStageCodegenExec.scala:636)
+	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:409)
+	at org.apache.spark.shuffle.sort.BypassMergeSortShuffleWriter.write(BypassMergeSortShuffleWriter.java:125)
+	at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:99)
+	at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:55)
+	at org.apache.spark.scheduler.Task.run(Task.scala:123)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:408)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:414)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	... 1 more
+

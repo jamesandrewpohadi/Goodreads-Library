@@ -13,7 +13,7 @@ key_name=$2
 echo $1
 echo $2
 printf "\nlaunching servers\n"
-python launch_analytics.py $key_name $no_of_nodes
+python3 launch_analytics.py $key_name $no_of_nodes
 node_m_addr=$(cat analytics_instances.json | jq '.node_master.publicdns')
 node_m_addr=$(echo "${node_m_addr//\"}")
 worker_addr=($(cat analytics_instances.json | jq 'to_entries[] | select(.key|test("worker_node.")) | .value.publicdns'))

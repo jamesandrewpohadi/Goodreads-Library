@@ -1,5 +1,7 @@
 key1="testKey.pem"
+echo setup mysql
 instance1=ubuntu@$1
+# instance1=ubuntu@54.169.218.117
 # instance1=ubuntu@ec2-52-220-10-107.ap-southeast-1.compute.amazonaws.com
 
 # in: key instance command
@@ -28,7 +30,7 @@ exec_inst $key1 $instance1 "echo connected"
 # scp -i $key1 mysql/kindle_reviews.csv $instance1:~/.
 scp -i $key1 mysql/setup.sql $instance1:~/.
 # scp -i $key1 mysql/Dockerfile $instance1:~/.
-scp -i $key1 mysql/.env $instance1:~/.
+# scp -i $key1 mysql/.env $instance1:~/.
 scp -i $key1 mysql/setup.sh $instance1:~/.
 
 exec_inst $key1 $instance1 "bash setup.sh"

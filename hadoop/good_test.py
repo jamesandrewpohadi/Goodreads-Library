@@ -30,7 +30,7 @@ data_review_text = data.select('reviewText')
 
 #To calculate the number of words in a review:
 df = data_review_text.withColumn('wordCountPerReview', f.size(f.split(f.col('reviewText'), ' ')))
-df.show()
+# df.show()
 
 
 
@@ -41,11 +41,11 @@ dfw = df.withColumn('word', f.explode(f.split(f.col('reviewText'), ' ')))\
     .groupBy('word')\
     .count()\
     .sort('count', ascending=False)
-dfw.show() 
+# dfw.show() 
 
 list_of_words = dfw.select('word').rdd.flatMap(lambda x: x).collect()
-print(list_of_words[0][0])
-print("LIST OF WORDS:\n", list_of_words)
+# print(list_of_words[0][0])
+# print("LIST OF WORDS:\n", list_of_words)
 
 
 
@@ -74,7 +74,7 @@ def calc_tfidf(given_word):
 
     df2 = df2.withColumn('tf',f.col('count')/f.col('sum'))
     print("The TF is:")
-    df2.show()
+    # df2.show()
 
     #idf:
     print("Calculating IDF...")

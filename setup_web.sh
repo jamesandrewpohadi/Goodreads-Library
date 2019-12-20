@@ -14,7 +14,7 @@ exec_inst () {
 chmod 400 testKey.pem
 key="testKey.pem"
 
-sleep 5
+sleep 10
 
 bash setup-mysql.sh $mysql
 bash setup-mongodb.sh $mongodb

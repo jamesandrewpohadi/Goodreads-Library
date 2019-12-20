@@ -17,8 +17,9 @@ if [ $1 -eq 1 ] || [ $1 -eq 3 ]; then
 fi
 key=$2
 if ([ $1 -eq 2 ] || [ $1 -eq 3 ]) && [ $# -eq 3 ]; then
-cp "${key}.*" hadoop/
+cp ${key}.* hadoop/
 cd hadoop
+echo launch_analytics
 ./launch_analytics.sh $3 $2
 cd ..
 #echo "hadoop test"

@@ -62,6 +62,7 @@ runuser -l ubuntu -c 'start-dfs.sh'
 runuser -l ubuntu -c 'hdfs dfs -mkdir -p /user/ubuntu'
 runuser -l ubuntu -c 'hdfs dfs -put kindle_reviews.tsv'
 runuser -l ubuntu -c 'hdfs dfs -put meta_kindle.json'
+runuser -l ubuntu -c 'hadoop dfsadmin -safemode leave'
 runuser -l ubuntu -c './spark/sbin/start-master.sh'
 runuser -l ubuntu -c './spark/sbin/start-slaves.sh'
 sleep 1

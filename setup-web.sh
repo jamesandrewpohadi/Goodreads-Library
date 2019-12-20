@@ -1,4 +1,5 @@
-key2="testKey.pem"
+keyname=$2
+key2="${keyname}.pem"
 instance2=ubuntu@$1
 
 # in: key instance command

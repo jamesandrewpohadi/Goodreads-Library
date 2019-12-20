@@ -16,6 +16,6 @@ key="testKey.pem"
 
 sleep 10
 
-bash setup-mysql.sh $mysql
-bash setup-mongodb.sh $mongodb
-bash setup-web.sh $web
+bash setup-mysql.sh $mysql $1
+bash setup-mongodb.sh $mongodb $1
+bash setup-web.sh $web $1

@@ -11,6 +11,8 @@ apt-get -y install python3-pip
 sleep 2
 pip3 --no-cache-dir install pyspark
 sleep 2
+pip3 install numpy
+sleep 2
 apt-get -y install jq
 sleep 2
 apt-get -y install openjdk-8-jdk

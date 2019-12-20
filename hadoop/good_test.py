@@ -85,6 +85,7 @@ def calc_tfidf(given_word):
     print("\nThe TF-IDF is:")
     df2 = df2.withColumn('tf-idf', f.col('tf')*idf_ans)
     df2.show()
+    #df2.write.save('hdfs://{}:9000/user/ubuntu/'.format(sys.argv[1]), format='parquet', mode='append')
 
 
 for word in list_of_words:

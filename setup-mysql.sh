@@ -1,4 +1,5 @@
-key1="testKey.pem"
+keyname=$2
+key1="${keyname}.pem"
 echo setup mysql
 instance1=ubuntu@$1
 # instance1=ubuntu@54.169.218.117

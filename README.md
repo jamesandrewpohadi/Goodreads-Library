@@ -16,7 +16,7 @@ sudo apt-get install jq
 ```
 2. Clean: No existing instances, security groups, keys, etc. (The reason is that existing keys or security group names that are similar to our group's might cause error while running)
 
-### 50.043 Database and Big Data Systems 2019
+## 50.043 Database and Big Data Systems 2019
 
 This project consists of:
 - Web clusters which can be setup using web automation:
@@ -41,11 +41,11 @@ where ```<num of clusters>``` = {2,4,8}
 
 Web clusters are running on EC2 t2.medium instances, while automation clusters are running on EC2 t2.large instances.
 
-# Completed Tasks
+## Completed Tasks
 
 We have completed all the tasks given for the project. We also implements some additional features on top of the basic one.
 
-## Frontend
+### Frontend
 
 Completed features:
 1. See reviews
@@ -56,15 +56,15 @@ Completed features:
 6. Sorting (additional)
 7. User page (additional)
 
-## Backend
+### Backend
 
-### Production [Expected time: 15 mins]
+#### Production [Expected time: 15 mins]
 
 Expected setting up time: 15 mins
 
 - Node Express js with ejs backend
 
-### Analytics [Expected time: 30 mins]
+#### Analytics [Expected time: 30 mins]
 
 Expected setting up time: 10 mins
 
@@ -101,4 +101,4 @@ Once again, note that for the Pearson Correlation, the team has replaced all the
 **Solution**: Please run again. 
 Need to delete existing SECURITY_GROUP1 and SECURITY_GROUP3, instances (since running back the script will create new instances). DO NOT DELETE deployKey ! (if deployKey is deleted from AWS, need to delete deployKey.pem file in the local)
 
-### If you have any queries or issues, please contact one of the team members through SUTD email directory.
+### If you have any queries or issues, please contact one of the team members through SUTD email directory. Thank you :)

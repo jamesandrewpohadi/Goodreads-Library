@@ -25,91 +25,46 @@ schema = StructType([
     ]
 )
 #data = sc.textFile('hdfs://ec2-54-169-97-130.ap-southeast-1.compute.amazonaws.com:9000/user/ubuntu/kindle_reviews.tsv')
+
+def split_lines_count(x):
+    words = x[1].lower().split(' ')
+    n = len(words)
+    return (x[0][:10]+'...',[(word,n) for word in words])
+
+def count_tf(x):
+    id = x[0][0]
+    word = x[0][1]
+    total = x[0][2]
+    count = x[1]
+    return (word,(id,count/total))
+
+def toCSVLine(data):
+  return ','.join(str(d) for d in data)
+
 data = sqlContext.read.csv('hdfs://{}:9000/user/ubuntu/kindle_reviews.tsv'.format(sys.argv[1]), schema = schema, sep = '\t').cache()
-data_review_text = data.select('reviewText')
+data = data.select('reviewText','reviewText')
+data = data.na.drop()
+count = data.count()
+data = data.rdd
 
-#To calculate the number of words in a review:
-df = data_review_text.withColumn('wordCountPerReview', f.size(f.split(f.col('reviewText'), ' ')))
-# df.show()
+tf = data.map(lambda x: split_lines_count(x))#.flatMap(lambda x:x['id'])
+tf = tf.flatMapValues(lambda x: x)
+tf = tf.map(lambda x: ((x[0],x[1][0],x[1][1]),1))
+tf = tf.reduceByKey(lambda x,y: x+y)
+tf = tf.map(count_tf).cache().cache()
+idf = tf.map(lambda x: (x[0],1))
+idf = idf.reduceByKey(lambda x,y: x+y)
+idf = idf.map(lambda x: (x[0],math.log(count/x[1])))
+tfidf = tf.join(idf)
+tfidf = tfidf.map(lambda x: (x[0],x[1][0][0],x[1][0][1]*x[1][1]))
 
+schema = StructType([
+    StructField("word", StringType(), nullable=True),
+    StructField("reviewText", StringType(), nullable=True),
+    StructField("tfidf", FloatType(), nullable=True),
+    ]
+)
+df3 = sqlContext.createDataFrame(tfidf, schema)
+df3.write.csv('tfidf_result')
 
-
-
-#To calculate the number of times a word appears in all the reviews
-df.select(f.sum('wordCountPerReview')).collect()
-dfw = df.withColumn('word', f.explode(f.split(f.col('reviewText'), ' ')))\
-    .groupBy('word')\
-    .count()\
-    .sort('count', ascending=False)
-# dfw.show() 
-
-list_of_words = dfw.select('word').rdd.flatMap(lambda x: x).collect()
-# print(list_of_words[0][0])
-# print("LIST OF WORDS:\n", list_of_words)
-
-
-
-
-def calc_idf(given_word):
-    #Total number of documents:
-    total_num_of_docs = data_review_text.count()
-    #Calculate the number documents the given word appears in:
-    reviews_with_given_word = data_review_text.filter(data_review_text.reviewText.contains(given_word))
-    #reviews_with_given_word.show()
-    num_of_docs_given_word_is_in = reviews_with_given_word.count()
-    #The IDF:
-    if(num_of_docs_given_word_is_in != 0):
-        idf = math.log(total_num_of_docs/num_of_docs_given_word_is_in)
-    return idf
-
-#tf-idf:
-def calc_tfidf(given_word):
-    #tf:
-    print("Calculating the TF first...")
-    df2 = df.withColumn('word', f.explode(f.split(f.col('reviewText'), ' ')))\
-    .groupBy('word', 'reviewText')\
-    .count()\
-    .sort('count', ascending = False)\
-    .withColumn('sum',f.size(f.split(f.col('reviewText'), ' ')))
-
-    df2 = df2.withColumn('tf',f.col('count')/f.col('sum'))
-    print("The TF is:")
-    # df2.show()
-
-    #idf:
-    print("Calculating IDF...")
-    idf_ans = calc_idf(given_word)
-    print("The IDF is: ", idf_ans)
-
-    #tf-idf:
-    print("\nThe TF-IDF is:")
-    df2 = df2.withColumn('tf-idf', f.col('tf')*idf_ans)
-    df2.show()
-    #df2.write.save('hdfs://{}:9000/user/ubuntu/'.format(sys.argv[1]), format='parquet', mode='append')
-
-
-for word in list_of_words:
-    print("\nComputing he TF-IDF of the word '", word, " ':\n")
-    calc_tfidf(word)
-
-
-# given_word = "Sanjay"
-# print("\nComputing he TF-IDF of the word '", given_word, " ':\n")
-# calc_tfidf(given_word)
-# idf_ans = calc_idf("Sanjay")
-# print("The IDF function returns:", idf_ans)
-
-
-# idf_dict = {}
-# #Total number of documents:
-# total_num_of_docs = data_review_text.count()
-# for word in df2.word:
-#     #Calculate the number documents the given word appears in:
-#     reviews_with_given_word = data_review_text.filter(data_review_text.reviewText.contains(word))
-#     reviews_with_given_word.show()
-#     num_of_docs_given_word_is_in = reviews_with_given_word.count()
-#     #The IDF:
-#     if(num_of_docs_given_word_is_in != 0):
-#         idf = math.log(total_num_of_docs/num_of_docs_given_word_is_in)
-#         idf_dict.update({word, idf})
-# print("The IDF:", idf)
+sc.stop()

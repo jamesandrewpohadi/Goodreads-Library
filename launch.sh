@@ -11,16 +11,18 @@ if [ $# -le 1 ]
     exit
 fi
 
+key=deployKey
+
 if [ $1 -eq 1 ] || [ $1 -eq 3 ]; then
-./setup_web.sh $2
+./setup_web.sh $key
 #echo "web test"
 fi
-key=$2
-if ([ $1 -eq 2 ] || [ $1 -eq 3 ]) && [ $# -eq 3 ]; then
+# key=$2
+
+if ([ $1 -eq 2 ] || [ $1 -eq 3 ]) && [ $# -eq 2 ]; then
 cp ${key}.* hadoop/
 cd hadoop
 echo launch_analytics
-./launch_analytics.sh $3 $2
+./launch_analytics.sh $2 $key
 cd ..
-#echo "hadoop test"
 fi

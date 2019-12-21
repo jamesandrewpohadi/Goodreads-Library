@@ -67,4 +67,9 @@ def mapR(a):
 rdd3 = combined.rdd.map(mapper)
 rdd3 = rdd3.reduceByKey(reducer)
 rdd3 = rdd3.map(mapR)
-print(rdd3.collect())
+
+with open('pearson-correlation_result','w+') as f:
+    f.write('pearson correlation: '+str(rdd3.collect()[0][1]))
+# rdd3.saveAsTextFile('pearson-correlation_result')
+
+sc.stop()

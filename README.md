@@ -24,13 +24,13 @@ This project consists of:
 ```
 bash launch.sh 1
 ```
-Once it is done, you can view the web by opening http://{web-server}:3000/, where the value of web can be seen from web/instance.json
+Once it is done, you can view the web by opening http://<web-server>:3000/, where the value of web can be seen from web/instance.json
 
 - Analytics clusters which can be setup using analytics automation:
 ```
 bash launch.sh 2 <num of clusters>
 ```
-The status of Spark can be seen from http://{node_master.publicdns}:8080, where node_master.publicdns value can be seen from hadoop/analytics_instances.json
+The status of Spark can be seen from http://<node_master.publicdns>:8080, where node_master.publicdns value can be seen from hadoop/analytics_instances.json
 
 Optionally, you can launch web and analytics together:
 ```
@@ -38,21 +38,24 @@ bash launch.sh 3 <num of clusters>
 ```
 You might need to press ctrl + C to exit web supervisor so that the automation script can continue
 
-where <num of clusters> = {2,4,8}
+where ```<num of clusters>``` = {2,4,8}
+
 Web clusters are running on EC2 t2.medium instances, while automation clusters are running on EC2 t2.large instances.
 
-# Completed Task
+# Completed Tasks
+
+We have completed all the tasks given for the project. We also implements some additional features on top of the basic one.
 
 ## Frontend
 
 Completed features:
-1. See some reviews
-2. Signup/Login
+1. See reviews
+2. Signup/Login (additional)
 3. Add new review
 4. Add new book
-5. Search by book title
-6. Sorting
-7. User page
+5. Search by book title (additional)
+6. Sorting (additional)
+7. User page (additional)
 
 ## Backend
 
@@ -75,7 +78,7 @@ Expected running time on 2 clusters:
 - Pearson Correlation: 30s
 - Tfidf: 10 mins
 
-## NOTE: For the Pearson Correlation, we replaced all the NULL values in the data with zero. Hence the output maybe differ accordingly.
+***NOTE: For the Pearson Correlation, we replaced all the NULL values in the data with zero. Hence the output maybe differ accordingly.***
 
 ## How to access the result files for the Analytics:
 You can find the results for TF-IDF in:
@@ -91,10 +94,12 @@ Likewise, you can also find the results for Pearson Correlation in:
 Once again, note that for the Pearson Correlation, the team has replaced all the NULL values in the data with Zero.
 
 
-# Common problems
+## Common problems
 
 1. Local internet not good that ssh ignore to connect to instances after several trial. This usually cause the web couldn't run properly because some of web server/mysql server/mongo server is not up.
-Solution: Run again. 
+
+
+**Solution**: Please run again. 
 Need to delete existing SECURITY_GROUP1 and SECURITY_GROUP3, instances (since running back the script will create new instances). DO NOT DELETE deployKey ! (if deployKey is deleted from AWS, need to delete deployKey.pem file in the local)
 
-## If you have any queries or issues, please contact one of the team members through SUTD email directory.
+### If you have any queries or issues, please contact one of the team members through SUTD email directory.

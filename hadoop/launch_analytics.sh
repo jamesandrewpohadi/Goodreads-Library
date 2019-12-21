@@ -1,19 +1,20 @@
 #!/bin/bash
 if [ $# -le 1 ]
   then
-    echo "provide arguments for: no_of_nodes, key_name"
+    echo "provide arguments for: key_name, no_of_nodes(optional: default = 2}, instance_type(optional: default = m4.large)"
     exit
 fi
 exec_inst () {
     echo $3
     ssh -o "StrictHostKeyChecking=no" -i $1 $2 $3
 }
-no_of_nodes=$1
-key_name=$2
+key_name=$1
+no_of_nodes=${2:-2}
+instance_type=${3:-m4.large}
 echo $1
 echo $2
 printf "\nlaunching servers\n"
-python3 launch_analytics.py $key_name $no_of_nodes
+python3 launch_analytics.py $key_name $no_of_nodes $instance_type
 node_m_addr=$(cat analytics_instances.json | jq '.node_master.publicdns')
 node_m_addr=$(echo "${node_m_addr//\"}")
 worker_addr=($(cat analytics_instances.json | jq 'to_entries[] | select(.key|test("worker_node.")) | .value.publicdns'))

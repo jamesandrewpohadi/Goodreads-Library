@@ -113,7 +113,7 @@ def create_analytics(key_name,inst_name='worker_node',n=1,instance_id='ami-061eb
     # web[0].wait_until_terminated()
     # ec2_client.delete_security_group(GroupId=security_group_id)
 
-create_analytics(sys.argv[1],n=int(sys.argv[2]),userdata_file="hadoop_node.sh")
+create_analytics(sys.argv[1],n=int(sys.argv[2]),userdata_file="hadoop_node.sh",instance_type=sys.argv[3])
 #print(sys.argv[1])
 #print(type(sys.argv[1]))
 

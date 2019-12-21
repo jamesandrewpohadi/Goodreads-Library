@@ -1,88 +1,70 @@
-2019-12-20 08:07:02,170 INFO spark.SparkContext: Running Spark version 2.4.4
-2019-12-20 08:07:02,206 INFO spark.SparkContext: Submitted application: Goodreads-tf-idf
-2019-12-20 08:07:02,253 INFO spark.SecurityManager: Changing view acls to: root
-2019-12-20 08:07:02,253 INFO spark.SecurityManager: Changing modify acls to: root
-2019-12-20 08:07:02,256 INFO spark.SecurityManager: Changing view acls groups to: 
-2019-12-20 08:07:02,256 INFO spark.SecurityManager: Changing modify acls groups to: 
-2019-12-20 08:07:02,256 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
-2019-12-20 08:07:02,535 INFO util.Utils: Successfully started service 'sparkDriver' on port 39275.
-2019-12-20 08:07:02,557 INFO spark.SparkEnv: Registering MapOutputTracker
-2019-12-20 08:07:02,573 INFO spark.SparkEnv: Registering BlockManagerMaster
-2019-12-20 08:07:02,575 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
-2019-12-20 08:07:02,576 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
-2019-12-20 08:07:02,584 INFO storage.DiskBlockManager: Created local directory at /tmp/blockmgr-0ab3868d-cc39-43e4-8067-331de2f500a4
-2019-12-20 08:07:02,599 INFO memory.MemoryStore: MemoryStore started with capacity 366.3 MB
-2019-12-20 08:07:02,612 INFO spark.SparkEnv: Registering OutputCommitCoordinator
-2019-12-20 08:07:02,681 INFO util.log: Logging initialized @2309ms
-2019-12-20 08:07:02,737 INFO server.Server: jetty-9.3.z-SNAPSHOT, build timestamp: unknown, git hash: unknown
-2019-12-20 08:07:02,760 INFO server.Server: Started @2389ms
-2019-12-20 08:07:02,777 INFO server.AbstractConnector: Started ServerConnector@34beac05{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
-2019-12-20 08:07:02,777 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
-2019-12-20 08:07:02,806 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5c585500{/jobs,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,807 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7c64beb2{/jobs/json,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,807 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1bcd5f4{/jobs/job,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,812 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4266a599{/jobs/job/json,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,813 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1b2e1249{/stages,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,815 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7cda67ad{/stages/json,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,816 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1007eb84{/stages/stage,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,818 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2325ddab{/stages/stage/json,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,819 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@c514980{/stages/pool,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,819 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3da94f34{/stages/pool/json,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,819 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@58051501{/storage,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,820 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@55c0532f{/storage/json,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,822 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@535b0d5e{/storage/rdd,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,823 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@247c28ee{/storage/rdd/json,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,823 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@54a19c7d{/environment,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,825 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3afe4ed{/environment/json,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,826 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@895283b{/executors,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,827 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4d6b4a9f{/executors/json,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,828 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1571653b{/executors/threadDump,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,829 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@698573f4{/executors/threadDump/json,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,836 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@48f04a0f{/static,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,837 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6383a33c{/,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,839 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7d66d30c{/api,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,839 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2155d8b6{/jobs/job/kill,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,840 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5c27560a{/stages/stage/kill,null,AVAILABLE,@Spark}
-2019-12-20 08:07:02,843 INFO ui.SparkUI: Bound SparkUI to 0.0.0.0, and started at http://ip-172-31-22-140.ap-southeast-1.compute.internal:4040
-2019-12-20 08:07:02,971 INFO client.StandaloneAppClient$ClientEndpoint: Connecting to master spark://ec2-52-221-206-168.ap-southeast-1.compute.amazonaws.com:7077...
-2019-12-20 08:07:03,025 INFO client.TransportClientFactory: Successfully created connection to ec2-52-221-206-168.ap-southeast-1.compute.amazonaws.com/172.31.22.140:7077 after 30 ms (0 ms spent in bootstraps)
-2019-12-20 08:07:03,148 INFO cluster.StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20191220080703-0000
-2019-12-20 08:07:03,154 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 45547.
-2019-12-20 08:07:03,154 INFO netty.NettyBlockTransferService: Server created on ip-172-31-22-140.ap-southeast-1.compute.internal:45547
-2019-12-20 08:07:03,155 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
-2019-12-20 08:07:03,189 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220080703-0000/0 on worker-20191220080658-172.31.22.140-42751 (172.31.22.140:42751) with 2 core(s)
-2019-12-20 08:07:03,190 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220080703-0000/0 on hostPort 172.31.22.140:42751 with 2 core(s), 1024.0 MB RAM
-2019-12-20 08:07:03,197 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220080703-0000/1 on worker-20191220080658-172.31.30.247-46803 (172.31.30.247:46803) with 2 core(s)
-2019-12-20 08:07:03,197 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220080703-0000/1 on hostPort 172.31.30.247:46803 with 2 core(s), 1024.0 MB RAM
-2019-12-20 08:07:03,200 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220080703-0000/2 on worker-20191220080658-172.31.21.52-33067 (172.31.21.52:33067) with 2 core(s)
-2019-12-20 08:07:03,201 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220080703-0000/2 on hostPort 172.31.21.52:33067 with 2 core(s), 1024.0 MB RAM
-2019-12-20 08:07:03,202 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220080703-0000/3 on worker-20191220080658-172.31.26.190-38227 (172.31.26.190:38227) with 2 core(s)
-2019-12-20 08:07:03,203 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220080703-0000/3 on hostPort 172.31.26.190:38227 with 2 core(s), 1024.0 MB RAM
-2019-12-20 08:07:03,205 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220080703-0000/4 on worker-20191220080658-172.31.29.180-33911 (172.31.29.180:33911) with 2 core(s)
-2019-12-20 08:07:03,206 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220080703-0000/4 on hostPort 172.31.29.180:33911 with 2 core(s), 1024.0 MB RAM
-2019-12-20 08:07:03,209 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220080703-0000/5 on worker-20191220080658-172.31.18.181-36377 (172.31.18.181:36377) with 2 core(s)
-2019-12-20 08:07:03,209 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220080703-0000/5 on hostPort 172.31.18.181:36377 with 2 core(s), 1024.0 MB RAM
-2019-12-20 08:07:03,209 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220080703-0000/6 on worker-20191220080658-172.31.26.245-36507 (172.31.26.245:36507) with 2 core(s)
-2019-12-20 08:07:03,209 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220080703-0000/6 on hostPort 172.31.26.245:36507 with 2 core(s), 1024.0 MB RAM
-2019-12-20 08:07:03,211 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220080703-0000/7 on worker-20191220080658-172.31.23.116-36689 (172.31.23.116:36689) with 2 core(s)
-2019-12-20 08:07:03,211 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220080703-0000/7 on hostPort 172.31.23.116:36689 with 2 core(s), 1024.0 MB RAM
-2019-12-20 08:07:03,214 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220080703-0000/8 on worker-20191220080658-172.31.28.52-33963 (172.31.28.52:33963) with 2 core(s)
-2019-12-20 08:07:03,215 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220080703-0000/8 on hostPort 172.31.28.52:33963 with 2 core(s), 1024.0 MB RAM
-2019-12-20 08:07:03,221 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, ip-172-31-22-140.ap-southeast-1.compute.internal, 45547, None)
-2019-12-20 08:07:03,232 INFO storage.BlockManagerMasterEndpoint: Registering block manager ip-172-31-22-140.ap-southeast-1.compute.internal:45547 with 366.3 MB RAM, BlockManagerId(driver, ip-172-31-22-140.ap-southeast-1.compute.internal, 45547, None)
-2019-12-20 08:07:03,237 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, ip-172-31-22-140.ap-southeast-1.compute.internal, 45547, None)
-2019-12-20 08:07:03,237 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, ip-172-31-22-140.ap-southeast-1.compute.internal, 45547, None)
-2019-12-20 08:07:03,308 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220080703-0000/3 is now RUNNING
-2019-12-20 08:07:03,322 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220080703-0000/5 is now RUNNING
-2019-12-20 08:07:03,324 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220080703-0000/1 is now RUNNING
-2019-12-20 08:07:03,325 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220080703-0000/2 is now RUNNING
-2019-12-20 08:07:03,326 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220080703-0000/8 is now RUNNING
-2019-12-20 08:07:03,330 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220080703-0000/6 is now RUNNING
-2019-12-20 08:07:03,358 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220080703-0000/7 is now RUNNING
-2019-12-20 08:07:03,359 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220080703-0000/4 is now RUNNING
-2019-12-20 08:07:03,359 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220080703-0000/0 is now RUNNING
-2019-12-20 08:07:03,542 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7236785{/metrics/json,null,AVAILABLE,@Spark}
-2019-12-20 08:07:03,571 INFO cluster.StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+2019-12-21 11:22:08,929 INFO spark.SparkContext: Running Spark version 2.4.4
+2019-12-21 11:22:08,974 INFO spark.SparkContext: Submitted application: Goodreads-tf-idf
+2019-12-21 11:22:09,030 INFO spark.SecurityManager: Changing view acls to: root
+2019-12-21 11:22:09,030 INFO spark.SecurityManager: Changing modify acls to: root
+2019-12-21 11:22:09,031 INFO spark.SecurityManager: Changing view acls groups to: 
+2019-12-21 11:22:09,031 INFO spark.SecurityManager: Changing modify acls groups to: 
+2019-12-21 11:22:09,031 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+2019-12-21 11:22:09,391 INFO util.Utils: Successfully started service 'sparkDriver' on port 37325.
+2019-12-21 11:22:09,422 INFO spark.SparkEnv: Registering MapOutputTracker
+2019-12-21 11:22:09,445 INFO spark.SparkEnv: Registering BlockManagerMaster
+2019-12-21 11:22:09,448 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2019-12-21 11:22:09,448 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+2019-12-21 11:22:09,460 INFO storage.DiskBlockManager: Created local directory at /tmp/blockmgr-b7ce7cfc-318d-43cf-8d23-ccc61873874e
+2019-12-21 11:22:09,483 INFO memory.MemoryStore: MemoryStore started with capacity 366.3 MB
+2019-12-21 11:22:09,502 INFO spark.SparkEnv: Registering OutputCommitCoordinator
+2019-12-21 11:22:09,599 INFO util.log: Logging initialized @2927ms
+2019-12-21 11:22:09,690 INFO server.Server: jetty-9.3.z-SNAPSHOT, build timestamp: unknown, git hash: unknown
+2019-12-21 11:22:09,711 INFO server.Server: Started @3041ms
+2019-12-21 11:22:09,736 INFO server.AbstractConnector: Started ServerConnector@35dbd6d3{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2019-12-21 11:22:09,736 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+2019-12-21 11:22:09,776 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6be87238{/jobs,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,776 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@52425da3{/jobs/json,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,777 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4adf0477{/jobs/job,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,778 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6a0edb18{/jobs/job/json,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,780 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2a613cbf{/stages,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,783 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@18af6938{/stages/json,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,785 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4133469d{/stages/stage,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,788 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1ddb8836{/stages/stage/json,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,790 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@468732be{/stages/pool,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,792 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@57f21d85{/stages/pool/json,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,792 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5fe7b22f{/storage,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,793 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1e3c1bdd{/storage/json,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,794 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@61d1c866{/storage/rdd,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,795 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2688ffec{/storage/rdd/json,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,795 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@449c57d8{/environment,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,796 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3a805e65{/environment/json,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,797 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@557d33ab{/executors,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,797 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@34ebd177{/executors/json,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,798 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@12ef72a5{/executors/threadDump,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,799 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2aa465eb{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,810 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@16f8fb7f{/static,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,812 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@61c00a45{/,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,816 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3243f7ed{/api,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,817 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@44dbb9b6{/jobs/job/kill,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,819 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6a876ef{/stages/stage/kill,null,AVAILABLE,@Spark}
+2019-12-21 11:22:09,825 INFO ui.SparkUI: Bound SparkUI to 0.0.0.0, and started at http://ip-172-31-17-55.ap-southeast-1.compute.internal:4040
+2019-12-21 11:22:10,011 INFO client.StandaloneAppClient$ClientEndpoint: Connecting to master spark://ec2-54-254-241-231.ap-southeast-1.compute.amazonaws.com:7077...
+2019-12-21 11:22:10,094 INFO client.TransportClientFactory: Successfully created connection to ec2-54-254-241-231.ap-southeast-1.compute.amazonaws.com/172.31.17.55:7077 after 48 ms (0 ms spent in bootstraps)
+2019-12-21 11:22:10,303 INFO cluster.StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20191221112210-0000
+2019-12-21 11:22:10,318 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 43097.
+2019-12-21 11:22:10,319 INFO netty.NettyBlockTransferService: Server created on ip-172-31-17-55.ap-southeast-1.compute.internal:43097
+2019-12-21 11:22:10,321 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2019-12-21 11:22:10,361 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191221112210-0000/0 on worker-20191221112205-172.31.19.144-39299 (172.31.19.144:39299) with 2 core(s)
+2019-12-21 11:22:10,362 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191221112210-0000/0 on hostPort 172.31.19.144:39299 with 2 core(s), 1024.0 MB RAM
+2019-12-21 11:22:10,372 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191221112210-0000/1 on worker-20191221112204-172.31.17.55-34479 (172.31.17.55:34479) with 2 core(s)
+2019-12-21 11:22:10,372 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191221112210-0000/1 on hostPort 172.31.17.55:34479 with 2 core(s), 1024.0 MB RAM
+2019-12-21 11:22:10,376 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191221112210-0000/2 on worker-20191221112204-172.31.20.115-37403 (172.31.20.115:37403) with 2 core(s)
+2019-12-21 11:22:10,377 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191221112210-0000/2 on hostPort 172.31.20.115:37403 with 2 core(s), 1024.0 MB RAM
+2019-12-21 11:22:10,421 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, ip-172-31-17-55.ap-southeast-1.compute.internal, 43097, None)
+2019-12-21 11:22:10,425 INFO storage.BlockManagerMasterEndpoint: Registering block manager ip-172-31-17-55.ap-southeast-1.compute.internal:43097 with 366.3 MB RAM, BlockManagerId(driver, ip-172-31-17-55.ap-southeast-1.compute.internal, 43097, None)
+2019-12-21 11:22:10,428 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, ip-172-31-17-55.ap-southeast-1.compute.internal, 43097, None)
+2019-12-21 11:22:10,429 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, ip-172-31-17-55.ap-southeast-1.compute.internal, 43097, None)
+2019-12-21 11:22:10,515 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191221112210-0000/0 is now RUNNING
+2019-12-21 11:22:10,515 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191221112210-0000/2 is now RUNNING
+2019-12-21 11:22:10,543 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191221112210-0000/1 is now RUNNING
+2019-12-21 11:22:10,982 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@85c5183{/metrics/json,null,AVAILABLE,@Spark}
+2019-12-21 11:22:11,013 INFO cluster.StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
 
 Computing he TF-IDF of the word ' the  ':
 
@@ -92,178 +74,87 @@ Calculating IDF...
 The IDF is:  0.10673860658719833
 
 The TF-IDF is:
-+----+--------------------+-----+----+--------------------+--------------------+
-|word|          reviewText|count| sum|                  tf|              tf-idf|
-+----+--------------------+-----+----+--------------------+--------------------+
-|    |True Love&#8217;s...|  486|4871|   0.099774173680969|0.010649756272095749|
-| the|If I think it's g...|  231|3893| 0.05933727202671461| 0.00633357773481706|
-|  to|True Love&#8217;s...|  205|4871| 0.04208581400123178|0.004492181143579482|
-| and|True Love&#8217;s...|  200|4871| 0.04105933073290905|0.004382615749833641|
-|    |This review will ...|  185|2584| 0.07159442724458204|0.007641889403495236|
-| the|Nearly a year ago...|  182|2243| 0.08114132857779759|0.008660912349028129|
-| the|The author's writ...|  174|1806| 0.09634551495016612|0.010283786016706816|
-| and|Gitte: This secon...|  168|3281|0.051203901249619016|0.005465433071212837|
-| the|Please note: The ...|  163|2378| 0.06854499579478554|0.007316397339660...|
-|    |&#8220;The Dogs o...|  159|2967| 0.05358948432760364|0.005720066884854915|
-|    |i  enjoyed  this ...|  157| 322| 0.48757763975155277|  0.0520433578701557|
-| the|Please note: The ...|  144|2426| 0.05935696619950536|0.006335679863378632|
-| the|For more of my re...|  142|2158| 0.06580166821130677|0.007023578375988028|
-| the|(I received this ...|  142|2375|0.059789473684210524|0.006381845109634...|
-| the|Gitte: This secon...|  138|3281|0.042060347455044195|0.004489462879924...|
-| and|Beautiful Mess:A ...|  138|2949| 0.04679552390640895|0.004994889016288019|
-| the|I would actually ...|  132|2345| 0.05628997867803838|0.006008313888916921|
-| the|Please note: The ...|  130|1834| 0.07088331515812432|0.007565986290259424|
-|    |This  book  in  a...|  129| 262| 0.49236641221374045| 0.05255450477003276|
-| the|True Love&#8217;s...|  129|4871| 0.02648326832272634|0.002826787158642...|
-+----+--------------------+-----+----+--------------------+--------------------+
-only showing top 20 rows
+2019-12-21 11:23:50,436 ERROR cluster.StandaloneSchedulerBackend: Application has been killed. Reason: Master removed our application: KILLED
+2019-12-21 11:23:50,519 ERROR util.Utils: Uncaught exception in thread stop-spark-context
+org.apache.spark.SparkException: Exception thrown in awaitResult: 
+	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:226)
+	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+	at org.apache.spark.deploy.client.StandaloneAppClient.stop(StandaloneAppClient.scala:283)
+	at org.apache.spark.scheduler.cluster.StandaloneSchedulerBackend.org$apache$spark$scheduler$cluster$StandaloneSchedulerBackend$$stop(StandaloneSchedulerBackend.scala:227)
+	at org.apache.spark.scheduler.cluster.StandaloneSchedulerBackend.stop(StandaloneSchedulerBackend.scala:124)
+	at org.apache.spark.scheduler.TaskSchedulerImpl.stop(TaskSchedulerImpl.scala:653)
+	at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:2042)
+	at org.apache.spark.SparkContext$$anonfun$stop$6.apply$mcV$sp(SparkContext.scala:1949)
+	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1340)
+	at org.apache.spark.SparkContext.stop(SparkContext.scala:1948)
+	at org.apache.spark.SparkContext$$anon$3.run(SparkContext.scala:1903)
+Caused by: org.apache.spark.SparkException: Could not find AppClient.
+	at org.apache.spark.rpc.netty.Dispatcher.postMessage(Dispatcher.scala:160)
+	at org.apache.spark.rpc.netty.Dispatcher.postLocalMessage(Dispatcher.scala:135)
+	at org.apache.spark.rpc.netty.NettyRpcEnv.ask(NettyRpcEnv.scala:229)
+	at org.apache.spark.rpc.netty.NettyRpcEndpointRef.ask(NettyRpcEnv.scala:523)
+	at org.apache.spark.rpc.RpcEndpointRef.ask(RpcEndpointRef.scala:63)
+	... 9 more
+Traceback (most recent call last):
+  File "/home/ubuntu/good_test.py", line 93, in <module>
+    calc_tfidf(word)
+  File "/home/ubuntu/good_test.py", line 87, in calc_tfidf
+    df2.show()
+  File "/home/ubuntu/spark/python/lib/pyspark.zip/pyspark/sql/dataframe.py", line 380, in show
+  File "/home/ubuntu/spark/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/home/ubuntu/spark/python/lib/pyspark.zip/pyspark/sql/utils.py", line 63, in deco
+  File "/home/ubuntu/spark/python/lib/py4j-0.10.7-src.zip/py4j/protocol.py", line 328, in get_return_value
+py4j.protocol.Py4JJavaError: An error occurred while calling o103.showString.
+: org.apache.spark.SparkException: Job aborted due to stage failure: Master removed our application: KILLED
+	at org.apache.spark.scheduler.DAGScheduler.org$apache$spark$scheduler$DAGScheduler$$failJobAndIndependentStages(DAGScheduler.scala:1889)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:1877)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:1876)
+	at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)
+	at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:1876)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$handleTaskSetFailed$1.apply(DAGScheduler.scala:926)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$handleTaskSetFailed$1.apply(DAGScheduler.scala:926)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:926)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:2110)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2059)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2048)
+	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:737)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2061)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2158)
+	at org.apache.spark.rdd.RDD$$anonfun$reduce$1.apply(RDD.scala:1035)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:363)
+	at org.apache.spark.rdd.RDD.reduce(RDD.scala:1017)
+	at org.apache.spark.rdd.RDD$$anonfun$takeOrdered$1.apply(RDD.scala:1439)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:363)
+	at org.apache.spark.rdd.RDD.takeOrdered(RDD.scala:1426)
+	at org.apache.spark.sql.execution.TakeOrderedAndProjectExec.executeCollect(limit.scala:136)
+	at org.apache.spark.sql.Dataset.org$apache$spark$sql$Dataset$$collectFromPlan(Dataset.scala:3389)
+	at org.apache.spark.sql.Dataset$$anonfun$head$1.apply(Dataset.scala:2550)
+	at org.apache.spark.sql.Dataset$$anonfun$head$1.apply(Dataset.scala:2550)
+	at org.apache.spark.sql.Dataset$$anonfun$52.apply(Dataset.scala:3370)
+	at org.apache.spark.sql.execution.SQLExecution$$anonfun$withNewExecutionId$1.apply(SQLExecution.scala:78)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:125)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:73)
+	at org.apache.spark.sql.Dataset.withAction(Dataset.scala:3369)
+	at org.apache.spark.sql.Dataset.head(Dataset.scala:2550)
+	at org.apache.spark.sql.Dataset.take(Dataset.scala:2764)
+	at org.apache.spark.sql.Dataset.getRows(Dataset.scala:254)
+	at org.apache.spark.sql.Dataset.showString(Dataset.scala:291)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.lang.Thread.run(Thread.java:748)
 
-
-Computing he TF-IDF of the word ' and  ':
-
-Calculating the TF first...
-The TF is:
-Calculating IDF...
-The IDF is:  0.1967290993057486
-
-The TF-IDF is:
-+----+--------------------+-----+----+--------------------+--------------------+
-|word|          reviewText|count| sum|                  tf|              tf-idf|
-+----+--------------------+-----+----+--------------------+--------------------+
-|    |True Love&#8217;s...|  486|4871|   0.099774173680969| 0.01962848332223236|
-| the|If I think it's g...|  231|3893| 0.05933727202671461|0.011673368081075759|
-|  to|True Love&#8217;s...|  205|4871| 0.04208581400123178|0.008279504282011591|
-| and|True Love&#8217;s...|  200|4871| 0.04105933073290905| 0.00807756515318204|
-|    |This review will ...|  185|2584| 0.07159442724458204|0.014084707187137573|
-| the|Nearly a year ago...|  182|2243| 0.08114132857779759|0.015962860487581918|
-| the|The author's writ...|  174|1806| 0.09634551495016612|0.018953966378294718|
-| and|Gitte: This secon...|  168|3281|0.051203901249619016|0.010073297373778045|
-| the|Please note: The ...|  163|2378| 0.06854499579478554|0.013484795284624486|
-|    |&#8220;The Dogs o...|  159|2967| 0.05358948432760364|0.010542610984028995|
-|    |i  enjoyed  this ...|  157| 322| 0.48757763975155277| 0.09592070990994575|
-| the|Please note: The ...|  144|2426| 0.05935696619950536|0.011677242497950454|
-| the|For more of my re...|  142|2158| 0.06580166821130677|0.012945102920026092|
-| the|(I received this ...|  142|2375|0.059789473684210524|0.011762329305859496|
-| the|Gitte: This secon...|  138|3281|0.042060347455044195| 0.00827449427131768|
-| and|Beautiful Mess:A ...|  138|2949| 0.04679552390640895| 0.00920604126964846|
-| the|I would actually ...|  132|2345| 0.05628997867803838|0.011073876805270284|
-| the|Please note: The ...|  130|1834| 0.07088331515812432|0.013944810746863316|
-|    |This  book  in  a...|  129| 262| 0.49236641221374045|  0.0968628008032121|
-| the|True Love&#8217;s...|  129|4871| 0.02648326832272634|0.005210029523802417|
-+----+--------------------+-----+----+--------------------+--------------------+
-only showing top 20 rows
-
-
-Computing he TF-IDF of the word ' to  ':
-
-Calculating the TF first...
-The TF is:
-Calculating IDF...
-The IDF is:  0.10927933930138918
-
-The TF-IDF is:
-+----+--------------------+-----+----+--------------------+--------------------+
-|word|          reviewText|count| sum|                  tf|              tf-idf|
-+----+--------------------+-----+----+--------------------+--------------------+
-|    |True Love&#8217;s...|  486|4871|   0.099774173680969|0.010903255779198345|
-| the|If I think it's g...|  231|3893| 0.05933727202671461|0.006484337883026175|
-|  to|True Love&#8217;s...|  205|4871| 0.04208581400123178|0.004599109948015763|
-| and|True Love&#8217;s...|  200|4871| 0.04105933073290905|0.004486936534649525|
-|    |This review will ...|  185|2584| 0.07159442724458204|0.007823791706949303|
-| the|Nearly a year ago...|  182|2243| 0.08114132857779759|0.008867070777018649|
-| the|The author's writ...|  174|1806| 0.09634551495016612|0.010528574218406268|
-| and|Gitte: This secon...|  168|3281|0.051203901249619016|0.005595528498211942|
-| the|Please note: The ...|  163|2378| 0.06854499579478554|0.007490551852870664|
-|    |&#8220;The Dogs o...|  159|2967| 0.05358948432760364|0.005856223440822676|
-|    |i  enjoyed  this ...|  157| 322| 0.48757763975155277| 0.05328216233018044|
-| the|Please note: The ...|  144|2426| 0.05935696619950536|0.006486490049216836|
-| the|For more of my re...|  142|2158| 0.06580166821130677|0.007190762827060827|
-| the|(I received this ...|  142|2375|0.059789473684210524|0.006533754181388321|
-| and|Beautiful Mess:A ...|  138|2949| 0.04679552390640895|0.005113783934754733|
-| the|Gitte: This secon...|  138|3281|0.042060347455044195|0.004596326980674095|
-| the|I would actually ...|  132|2345| 0.05628997867803838|0.006151331679225319|
-| the|Please note: The ...|  130|1834| 0.07088331515812432|0.007746081847971...|
-| the|True Love&#8217;s...|  129|4871| 0.02648326832272634|0.002894074064848...|
-|    |This  book  in  a...|  129| 262| 0.49236641221374045|0.053805476220912994|
-+----+--------------------+-----+----+--------------------+--------------------+
-only showing top 20 rows
-
-
-Computing he TF-IDF of the word ' a  ':
-
-Calculating the TF first...
-The TF is:
-Calculating IDF...
-The IDF is:  0.005115690397147628
-
-The TF-IDF is:
-+----+--------------------+-----+----+--------------------+--------------------+
-|word|          reviewText|count| sum|                  tf|              tf-idf|
-+----+--------------------+-----+----+--------------------+--------------------+
-|    |True Love&#8217;s...|  486|4871|   0.099774173680969|5.104137821830727E-4|
-| the|If I think it's g...|  231|3893| 0.05933727202671461|3.035511127000005...|
-|  to|True Love&#8217;s...|  205|4871| 0.04208581400123178|2.152979945422426E-4|
-| and|True Love&#8217;s...|  200|4871| 0.04105933073290905|2.100468239436513...|
-|    |This review will ...|  185|2584| 0.07159442724458204|3.662549239443928...|
-| the|Nearly a year ago...|  182|2243| 0.08114132857779759|4.150939154172395E-4|
-| the|The author's writ...|  174|1806| 0.09634551495016612|4.928738256388081E-4|
-| and|Gitte: This secon...|  168|3281|0.051203901249619016|2.619433059191714...|
-| the|Please note: The ...|  163|2378| 0.06854499579478554|3.506549767599089...|
-|    |&#8220;The Dogs o...|  159|2967| 0.05358948432760364|2.741472103628152...|
-|    |i  enjoyed  this ...|  157| 322| 0.48757763975155277|0.002494296249540924|
-| the|Please note: The ...|  144|2426| 0.05935696619950536|3.036518619906259E-4|
-| the|For more of my re...|  142|2158| 0.06580166821130677|3.366209621848764E-4|
-| the|(I received this ...|  142|2375|0.059789473684210524|3.058644363768266E-4|
-| and|Beautiful Mess:A ...|  138|2949| 0.04679552390640895|2.393914122775085...|
-| the|Gitte: This secon...|  138|3281|0.042060347455044195|2.151677155764622...|
-| the|I would actually ...|  132|2345| 0.05628997867803838|2.879621033788857E-4|
-| the|Please note: The ...|  130|1834| 0.07088331515812432|3.626170946724055E-4|
-| the|True Love&#8217;s...|  129|4871| 0.02648326832272634|1.354802014436551E-4|
-|    |This  book  in  a...|  129| 262| 0.49236641221374045|0.002518794126839863|
-+----+--------------------+-----+----+--------------------+--------------------+
-only showing top 20 rows
-
-
-Computing he TF-IDF of the word ' I  ':
-
-Calculating the TF first...
-The TF is:
-Calculating IDF...
-The IDF is:  0.1521818895648509
-
-The TF-IDF is:
-+----+--------------------+-----+----+--------------------+--------------------+
-|word|          reviewText|count| sum|                  tf|              tf-idf|
-+----+--------------------+-----+----+--------------------+--------------------+
-|    |True Love&#8217;s...|  486|4871|   0.099774173680969|0.015183822280541477|
-| the|If I think it's g...|  231|3893| 0.05933727202671461|   0.009030058178649|
-|  to|True Love&#8217;s...|  205|4871| 0.04208581400123178| 0.00640469869858231|
-| and|True Love&#8217;s...|  200|4871| 0.04105933073290905|0.006248486535202254|
-|    |This review will ...|  185|2584| 0.07159442724458204|0.010895375220393737|
-| the|Nearly a year ago...|  182|2243| 0.08114132857779759|0.012348240704771673|
-| the|The author's writ...|  174|1806| 0.09634551495016612|0.014662042516214871|
-| and|Gitte: This secon...|  168|3281|0.051203901249619016|0.007792306445259052|
-| the|Please note: The ...|  163|2378| 0.06854499579478554|0.010431306980265223|
-|    |&#8220;The Dogs o...|  159|2967| 0.05358948432760364|0.008155348985780684|
-|    |i  enjoyed  this ...|  157| 322| 0.48757763975155277| 0.07420048652696146|
-| the|Please note: The ...|  144|2426| 0.05935696619950536|0.009033055275077712|
-| the|For more of my re...|  142|2158| 0.06580166821130677|0.010013822204916048|
-| the|(I received this ...|  142|2375|0.059789473684210524|0.009098875081351085|
-| the|Gitte: This secon...|  138|3281|0.042060347455044195|0.006400823151462794|
-| and|Beautiful Mess:A ...|  138|2949| 0.04679552390640895|0.007121431251254468|
-| the|I would actually ...|  132|2345| 0.05628997867803838|0.008566315318789049|
-| the|Please note: The ...|  130|1834| 0.07088331515812432|0.010787156839384197|
-| the|True Love&#8217;s...|  129|4871| 0.02648326832272634|0.004030273815205454|
-|    |This  book  in  a...|  129| 262| 0.49236641221374045| 0.07492925096895331|
-+----+--------------------+-----+----+--------------------+--------------------+
-only showing top 20 rows
-
-
-Computing he TF-IDF of the word ' of  ':
-
-Calculating the TF first...
-The TF is:
-Calculating IDF...
-The IDF is:  0.39351297811954683
-
-The TF-IDF is:

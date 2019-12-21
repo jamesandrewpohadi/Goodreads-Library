@@ -1,86 +1,68 @@
-2019-12-20 05:54:53,181 INFO spark.SparkContext: Running Spark version 2.4.4
-2019-12-20 05:54:53,217 INFO spark.SparkContext: Submitted application: Goodreads-pearson-correlation
-2019-12-20 05:54:53,266 INFO spark.SecurityManager: Changing view acls to: root
-2019-12-20 05:54:53,266 INFO spark.SecurityManager: Changing modify acls to: root
-2019-12-20 05:54:53,266 INFO spark.SecurityManager: Changing view acls groups to: 
-2019-12-20 05:54:53,266 INFO spark.SecurityManager: Changing modify acls groups to: 
-2019-12-20 05:54:53,266 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
-2019-12-20 05:54:53,545 INFO util.Utils: Successfully started service 'sparkDriver' on port 38481.
-2019-12-20 05:54:53,565 INFO spark.SparkEnv: Registering MapOutputTracker
-2019-12-20 05:54:53,581 INFO spark.SparkEnv: Registering BlockManagerMaster
-2019-12-20 05:54:53,584 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
-2019-12-20 05:54:53,584 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
-2019-12-20 05:54:53,592 INFO storage.DiskBlockManager: Created local directory at /tmp/blockmgr-c9d7ba40-5c8d-4f0d-9a1f-076c22657c1d
-2019-12-20 05:54:53,608 INFO memory.MemoryStore: MemoryStore started with capacity 366.3 MB
-2019-12-20 05:54:53,620 INFO spark.SparkEnv: Registering OutputCommitCoordinator
-2019-12-20 05:54:53,689 INFO util.log: Logging initialized @2422ms
-2019-12-20 05:54:53,759 INFO server.Server: jetty-9.3.z-SNAPSHOT, build timestamp: unknown, git hash: unknown
-2019-12-20 05:54:53,775 INFO server.Server: Started @2509ms
-2019-12-20 05:54:53,796 INFO server.AbstractConnector: Started ServerConnector@75df37ce{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
-2019-12-20 05:54:53,796 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
-2019-12-20 05:54:53,832 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7dfb1946{/jobs,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,833 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@186e68dd{/jobs/json,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,834 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@72320e6f{/jobs/job,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,838 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@52b33d10{/jobs/job/json,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,839 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@39f09f1b{/stages,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,841 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5bd3af3c{/stages/json,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,842 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@52145804{/stages/stage,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,845 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@625d0972{/stages/stage/json,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,846 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1279b945{/stages/pool,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,848 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2ee6740d{/stages/pool/json,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,848 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@538c486{/storage,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,849 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@f244bca{/storage/json,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,850 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@504868fa{/storage/rdd,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,851 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4d9328e2{/storage/rdd/json,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,851 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@e4cc922{/environment,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,852 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@231bb93a{/environment/json,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,853 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@30871a1b{/executors,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,854 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6487f0d1{/executors/json,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,856 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@c6a30ba{/executors/threadDump,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,856 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@72c68a64{/executors/threadDump/json,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,863 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7a9911e5{/static,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,864 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3ab2b6b1{/,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,865 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@799c158c{/api,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,865 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@435a3f62{/jobs/job/kill,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,865 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2d9b43d2{/stages/stage/kill,null,AVAILABLE,@Spark}
-2019-12-20 05:54:53,867 INFO ui.SparkUI: Bound SparkUI to 0.0.0.0, and started at http://ip-172-31-26-90.ap-southeast-1.compute.internal:4040
-2019-12-20 05:54:53,993 INFO client.StandaloneAppClient$ClientEndpoint: Connecting to master spark://ec2-18-138-249-101.ap-southeast-1.compute.amazonaws.com:7077...
-2019-12-20 05:54:54,050 INFO client.TransportClientFactory: Successfully created connection to ec2-18-138-249-101.ap-southeast-1.compute.amazonaws.com/172.31.26.90:7077 after 32 ms (0 ms spent in bootstraps)
-2019-12-20 05:54:54,158 INFO cluster.StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20191220055454-0001
-2019-12-20 05:54:54,165 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220055454-0001/0 on worker-20191220055249-172.31.16.166-33325 (172.31.16.166:33325) with 2 core(s)
-2019-12-20 05:54:54,166 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220055454-0001/0 on hostPort 172.31.16.166:33325 with 2 core(s), 1024.0 MB RAM
-2019-12-20 05:54:54,169 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220055454-0001/1 on worker-20191220055249-172.31.26.90-42295 (172.31.26.90:42295) with 2 core(s)
-2019-12-20 05:54:54,169 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220055454-0001/1 on hostPort 172.31.26.90:42295 with 2 core(s), 1024.0 MB RAM
-2019-12-20 05:54:54,176 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220055454-0001/2 on worker-20191220055249-172.31.19.115-36833 (172.31.19.115:36833) with 2 core(s)
-2019-12-20 05:54:54,177 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220055454-0001/2 on hostPort 172.31.19.115:36833 with 2 core(s), 1024.0 MB RAM
-2019-12-20 05:54:54,179 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220055454-0001/3 on worker-20191220055249-172.31.18.78-34207 (172.31.18.78:34207) with 2 core(s)
-2019-12-20 05:54:54,179 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 40219.
-2019-12-20 05:54:54,180 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220055454-0001/3 on hostPort 172.31.18.78:34207 with 2 core(s), 1024.0 MB RAM
-2019-12-20 05:54:54,180 INFO netty.NettyBlockTransferService: Server created on ip-172-31-26-90.ap-southeast-1.compute.internal:40219
-2019-12-20 05:54:54,181 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220055454-0001/4 on worker-20191220055249-172.31.27.48-41235 (172.31.27.48:41235) with 2 core(s)
-2019-12-20 05:54:54,181 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220055454-0001/4 on hostPort 172.31.27.48:41235 with 2 core(s), 1024.0 MB RAM
-2019-12-20 05:54:54,181 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
-2019-12-20 05:54:54,183 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220055454-0001/5 on worker-20191220055249-172.31.20.230-38981 (172.31.20.230:38981) with 2 core(s)
-2019-12-20 05:54:54,183 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220055454-0001/5 on hostPort 172.31.20.230:38981 with 2 core(s), 1024.0 MB RAM
-2019-12-20 05:54:54,200 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220055454-0001/6 on worker-20191220055249-172.31.18.227-40435 (172.31.18.227:40435) with 2 core(s)
-2019-12-20 05:54:54,201 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220055454-0001/6 on hostPort 172.31.18.227:40435 with 2 core(s), 1024.0 MB RAM
-2019-12-20 05:54:54,206 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220055454-0001/7 on worker-20191220055249-172.31.17.215-37607 (172.31.17.215:37607) with 2 core(s)
-2019-12-20 05:54:54,207 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220055454-0001/7 on hostPort 172.31.17.215:37607 with 2 core(s), 1024.0 MB RAM
-2019-12-20 05:54:54,207 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191220055454-0001/8 on worker-20191220055249-172.31.17.135-40657 (172.31.17.135:40657) with 2 core(s)
-2019-12-20 05:54:54,207 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191220055454-0001/8 on hostPort 172.31.17.135:40657 with 2 core(s), 1024.0 MB RAM
-2019-12-20 05:54:54,237 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220055454-0001/0 is now RUNNING
-2019-12-20 05:54:54,237 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220055454-0001/4 is now RUNNING
-2019-12-20 05:54:54,239 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220055454-0001/3 is now RUNNING
-2019-12-20 05:54:54,248 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, ip-172-31-26-90.ap-southeast-1.compute.internal, 40219, None)
-2019-12-20 05:54:54,258 INFO storage.BlockManagerMasterEndpoint: Registering block manager ip-172-31-26-90.ap-southeast-1.compute.internal:40219 with 366.3 MB RAM, BlockManagerId(driver, ip-172-31-26-90.ap-southeast-1.compute.internal, 40219, None)
-2019-12-20 05:54:54,260 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220055454-0001/7 is now RUNNING
-2019-12-20 05:54:54,261 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, ip-172-31-26-90.ap-southeast-1.compute.internal, 40219, None)
-2019-12-20 05:54:54,261 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, ip-172-31-26-90.ap-southeast-1.compute.internal, 40219, None)
-2019-12-20 05:54:54,261 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220055454-0001/2 is now RUNNING
-2019-12-20 05:54:54,263 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220055454-0001/5 is now RUNNING
-2019-12-20 05:54:54,264 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220055454-0001/6 is now RUNNING
-2019-12-20 05:54:54,265 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220055454-0001/8 is now RUNNING
-2019-12-20 05:54:54,266 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191220055454-0001/1 is now RUNNING
-2019-12-20 05:54:54,497 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7699f395{/metrics/json,null,AVAILABLE,@Spark}
-2019-12-20 05:54:54,525 INFO cluster.StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
-[('r_xy', 0.061195083509553)]
+2019-12-21 11:23:54,774 INFO spark.SparkContext: Running Spark version 2.4.4
+2019-12-21 11:23:54,818 INFO spark.SparkContext: Submitted application: Goodreads-pearson-correlation
+2019-12-21 11:23:54,874 INFO spark.SecurityManager: Changing view acls to: root
+2019-12-21 11:23:54,874 INFO spark.SecurityManager: Changing modify acls to: root
+2019-12-21 11:23:54,874 INFO spark.SecurityManager: Changing view acls groups to: 
+2019-12-21 11:23:54,874 INFO spark.SecurityManager: Changing modify acls groups to: 
+2019-12-21 11:23:54,874 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+2019-12-21 11:23:55,197 INFO util.Utils: Successfully started service 'sparkDriver' on port 37513.
+2019-12-21 11:23:55,228 INFO spark.SparkEnv: Registering MapOutputTracker
+2019-12-21 11:23:55,243 INFO spark.SparkEnv: Registering BlockManagerMaster
+2019-12-21 11:23:55,247 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2019-12-21 11:23:55,247 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+2019-12-21 11:23:55,257 INFO storage.DiskBlockManager: Created local directory at /tmp/blockmgr-6b6dbdfb-5961-4a68-8599-5d0a5b11a23a
+2019-12-21 11:23:55,274 INFO memory.MemoryStore: MemoryStore started with capacity 366.3 MB
+2019-12-21 11:23:55,288 INFO spark.SparkEnv: Registering OutputCommitCoordinator
+2019-12-21 11:23:55,396 INFO util.log: Logging initialized @3136ms
+2019-12-21 11:23:55,491 INFO server.Server: jetty-9.3.z-SNAPSHOT, build timestamp: unknown, git hash: unknown
+2019-12-21 11:23:55,515 INFO server.Server: Started @3257ms
+2019-12-21 11:23:55,541 INFO server.AbstractConnector: Started ServerConnector@35dbd6d3{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2019-12-21 11:23:55,542 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+2019-12-21 11:23:55,596 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@31275f71{/jobs,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,598 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5899de0e{/jobs/json,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,598 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5d6ba525{/jobs/job,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,609 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@c3dc840{/jobs/job/json,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,610 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1a420e67{/stages,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,610 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1a00c287{/stages/json,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,611 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@20f35946{/stages/stage,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,612 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@545d02bb{/stages/stage/json,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,613 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6ede481f{/stages/pool,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,614 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5b53177e{/stages/pool/json,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,616 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3ccf624d{/storage,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,617 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@bbe7b5{/storage/json,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,619 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1cb9d90d{/storage/rdd,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,620 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5f12d503{/storage/rdd/json,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,621 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@180809a6{/environment,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,621 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@47d1d35d{/environment/json,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,622 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@15720b1b{/executors,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,627 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5c017e7b{/executors/json,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,629 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@49c1964{/executors/threadDump,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,631 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4d9e6991{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,639 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@483199ea{/static,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,640 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@24209485{/,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,646 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@58a38ce1{/api,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,647 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4b16067f{/jobs/job/kill,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,649 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@473133b2{/stages/stage/kill,null,AVAILABLE,@Spark}
+2019-12-21 11:23:55,652 INFO ui.SparkUI: Bound SparkUI to 0.0.0.0, and started at http://ip-172-31-17-55.ap-southeast-1.compute.internal:4040
+2019-12-21 11:23:55,826 INFO client.StandaloneAppClient$ClientEndpoint: Connecting to master spark://ec2-54-254-241-231.ap-southeast-1.compute.amazonaws.com:7077...
+2019-12-21 11:23:55,901 INFO client.TransportClientFactory: Successfully created connection to ec2-54-254-241-231.ap-southeast-1.compute.amazonaws.com/172.31.17.55:7077 after 42 ms (0 ms spent in bootstraps)
+2019-12-21 11:23:56,037 INFO cluster.StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20191221112356-0001
+2019-12-21 11:23:56,049 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191221112356-0001/0 on worker-20191221112205-172.31.19.144-39299 (172.31.19.144:39299) with 2 core(s)
+2019-12-21 11:23:56,051 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191221112356-0001/0 on hostPort 172.31.19.144:39299 with 2 core(s), 1024.0 MB RAM
+2019-12-21 11:23:56,059 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191221112356-0001/1 on worker-20191221112204-172.31.17.55-34479 (172.31.17.55:34479) with 2 core(s)
+2019-12-21 11:23:56,059 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191221112356-0001/1 on hostPort 172.31.17.55:34479 with 2 core(s), 1024.0 MB RAM
+2019-12-21 11:23:56,061 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 32873.
+2019-12-21 11:23:56,062 INFO netty.NettyBlockTransferService: Server created on ip-172-31-17-55.ap-southeast-1.compute.internal:32873
+2019-12-21 11:23:56,064 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2019-12-21 11:23:56,075 INFO client.StandaloneAppClient$ClientEndpoint: Executor added: app-20191221112356-0001/2 on worker-20191221112204-172.31.20.115-37403 (172.31.20.115:37403) with 2 core(s)
+2019-12-21 11:23:56,075 INFO cluster.StandaloneSchedulerBackend: Granted executor ID app-20191221112356-0001/2 on hostPort 172.31.20.115:37403 with 2 core(s), 1024.0 MB RAM
+2019-12-21 11:23:56,111 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191221112356-0001/0 is now RUNNING
+2019-12-21 11:23:56,118 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191221112356-0001/2 is now RUNNING
+2019-12-21 11:23:56,121 INFO client.StandaloneAppClient$ClientEndpoint: Executor updated: app-20191221112356-0001/1 is now RUNNING
+2019-12-21 11:23:56,153 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, ip-172-31-17-55.ap-southeast-1.compute.internal, 32873, None)
+2019-12-21 11:23:56,157 INFO storage.BlockManagerMasterEndpoint: Registering block manager ip-172-31-17-55.ap-southeast-1.compute.internal:32873 with 366.3 MB RAM, BlockManagerId(driver, ip-172-31-17-55.ap-southeast-1.compute.internal, 32873, None)
+2019-12-21 11:23:56,175 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, ip-172-31-17-55.ap-southeast-1.compute.internal, 32873, None)
+2019-12-21 11:23:56,176 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, ip-172-31-17-55.ap-southeast-1.compute.internal, 32873, None)
+2019-12-21 11:23:56,522 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@b8deb0b{/metrics/json,null,AVAILABLE,@Spark}
+2019-12-21 11:23:56,551 INFO cluster.StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+[('r_xy', 0.061195083509552946)]

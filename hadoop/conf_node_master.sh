@@ -67,6 +67,7 @@ runuser -l ubuntu -c './spark/sbin/start-master.sh'
 runuser -l ubuntu -c './spark/sbin/start-slaves.sh'
 sleep 1
 echo $node_m_addr
-/home/ubuntu/spark/bin/spark-submit --master "spark://${node_m_addr}:7077" good_test.py $node_m_addr &> /home/ubuntu/result.txt
-/home/ubuntu/spark/bin/spark-submit --master "spark://${node_m_addr}:7077" pc_for_hdfs.py $node_m_addr &> /home/ubuntu/result2.txt
-
+#/home/ubuntu/spark/bin/spark-submit --master "spark://${node_m_addr}:7077" good_test.py $node_m_addr &> /home/ubuntu/result.txt
+#/home/ubuntu/spark/bin/spark-submit --master "spark://${node_m_addr}:7077" pc_for_hdfs.py $node_m_addr &> /home/ubuntu/result2.txt
+runuser -l ubuntu -c "/home/ubuntu/spark/bin/spark-submit --executor-memory 5G --master \"spark://${node_m_addr}:7077\" good_test.py $node_m_addr &> /home/ubuntu/result.txt"
+runuser -l ubuntu -c "/home/ubuntu/spark/bin/spark-submit --executor-memory 5G --master \"spark://${node_m_addr}:7077\" pc_for_hdfs.py $node_m_addr &> /home/ubuntu/result2.txt"

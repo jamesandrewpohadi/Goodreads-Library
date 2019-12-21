@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ $# -le 1 ]
+if [ $# -eq 0 ]
   then
     echo "provide arguments for: web_hadoop, server_key, no_of_nodes(optional)"
     echo "for web_hadoop variable: 1 = web only, 2 = hadoop only, 3 = both"

@@ -3,6 +3,10 @@
 ### A project by team BIG Data 
 *[Chok Hao Ze, Edric, James Andrew Pohadi, Kundan Dalmia,Sanjay Shankar, Tan You, Vieri Vincent]*
 
+<p align='center'>  
+  <img src='images/Goodreads.png' width='100%'/>
+</p>
+
 ## Prerequisites:
 1. Install jq
 ```
@@ -37,6 +41,16 @@ Web clusters are running on EC2 **t2.medium** instances, while automation cluste
 
 ## Completed Tasks
 
+<p align='center'>  
+  <img src='images/book & reviews.png' width='60%'/>
+</p>
+<p align='center'>  
+  <img src='images/sorting.png' width='60%'/>
+</p>
+<p align='center'>  
+  <img src='images/logs.png' width='60%'/>
+</p>
+
 We have completed all the tasks given for the project. We also implements some additional features on top of the basic one.
 
 ### Frontend
@@ -45,10 +59,13 @@ Completed features:
 1. See reviews
 2. Add new review
 3. Add new book
+4. Logs
 4. Signup/Login (additional)
 5. Search by book title (additional)
 6. Sorting (additional)
 7. User page (additional)
+
+Logs can be access from ```http://<web-server>:3000/logs```
 
 ### Backend
 

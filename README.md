@@ -9,9 +9,6 @@ Sanjay Shankar,
 Tan You, 
 Vieri Vincent]
 
-### 50.043 Database and Big Data Systems 2019
-
-
 ## Prerequisites:
 1. Install jq
 ```
@@ -19,18 +16,20 @@ sudo apt-get install jq
 ```
 2. Clean: No existing instances, security groups, keys, etc. (The reason is that existing keys or security group names that are similar to our group's might cause error while running)
 
+### 50.043 Database and Big Data Systems 2019
+
 This project consists of:
 - Web clusters which can be setup using web automation:
 ```
 bash launch.sh 1
 ```
-Once it is done, you can view the web by opening http://<web-server>:3000/, where the value of web can be seen from web/instance.json
+Once it is done, you can view the web by opening ```http://<web-server>:3000/```, where the value of web can be seen from web/instance.json
 
 - Analytics clusters which can be setup using analytics automation:
 ```
 bash launch.sh 2 <num of clusters>
 ```
-The status of Spark can be seen from http://<node_master.publicdns>:8080, where node_master.publicdns value can be seen from hadoop/analytics_instances.json
+The status of Spark can be seen from ```http://<node_master.publicdns>:8080```, where node_master.publicdns value can be seen from hadoop/analytics_instances.json
 
 Optionally, you can launch web and analytics together:
 ```

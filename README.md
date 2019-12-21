@@ -1,13 +1,7 @@
 # Goodreads
 
 ### A project by team BIG Data 
-[Chok Hao Ze,
-Edric, 
-James Andrew Pohadi, 
-Kundan Dalmia,
-Sanjay Shankar, 
-Tan You, 
-Vieri Vincent]
+*[Chok Hao Ze, Edric, James Andrew Pohadi, Kundan Dalmia,Sanjay Shankar, Tan You, Vieri Vincent]*
 
 ## Prerequisites:
 1. Install jq
@@ -23,13 +17,13 @@ This project consists of:
 ```
 bash launch.sh 1
 ```
-Once it is done, you can view the web by opening ```http://<web-server>:3000/```, where the value of web can be seen from web/instance.json
+Once it is done, you can view the web by opening ```http://<web-server>:3000/```, where the value of *web-server* can be seen from *web/instance.json*
 
 - Analytics clusters which can be setup using analytics automation:
 ```
 bash launch.sh 2 <num of clusters>
 ```
-The status of Spark can be seen from ```http://<node_master.publicdns>:8080```, where node_master.publicdns value can be seen from hadoop/analytics_instances.json
+The status of Spark can be seen from ```http://<node_master.publicdns>:8080```, where *node_master.publicdns* value can be seen from *hadoop/analytics_instances.json*
 
 Optionally, you can launch web and analytics together:
 ```
@@ -39,7 +33,7 @@ You might need to press ctrl + C to exit web supervisor so that the automation s
 
 where ```<num of clusters>``` = {2,4,8}
 
-Web clusters are running on EC2 t2.medium instances, while automation clusters are running on EC2 t2.large instances.
+Web clusters are running on EC2 **t2.medium** instances, while automation clusters are running on EC2 **t2.large** instances.
 
 ## Completed Tasks
 
@@ -96,7 +90,6 @@ Once again, note that for the Pearson Correlation, the team has replaced all the
 ## Common problems
 
 1. Local internet not good that ssh ignore to connect to instances after several trial. This usually cause the web couldn't run properly because some of web server/mysql server/mongo server is not up.
-
 
 **Solution**: Please run again. 
 Need to delete existing SECURITY_GROUP1 and SECURITY_GROUP3, instances (since running back the script will create new instances). DO NOT DELETE deployKey ! (if deployKey is deleted from AWS, need to delete deployKey.pem file in the local)

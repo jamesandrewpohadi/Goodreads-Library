@@ -23,15 +23,15 @@ Once it is done, you can view the web by opening ```http://<web-server>:3000/```
 ```
 bash launch.sh 2 <num of clusters>
 ```
+where ```<num of clusters>``` = {2,4,8}
 The status of Spark can be seen from ```http://<node_master.publicdns>:8080```, where *node_master.publicdns* value can be seen from *hadoop/analytics_instances.json*
 
 Optionally, you can launch web and analytics together:
 ```
 bash launch.sh 3 <num of clusters>
 ```
-You might need to press ctrl + C to exit web supervisor so that the automation script can continue
-
 where ```<num of clusters>``` = {2,4,8}
+You might need to press ctrl + C to exit web supervisor so that the automation script can continue
 
 Web clusters are running on EC2 **t2.medium** instances, while automation clusters are running on EC2 **t2.large** instances.
 
@@ -43,9 +43,9 @@ We have completed all the tasks given for the project. We also implements some a
 
 Completed features:
 1. See reviews
-2. Signup/Login (additional)
-3. Add new review
-4. Add new book
+2. Add new review
+3. Add new book
+4. Signup/Login (additional)
 5. Search by book title (additional)
 6. Sorting (additional)
 7. User page (additional)

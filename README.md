@@ -101,4 +101,4 @@ Once again, note that for the Pearson Correlation, the team has replaced all the
 **Solution**: Please run again. 
 Need to delete existing SECURITY_GROUP1 and SECURITY_GROUP3, instances (since running back the script will create new instances). DO NOT DELETE deployKey ! (if deployKey is deleted from AWS, need to delete deployKey.pem file in the local)
 
-### If you have any queries or issues, please contact one of the team members through SUTD email directory. Thank you :)
+**If you have any queries or issues, please contact one of the team members through SUTD email directory. Thank you :)**

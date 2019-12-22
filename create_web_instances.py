@@ -1,6 +1,7 @@
 import json
 import boto3
 import sys
+import os
 
 ec2_client = boto3.client('ec2')
 ec2_resource = boto3.resource('ec2')
@@ -35,6 +36,7 @@ def credel_web_instances(key,instance_type):
     mysql = ec2_resource.create_instances(ImageId='ami-061eb2b23f9f8839c', InstanceType=instance_type,MinCount=1,MaxCount=1,KeyName=key,SecurityGroupIds=[security_group_id])
     web = ec2_resource.create_instances(ImageId='ami-061eb2b23f9f8839c', InstanceType=instance_type,MinCount=1,MaxCount=1,KeyName=key,SecurityGroupIds=[security_group_id])
     # instancesIds = [inst.id for inst in instances]
+    print('wait until running ...')
     mongodb[0].wait_until_running()
     mysql[0].wait_until_running()
     web[0].wait_until_running()
@@ -59,4 +61,11 @@ def credel_web_instances(key,instance_type):
     # web[0].wait_until_terminated()
     # ec2_client.delete_security_group(GroupId=security_group_id)
 
+if not os.path.exists(sys.argv[1]+'.pem'):
+    print('creating key',sys.argv[1]+'.pem')
+    key = ec2_client.create_key_pair(
+        KeyName=sys.argv[1],
+    )
+    with open(sys.argv[1]+'.pem','w') as f:
+        f.write(key['KeyMaterial'])
 credel_web_instances(sys.argv[1], sys.argv[2])

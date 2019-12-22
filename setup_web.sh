@@ -12,8 +12,11 @@ exec_inst () {
     ssh -o "StrictHostKeyChecking no" -i $1 $2 $3 -
 }
 
-sleep 10
+chmod 400 $key.pem
 
+echo preparing to setup web production ...
+sleep 10
+echo setting up web production ...
 bash setup-mysql.sh $mysql $key
 bash setup-mongodb.sh $mongodb $key
-bash setup-web.sh $web $key
+bash setup-web.sh $web $1

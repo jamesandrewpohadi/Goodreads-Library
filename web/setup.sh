@@ -4,4 +4,4 @@ sudo apt install npm -y
 
 cd web
 npm install
-npm start
+npm run deploy

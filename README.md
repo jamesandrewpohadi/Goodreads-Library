@@ -19,25 +19,27 @@ sudo apt-get install jq
 This project consists of:
 - Web clusters which can be setup using web automation:
 ```
-bash launch.sh 1
+bash launch.sh 1 <key name without extension>
 ```
+note that if the key does not exist, it will be automatically created.
 Once it is done, you can view the web by opening ```http://<web-server>:3000/```, where the value of *web-server* can be seen from *web/instance.json*
 
 - Analytics clusters which can be setup using analytics automation:
 ```
-bash launch.sh 2 <num of clusters>
+bash launch.sh 2 <key name without extension> <optional num of clusters: default = 2> <optional instance type: default = m4.large>
 ```
 where ```<num of clusters>``` = {2,4,8}
+```<instance type>``` = Amazon's instance type e.g. t2.large
 The status of Spark can be seen from ```http://<node_master.publicdns>:8080```, where *node_master.publicdns* value can be seen from *hadoop/analytics_instances.json*
 
 Optionally, you can launch web and analytics together:
 ```
-bash launch.sh 3 <num of clusters>
+bash launch.sh 3 <key name without extension> <optional num of clusters: default = 2> <optional instance type: default = m4.large>
 ```
 where ```<num of clusters>``` = {2,4,8}
 You might need to press ctrl + C to exit web supervisor so that the automation script can continue
 
-Web clusters are running on EC2 **t2.medium** instances, while automation clusters are running on EC2 **t2.large** instances.
+All clusters are running on **m4.large** instances, unless specified otherwise by the user.
 
 ## Completed Tasks
 

@@ -106,13 +106,11 @@ Expected running time on 2 clusters:
 
 ### Tfidf
 <p align='center'>  
-  <img src='images/tfidf-result.png' width='100%'/>
+  <img src='images/tfidf-result.png' width='700px'/>
 </p>
 
 You can find the results for TF-IDF in:
-<p align='center'>  
-  <img src='images/pc-result.png' width='100%'/>
-</p>
+
 ```
 ./hadoop/tfidf_result
 ```
@@ -122,7 +120,12 @@ You can find the results for TF-IDF in:
 - The results are stored in the multiple different files due to the usage of Map Reduce to optimise performance.
 
 ### Pearson Correlation
+<p align='center'>  
+  <img src='images/pc-result.png' height='200px'/>
+</p>
+
 Likewise, you can also find the results for Pearson Correlation in:
+
 ```
 ./hadoop/pearson_correlation_result
 ```

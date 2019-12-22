@@ -15,7 +15,6 @@ node_type=${4:-m4.large}
 no_of_nodes=${3:-2}
 if [ $1 -eq 1 ] || [ $1 -eq 3 ]; then
 ./setup_web.sh $key $node_type
-#echo "web test"
 fi
 if [ $1 -eq 2 ] || [ $1 -eq 3 ]; then
 cp ${key}.* hadoop/
@@ -23,6 +22,4 @@ cd hadoop
 echo launch_analytics
 ./launch_analytics.sh $key $no_of_nodes $node_type
 cd ..
-#echo "hadoop test"
-#echo $no_of_nodes
 fi

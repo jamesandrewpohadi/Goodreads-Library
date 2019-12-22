@@ -35,28 +35,33 @@ where ```<num of clusters>``` = {2,4,8},
 
 The status of Spark can be seen from ```http://<node_master.publicdns>:8080```, where *node_master.publicdns* value can be seen from *hadoop/analytics_instances.json*
 
-Optionally, you can launch web and analytics together:
+- Optionally, you can launch web and analytics together:
 ```
 bash launch.sh 3 <key name without extension> <optional num of clusters: default = 2> <optional instance type: default = m4.large>
 ```
 where ```<num of clusters>``` = {2,4,8}
-You might need to press ctrl + C to exit web supervisor so that the automation script can continue
+But, you might need to press ```ctrl + C``` to exit web supervisor so that the automation script can continue. By doing this, the web server will die, so make sure to view the web on ```http://<web-server>:3000/``` before terminating the supervisor.
 
 All clusters are running on **m4.large** instances, unless specified otherwise by the user.
 
 ## Completed Tasks
 
+We have completed all the tasks given for the project. We also implements some additional features on top of the basic one.
+
+**Book details & reviews**
 <p align='center'>  
-  <img src='images/book & reviews.png' width='60%'/>
-</p>
-<p align='center'>  
-  <img src='images/sorting.png' width='60%'/>
-</p>
-<p align='center'>  
-  <img src='images/logs.png' width='60%'/>
+  <img src='images/book & reviews.png' width='100%'/>
 </p>
 
-We have completed all the tasks given for the project. We also implements some additional features on top of the basic one.
+**List of books and Filters**
+<p align='center'>  
+  <img src='images/sorting.png' width='100%'/>
+</p>
+
+**Logs**
+<p align='center'>  
+  <img src='images/logs.png' width='100%'/>
+</p>
 
 ### Frontend
 
@@ -70,17 +75,19 @@ Completed features:
 6. Sorting (additional)
 7. User page (additional)
 
-Logs can be access from ```http://<web-server>:3000/logs```
+***Important Notes:***
+*1. To be able to add review and new book, please Sign up!*
+*2. Logs can be access from ```http://<web-server>:3000/logs```*
 
 ### Backend
 
-#### Production [Expected time: 15 mins]
+#### Production [Expected time: 10 - 20 mins]
 
 Expected setting up time: 15 mins
 
 - Node Express js with ejs backend
 
-#### Analytics [Expected time: 30 mins]
+#### Analytics [Expected time: 30 - 40 mins]
 
 Expected setting up time: 10 mins
 
@@ -96,24 +103,44 @@ Expected running time on 2 clusters:
 ***NOTE: For the Pearson Correlation, we replaced all the NULL values in the data with zero. Hence the output maybe differ accordingly.***
 
 ## How to access the result files for the Analytics:
+
+### Tfidf
+<p align='center'>  
+  <img src='images/tfidf-result.png' width='100%'/>
+</p>
+
 You can find the results for TF-IDF in:
+<p align='center'>  
+  <img src='images/pc-result.png' width='100%'/>
+</p>
 ```
 ./hadoop/tfidf_result
 ```
-The results are stored in the multiple different files due to the usage of Map Reduce to optimise performance.
+- Each row is in the format of *(word, first 10 chars of a sentence, tfidf_score)*
+- It has about 63,069,437 rows
+- It is generated in the master node with script *./hadoop/good_test.py*
+- The results are stored in the multiple different files due to the usage of Map Reduce to optimise performance.
 
+### Pearson Correlation
 Likewise, you can also find the results for Pearson Correlation in:
 ```
 ./hadoop/pearson_correlation_result
 ```
-Once again, note that for the Pearson Correlation, the team has replaced all the NULL values in the data with Zero.
+- It is generated in the master node with script *./hadoop/pc_for_hdfs.py*
+- Once again, note that for the Pearson Correlation, the team has replaced all the NULL values in the data with Zero.
 
 
 ## Common problems
+
+We have tested our scripts and it can run automatically from scratch without the need for any inputs. However, there are some cases where internet connection is broken in the middle due to unstable internet connection or the connection is too long that cause the scripts not able to run completely. Therefore, this section is about some of the problems that might happen and the fix.
 
 1. Poor internet connection could cause ssh to not connect to instances after several trials. This would usually cause the web to not run properly because some of web server/mysql server/mongo server are not up.
 
 **Solution**: Please run again. 
 Need to delete existing SECURITY_GROUP1 and SECURITY_GROUP3, instances (since running back the script will create new instances). DO NOT DELETE deployKey ! (if deployKey is deleted from AWS, need to delete deployKey.pem file in the local)
+
+2. Wait for so long after pyspark finished running.
+
+**Solution**: Please press enter, it will continue the scripts as normal. This happens because broken connection to the server. 
 
 **If you have any queries or issues, please contact one of the team members through SUTD email directory. Thank you :)**

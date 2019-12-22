@@ -21,15 +21,18 @@ This project consists of:
 ```
 bash launch.sh 1 <key name without extension>
 ```
-note that if the key does not exist, it will be automatically created.
+note that if the key does not exist, it will be automatically created. If the key already exists elsewhere, please copy it to this top directory location (dbms-project-goodreads).
+
 Once it is done, you can view the web by opening ```http://<web-server>:3000/```, where the value of *web-server* can be seen from *web/instance.json*
 
 - Analytics clusters which can be setup using analytics automation:
 ```
 bash launch.sh 2 <key name without extension> <optional num of clusters: default = 2> <optional instance type: default = m4.large>
 ```
-where ```<num of clusters>``` = {2,4,8}
-```<instance type>``` = Amazon's instance type e.g. t2.large
+where ```<num of clusters>``` = {2,4,8},
+
+```<instance type>``` = Amazon's instance type e.g. t2.large,
+
 The status of Spark can be seen from ```http://<node_master.publicdns>:8080```, where *node_master.publicdns* value can be seen from *hadoop/analytics_instances.json*
 
 Optionally, you can launch web and analytics together:

@@ -106,7 +106,7 @@ Once again, note that for the Pearson Correlation, the team has replaced all the
 
 ## Common problems
 
-1. Local internet not good that ssh ignore to connect to instances after several trial. This usually cause the web couldn't run properly because some of web server/mysql server/mongo server is not up.
+1. Poor internet connection could cause ssh to not connect to instances after several trials. This would usually cause the web to not run properly because some of web server/mysql server/mongo server are not up.
 
 **Solution**: Please run again. 
 Need to delete existing SECURITY_GROUP1 and SECURITY_GROUP3, instances (since running back the script will create new instances). DO NOT DELETE deployKey ! (if deployKey is deleted from AWS, need to delete deployKey.pem file in the local)
